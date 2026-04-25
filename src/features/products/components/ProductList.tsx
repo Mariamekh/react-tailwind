@@ -1,9 +1,10 @@
 import { useProducts } from '../hooks/useProducts';
 import { ProductCard } from './ProductCard';
 import { ProductCardSkeleton } from './ProductCardSkeleton';
+import { cn } from '@/lib/cn';
 
 export function ProductList() {
-  const { data, isLoading, isError, refetch } = useProducts();
+  const { data, isLoading, isFetching, isError, refetch } = useProducts();
   const items = data?.items ?? [];
 
   if (isLoading) {
@@ -39,7 +40,13 @@ export function ProductList() {
   }
 
   return (
-    <div className="space-y-3">
+    <div
+      aria-busy={isFetching}
+      className={cn(
+        'space-y-3 transition-opacity duration-200',
+        isFetching && 'opacity-50',
+      )}
+    >
       {items.map((p) => (
         <ProductCard key={p.car_id} product={p} />
       ))}

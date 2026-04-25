@@ -10,11 +10,11 @@ import { FilterBlock } from './DealTypeSelect';
 
 export function ManufacturerFilter() {
   const { data: mans = [], isLoading: mansLoading } = useManufacturers();
-  const vehicle = useFiltersStore((s) => s.vehicle);
-  const manIds = useFiltersStore((s) => s.manIds);
-  const modelIds = useFiltersStore((s) => s.modelIds);
-  const toggleMan = useFiltersStore((s) => s.toggleMan);
-  const toggleModel = useFiltersStore((s) => s.toggleModel);
+  const vehicle = useFiltersStore((s) => s.draft.vehicle);
+  const manIds = useFiltersStore((s) => s.draft.manIds);
+  const modelsByMan = useFiltersStore((s) => s.draft.modelsByMan);
+  const toggleMan = useFiltersStore((s) => s.toggleDraftMan);
+  const toggleModel = useFiltersStore((s) => s.toggleDraftModel);
 
   const { data: modelsData, isLoading: modelsLoading } = useModelsForMans(manIds);
 
@@ -36,6 +36,23 @@ export function ManufacturerFilter() {
     [modelsData],
   );
 
+  const modelIdToManId = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const m of modelsData) map.set(String(m.model_id), String(m.man_id));
+    return map;
+  }, [modelsData]);
+
+  const selectedModelIds = useMemo(
+    () => Object.values(modelsByMan).flat(),
+    [modelsByMan],
+  );
+
+  const handleToggleModel = (modelId: string) => {
+    const manId = modelIdToManId.get(modelId);
+    if (!manId) return;
+    toggleModel(manId, modelId);
+  };
+
   return (
     <FilterBlock label="მწარმოებელი">
       <ManufacturerModelCombobox
@@ -43,9 +60,9 @@ export function ManufacturerFilter() {
         manufacturers={manufacturers}
         models={models}
         selectedManIds={manIds}
-        selectedModelIds={modelIds}
+        selectedModelIds={selectedModelIds}
         onToggleMan={toggleMan}
-        onToggleModel={toggleModel}
+        onToggleModel={handleToggleModel}
         loadingManufacturers={mansLoading}
         loadingModels={modelsLoading}
       />

@@ -3,22 +3,38 @@ import { MultiSelectCombobox, type OptionItem } from '@/shared/ui/MultiSelectCom
 import { useCategories } from '../hooks/useCategories';
 import { useFiltersStore } from '../store/useFiltersStore';
 import { FilterBlock } from './DealTypeSelect';
+import type { Category } from '../types';
+
+function getLabel(category: Category): string {
+  const raw = category as Category & {
+    category_name?: string;
+    title_ka?: string;
+    title_en?: string;
+    name?: string;
+  };
+  return (
+    raw.title ||
+    raw.category_name ||
+    raw.title_ka ||
+    raw.title_en ||
+    raw.name ||
+    String(category.category_id)
+  );
+}
 
 export function CategoryFilter() {
   const { data = [], isLoading } = useCategories();
-  const vehicle = useFiltersStore((s) => s.vehicle);
-  const categoryIds = useFiltersStore((s) => s.categoryIds);
-  const toggleCategory = useFiltersStore((s) => s.toggleCategory);
+  const categoryIds = useFiltersStore((s) => s.draft.categoryIds);
+  const toggleCategory = useFiltersStore((s) => s.toggleDraftCategory);
 
-  const vehicleType = vehicle === 'car' ? 0 : vehicle === 'tractor' ? 2 : 1;
-
-  const options = useMemo<OptionItem[]>(() => {
-    const filtered = data.filter((c) => c.category_type === vehicleType);
-    return filtered.map((c) => ({
-      value: String(c.category_id),
-      label: c.title,
-    }));
-  }, [data, vehicleType]);
+  const options = useMemo<OptionItem[]>(
+    () =>
+      data.map((c) => ({
+        value: String(c.category_id),
+        label: getLabel(c),
+      })),
+    [data],
+  );
 
   return (
     <FilterBlock label="კატეგორია">

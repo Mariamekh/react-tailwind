@@ -2,12 +2,12 @@ import { useFiltersStore } from '../store/useFiltersStore';
 import { cn } from '@/lib/cn';
 
 export function PriceFilter() {
-  const priceFrom = useFiltersStore((s) => s.priceFrom);
-  const priceTo = useFiltersStore((s) => s.priceTo);
-  const currency = useFiltersStore((s) => s.currency);
-  const setPriceFrom = useFiltersStore((s) => s.setPriceFrom);
-  const setPriceTo = useFiltersStore((s) => s.setPriceTo);
-  const setCurrency = useFiltersStore((s) => s.setCurrency);
+  const priceFrom = useFiltersStore((s) => s.draft.priceFrom);
+  const priceTo = useFiltersStore((s) => s.draft.priceTo);
+  const currency = useFiltersStore((s) => s.draft.currency);
+  const setPriceFrom = useFiltersStore((s) => s.setDraftPriceFrom);
+  const setPriceTo = useFiltersStore((s) => s.setDraftPriceTo);
+  const setCurrency = useFiltersStore((s) => s.setDraftCurrency);
 
   return (
     <div>

@@ -1,6 +1,7 @@
 export interface Product {
   car_id: number;
-  product_id: number;
+  product_id?: number;
+  pic_number?: number;
   man_id: number;
   model_id: number;
   category_id: number;

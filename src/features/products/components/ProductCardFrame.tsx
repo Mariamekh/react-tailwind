@@ -1,20 +1,27 @@
-import styled, { css } from 'styled-components';
+import { forwardRef, type HTMLAttributes } from 'react';
+import { cn } from '@/lib/cn';
 
-export const ProductCardFrame = styled.article<{ $highlighted?: boolean }>`
-  border-radius: 14px;
-  padding: 12px;
-  background: #fff;
-  transition: border-color 0.15s ease, background-color 0.15s ease;
-  border: 1px solid ${({ theme }) => theme.color.surfaceBorder};
+interface Props extends HTMLAttributes<HTMLElement> {
+  highlighted?: boolean;
+}
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.md}) {
-    padding: 16px;
-  }
-
-  ${({ $highlighted, theme }) =>
-    $highlighted &&
-    css`
-      border-color: ${theme.color.successBorder};
-      background: ${theme.color.successSoft};
-    `}
-`;
+export const ProductCardFrame = forwardRef<HTMLElement, Props>(function ProductCardFrame(
+  { highlighted, className, children, ...rest },
+  ref,
+) {
+  return (
+    <article
+      ref={ref}
+      className={cn(
+        'rounded-[14px] border bg-white p-3 transition-colors md:p-4',
+        highlighted
+          ? 'border-success-150 bg-success-50'
+          : 'border-surface-border',
+        className,
+      )}
+      {...rest}
+    >
+      {children}
+    </article>
+  );
+});

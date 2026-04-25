@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FilterSidebar } from '@/features/filters/components/FilterSidebar';
 import { ProductList } from '@/features/products/components/ProductList';
 import { ResultsToolbar } from '@/features/products/components/ResultsToolbar';
+import { Pagination } from '@/features/products/components/Pagination';
 import { Breadcrumbs } from '@/shared/layout/Breadcrumbs';
 import { MobileFilterDrawer } from '@/features/filters/components/MobileFilterDrawer';
 import { FilterIcon } from '@/shared/icons';
@@ -21,6 +22,9 @@ export function SearchPage() {
           <ResultsToolbar onOpenFilters={() => setMobileOpen(true)} />
           <div className="mt-3 md:mt-4">
             <ProductList />
+          </div>
+          <div className="mt-6">
+            <Pagination />
           </div>
         </div>
       </div>

@@ -8,8 +8,8 @@ const options: Array<{ value: 0 | 1; label: string }> = [
 ];
 
 export function DealTypeSelect() {
-  const dealType = useFiltersStore((s) => s.dealType);
-  const setDealType = useFiltersStore((s) => s.setDealType);
+  const dealType = useFiltersStore((s) => s.draft.dealType);
+  const setDealType = useFiltersStore((s) => s.setDraftDealType);
   const current = options.find((o) => o.value === dealType);
 
   return (

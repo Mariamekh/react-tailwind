@@ -14,7 +14,7 @@ import {
 } from "@/shared/icons";
 import { formatMileage, formatPrice, formatTimeAgo } from "@/lib/format";
 import type { Product } from "../types";
-import { getProductPhoto } from "../lib/photoUrl";
+import { ProductCardPhoto } from "./ProductCardPhoto";
 import { useManufacturers } from "@/features/filters/hooks/useManufacturers";
 import { VipBadge } from "./VipBadge";
 import { ProductCardFrame } from "./ProductCardFrame";
@@ -26,7 +26,6 @@ interface Props {
 export function ProductCard({ product }: Props) {
   const { data: mans } = useManufacturers();
   const [favorite, setFavorite] = useState(false);
-  const [imgError, setImgError] = useState(false);
 
   const manName =
     mans?.find((m) => String(m.man_id) === String(product.man_id))?.man_name ??
@@ -44,43 +43,37 @@ export function ProductCard({ product }: Props) {
   const hasChips = product.vip === 3;
   const timeAgo = formatTimeAgo(product.order_date);
 
-  const photo = imgError ? "" : getProductPhoto(product);
-
   return (
-    <ProductCardFrame $highlighted={hasChips}>
+    <ProductCardFrame highlighted={hasChips} className="cursor-pointer">
       <div className="flex flex-col gap-3 md:flex-row md:gap-4">
-        <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden rounded-lg bg-surface-muted md:h-[150px] md:w-[220px] md:aspect-auto">
-          {photo ? (
-            <img
-              src={photo}
-              alt={title}
-              loading="lazy"
-              onError={() => setImgError(true)}
-              className="h-full w-full object-cover"
-            />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center text-ink-muted text-xs">
-              no photo
-            </div>
-          )}
-          <button
-            onClick={() => setFavorite((v) => !v)}
-            className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-white/95 text-ink-soft shadow-sm hover:text-accent-danger md:hidden"
-            aria-label="favorite"
-          >
-            <HeartIcon
-              className={cn(
-                "h-4 w-4",
-                favorite && "fill-accent-danger text-accent-danger",
-              )}
-            />
-          </button>
-          {product.vip > 0 && (
-            <div className="absolute left-2 top-2 md:hidden">
-              <VipBadge level={product.vip} />
-            </div>
-          )}
-        </div>
+        <ProductCardPhoto
+          product={product}
+          title={title}
+          topLeftContent={
+            product.vip > 0 ? (
+              <span className="md:hidden">
+                <VipBadge level={product.vip} />
+              </span>
+            ) : null
+          }
+          topRightContent={
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setFavorite((v) => !v);
+              }}
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/95 text-ink-soft shadow-sm hover:text-accent-danger md:hidden"
+              aria-label="favorite"
+            >
+              <HeartIcon
+                className={cn(
+                  "h-4 w-4",
+                  favorite && "fill-accent-danger text-accent-danger",
+                )}
+              />
+            </button>
+          }
+        />
 
         <div className="flex min-w-0 flex-1 flex-col justify-between">
           <div className="flex items-start justify-between gap-3">
@@ -179,7 +172,7 @@ export function ProductCard({ product }: Props) {
                 <FlameIcon className="h-3.5 w-3.5 text-brand-orange" />
                 {product.views ?? 0} ნახვა
               </span>
-              <span>• 2 დღის წინ</span>
+              {timeAgo && <span>• {timeAgo}</span>}
             </div>
             <div className="flex items-center gap-1 text-ink-muted">
               <IconBtn title="edit">

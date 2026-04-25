@@ -7,6 +7,7 @@ import { ManufacturerFilter } from './ManufacturerFilter';
 import { CategoryFilter } from './CategoryFilter';
 import { PriceFilter } from './PriceFilter';
 import { Button } from '@/shared/ui/Button';
+import { useFiltersStore } from '../store/useFiltersStore';
 import { useProducts } from '@/features/products/hooks/useProducts';
 import { formatNumber } from '@/lib/format';
 
@@ -16,6 +17,7 @@ interface Props {
 }
 
 export function MobileFilterDrawer({ open, onClose }: Props) {
+  const applyDraft = useFiltersStore((s) => s.applyDraft);
   const { data, isFetching } = useProducts();
   const total = data?.meta.total ?? 0;
 
@@ -62,7 +64,15 @@ export function MobileFilterDrawer({ open, onClose }: Props) {
           <PriceFilter />
         </div>
         <div className="shrink-0 border-t border-surface-border p-4">
-          <Button fullWidth size="lg" onClick={onClose} disabled={isFetching}>
+          <Button
+            fullWidth
+            size="lg"
+            onClick={() => {
+              applyDraft();
+              onClose();
+            }}
+            disabled={isFetching}
+          >
             ძებნა {formatNumber(total)}
           </Button>
         </div>

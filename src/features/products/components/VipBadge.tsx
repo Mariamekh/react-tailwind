@@ -1,43 +1,24 @@
-import styled, { css } from 'styled-components';
+import { cn } from '@/lib/cn';
 
 type VipLevel = 1 | 2 | 3;
 
-const labels: Record<VipLevel, string> = {
-  1: 'VIP',
-  2: 'VIP +',
-  3: 'S-VIP',
+const variant: Record<VipLevel, { label: string; className: string }> = {
+  1: { label: 'VIP', className: 'bg-accent-vip' },
+  2: { label: 'VIP +', className: 'bg-accent-vip-plus' },
+  3: { label: 'S-VIP', className: 'bg-accent-super-vip' },
 };
-
-const variantStyles = {
-  1: css`
-    background: ${({ theme }) => theme.color.vip};
-    color: #fff;
-  `,
-  2: css`
-    background: ${({ theme }) => theme.color.vipPlus};
-    color: #fff;
-  `,
-  3: css`
-    background: ${({ theme }) => theme.color.superVip};
-    color: #fff;
-  `,
-} as const;
-
-const Badge = styled.span<{ $level: VipLevel }>`
-  display: inline-flex;
-  align-items: center;
-  height: 22px;
-  padding: 0 6px;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  border-radius: 5px;
-  ${({ $level }) => variantStyles[$level]};
-`;
 
 export function VipBadge({ level }: { level: number }) {
   if (!level || level < 1 || level > 3) return null;
-  const lvl = level as VipLevel;
-  return <Badge $level={lvl}>{labels[lvl]}</Badge>;
+  const { label, className } = variant[level as VipLevel];
+  return (
+    <span
+      className={cn(
+        'inline-flex h-[22px] items-center rounded-[5px] px-1.5 text-[11px] font-bold leading-none tracking-wide text-white',
+        className,
+      )}
+    >
+      {label}
+    </span>
+  );
 }

@@ -1,14 +1,17 @@
 import type { FiltersState } from '../types';
 import type { ProductsQueryParams } from '@/features/products/types';
 
-export function buildMansParam(manIds: string[], modelIds: string[]): string | undefined {
+export function buildMansParam(
+  manIds: string[],
+  modelsByMan: Record<string, string[]>,
+): string | undefined {
   if (manIds.length === 0) return undefined;
-  if (manIds.length === 1) {
-    const [manId] = manIds;
-    if (modelIds.length === 0) return `${manId}`;
-    return `${manId}.${modelIds.join('.')}`;
-  }
-  return manIds.map((id) => `${id}`).join('-');
+  return manIds
+    .map((manId) => {
+      const models = modelsByMan[manId] ?? [];
+      return models.length === 0 ? `${manId}` : `${manId}.${models.join('.')}`;
+    })
+    .join('-');
 }
 
 export function buildCatsParam(categoryIds: number[]): string | undefined {
@@ -17,13 +20,10 @@ export function buildCatsParam(categoryIds: number[]): string | undefined {
 }
 
 export function filtersToQueryParams(s: FiltersState): ProductsQueryParams {
-  const mans = buildMansParam(s.manIds, s.modelIds);
-  const cats = buildCatsParam(s.categoryIds);
-
   return {
     ForRent: s.dealType,
-    Mans: mans,
-    Cats: cats,
+    Mans: buildMansParam(s.manIds, s.modelsByMan),
+    Cats: buildCatsParam(s.categoryIds),
     PriceFrom: s.priceFrom ? Number(s.priceFrom) : undefined,
     PriceTo: s.priceTo ? Number(s.priceTo) : undefined,
     Period: s.period || undefined,
