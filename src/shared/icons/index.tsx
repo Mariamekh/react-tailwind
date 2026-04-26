@@ -1,4 +1,4 @@
-import type { SVGProps } from 'react';
+import type { SVGProps } from "react";
 
 type Props = SVGProps<SVGSVGElement>;
 
@@ -36,20 +36,42 @@ export const BreadcrumbChevronIcon = (p: Props) => (
 );
 
 export const CheckIcon = (p: Props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} {...p}>
-    <path d="M5 12.5 10 17.5 19 7.5" strokeLinecap="round" strokeLinejoin="round" />
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={3}
+    {...p}
+  >
+    <path
+      d="M5 12.5 10 17.5 19 7.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 export const SearchIcon = (p: Props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} {...p}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    {...p}
+  >
     <circle cx={11} cy={11} r={7} />
     <path d="m20 20-3.5-3.5" strokeLinecap="round" />
   </svg>
 );
 
 export const HeartIcon = (p: Props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} {...p}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.7}
+    {...p}
+  >
     <path
       d="M12 20s-7-4.5-9.2-9.1C1 7.2 3.3 3.7 7 3.7c2 0 3.8 1.2 5 3 1.2-1.8 3-3 5-3 3.7 0 6 3.5 4.2 7.2C19 15.5 12 20 12 20Z"
       strokeLinecap="round"
@@ -59,13 +81,25 @@ export const HeartIcon = (p: Props) => (
 );
 
 export const CompareIcon = (p: Props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} {...p}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.7}
+    {...p}
+  >
     <path d="M8 4v16M16 4v16M4 8h8M12 16h8" strokeLinecap="round" />
   </svg>
 );
 
 export const EditIcon = (p: Props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} {...p}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.7}
+    {...p}
+  >
     <path d="M4 20h4l10-10-4-4L4 16v4Z" strokeLinejoin="round" />
     <path d="m14 6 4 4" strokeLinecap="round" />
   </svg>
@@ -111,7 +145,13 @@ export const MotoIcon = (p: Props) => (
 );
 
 export const GearIcon = (p: Props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} {...p}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.7}
+    {...p}
+  >
     <path d="M6 5v14M6 12h6m0 0V7m0 5v5m0-5h6" strokeLinecap="round" />
     <circle cx={6} cy={5} r={1.5} />
     <circle cx={6} cy={19} r={1.5} />
@@ -122,7 +162,13 @@ export const GearIcon = (p: Props) => (
 );
 
 export const SpeedIcon = (p: Props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} {...p}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.7}
+    {...p}
+  >
     <path d="M4 14a8 8 0 0 1 16 0" strokeLinecap="round" />
     <path d="m12 14 4-4" strokeLinecap="round" />
     <circle cx={12} cy={14} r={1.5} fill="currentColor" stroke="none" />
@@ -130,9 +176,110 @@ export const SpeedIcon = (p: Props) => (
 );
 
 export const FuelIcon = (p: Props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} {...p}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.7}
+    {...p}
+  >
     <path d="M5 20V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15" />
-    <path d="M5 20h10M15 10h2a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2v0" strokeLinecap="round" />
+    <path
+      d="M5 20h10M15 10h2a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2v0"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+export const EngineIcon = (p: Props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    {...p}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M5.52488 2C5.13653 2 4.82171 2.35066 4.82171 2.78322C4.82171 3.21578 5.13653 3.56643 5.52488 3.56643H7.33347V5.27273H5.68644C5.51194 5.27273 5.3446 5.3412 5.22121 5.46308L4.00406 6.66538H3.33668C2.97331 6.66538 2.67875 6.95635 2.67875 7.31528V8.54545H1.50009V7.13369C1.50009 6.7084 1.16428 6.36364 0.750043 6.36364C0.335806 6.36364 0 6.7084 0 7.13369V12.084C0 12.5093 0.335806 12.8541 0.750043 12.8541C1.16428 12.8541 1.50009 12.5093 1.50009 12.084V10.0856H2.67875V11.9574C2.67875 12.3164 2.97331 12.6074 3.33668 12.6074H4.00406L5.22121 13.8096C5.3446 13.9315 5.51194 14 5.68644 14H10.8559C10.9983 14 11.1368 13.9544 11.2507 13.87L13.1305 12.4774C13.2961 12.3546 13.3936 12.162 13.3936 11.9574V10.0856H14.4999V12.084C14.4999 12.5093 14.8357 12.8541 15.25 12.8541C15.6642 12.8541 16 12.5093 16 12.084V7.13369C16 6.7084 15.6642 6.36364 15.25 6.36364C14.8357 6.36364 14.4999 6.7084 14.4999 7.13369V8.54545H13.3936V7.31528C13.3936 7.14292 13.3243 6.97761 13.2009 6.85573L11.7911 5.46308C11.6677 5.3412 11.5004 5.27273 11.3259 5.27273H8.7398V3.56643H10.5475C10.9358 3.56643 11.2507 3.21578 11.2507 2.78322C11.2507 2.35066 10.9358 2 10.5475 2H8.03664H5.52488ZM4.74181 7.77483L5.95896 6.57253H11.0533L12.0778 7.58448V11.6325L10.6366 12.7002H5.95896L4.74181 11.4979C4.61842 11.376 4.45108 11.3075 4.27658 11.3075H3.99461V7.96518H4.27658C4.45108 7.96518 4.61842 7.89671 4.74181 7.77483Z"
+    />
+  </svg>
+);
+
+export const TransmissionIcon = (p: Props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    {...p}
+  >
+    <rect
+      x={2.6}
+      y={7.6}
+      width={10.8}
+      height={7.8}
+      rx={1.2}
+      strokeWidth={1.2}
+    />
+    <path
+      d="M8 5V10"
+      strokeWidth={1.2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path d="M8 12V13.5" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx={8} cy={2.5} r={1.8} strokeWidth={1.4} />
+    <path d="M5 10V13" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M11 10V13" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export const MileageIcon = (p: Props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.4}
+    {...p}
+  >
+    <circle cx={8} cy={8} r={6.3} />
+    <circle cx={8} cy={8} r={1.3} />
+    <path
+      d="M12 8C12 5.79086 10.2091 4 8 4C5.79086 4 4 5.79086 4 8"
+      strokeLinecap="round"
+    />
+    <path d="M9 7L10.5 5.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export const DriveWheelIcon = (p: Props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.4}
+    {...p}
+  >
+    <circle cx={8} cy={8} r={6.3} />
+    <circle cx={8} cy={8} r={1.3} />
+    <path d="M9.5 8L13.5 6.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M6.21387 7.99979L1.99977 7.29883"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path d="M8 9.5V14" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -143,14 +290,42 @@ export const FlameIcon = (p: Props) => (
 );
 
 export const ShieldCheckIcon = (p: Props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} {...p}>
-    <path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z" strokeLinejoin="round" />
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.7}
+    {...p}
+  >
+    <path
+      d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"
+      strokeLinejoin="round"
+    />
     <path d="m9 12 2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
+export const CheckmarkCircleIcon = (p: Props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    {...p}
+  >
+    <path d="M5.40305 7.48254C5.16363 7.48219 4.9341 7.58333 4.76597 7.76326C4.41923 8.12087 4.41037 8.70665 4.74612 9.07576L6.64248 10.7392C6.80254 10.9076 7.01979 11.0016 7.24583 11C7.48591 10.9992 7.71597 10.8983 7.88589 10.7193L11.2311 6.57333C11.4029 6.39612 11.4998 6.15334 11.5 5.8998C11.5013 5.66091 11.4121 5.43139 11.2521 5.26238C11.0922 5.09336 10.8749 4.99889 10.6486 5.00001C10.4081 5.00063 10.178 5.10287 10.0095 5.28388L7.29445 8.76151L6.00441 7.74231C5.84459 7.57473 5.62832 7.48093 5.40305 7.48149V7.48254Z" />
+  </svg>
+);
+
 export const HistoryIcon = (p: Props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} {...p}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.7}
+    {...p}
+  >
     <path d="M3 12a9 9 0 1 0 3-6.7" strokeLinecap="round" />
     <path d="M3 4v5h5" strokeLinecap="round" strokeLinejoin="round" />
     <path d="M12 8v5l3 2" strokeLinecap="round" />
@@ -158,36 +333,133 @@ export const HistoryIcon = (p: Props) => (
 );
 
 export const CloseIcon = (p: Props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} {...p}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    {...p}
+  >
     <path d="M6 6 18 18M18 6 6 18" strokeLinecap="round" />
   </svg>
 );
 
 export const FilterIcon = (p: Props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} {...p}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.7}
+    {...p}
+  >
     <path d="M4 6h16M7 12h10M10 18h4" strokeLinecap="round" />
   </svg>
 );
 
 export const MenuIcon = (p: Props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} {...p}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    {...p}
+  >
     <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
   </svg>
 );
 
 export const GalleryIcon = (p: Props) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} {...p}>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.7}
+    {...p}
+  >
     <rect x={3} y={5} width={18} height={14} rx={2} />
     <circle cx={8.5} cy={10} r={1.5} fill="currentColor" stroke="none" />
-    <path d="m4 17 5-5 4 4 3-3 4 4" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="m4 17 5-5 4 4 3-3 4 4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const ListIcon = (p: Props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.4}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...p}
+  >
+    <circle cx={3} cy={4} r={0.8} fill="currentColor" stroke="none" />
+    <circle cx={3} cy={8} r={0.8} fill="currentColor" stroke="none" />
+    <circle cx={3} cy={12} r={0.8} fill="currentColor" stroke="none" />
+    <path d="M6 4h8M6 8h8M6 12h8" />
+  </svg>
+);
+
+export const USAFlag = (p: Props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    {...p}
+  >
+    <defs>
+      <clipPath id="usa-flag-circle">
+        <circle cx="8" cy="8" r="7.5" />
+      </clipPath>
+    </defs>
+    <g clipPath="url(#usa-flag-circle)">
+      <rect width="16" height="16" fill="#fff" />
+      <rect y="0" width="16" height="1.23" fill="#B22234" />
+      <rect y="2.46" width="16" height="1.23" fill="#B22234" />
+      <rect y="4.92" width="16" height="1.23" fill="#B22234" />
+      <rect y="7.38" width="16" height="1.23" fill="#B22234" />
+      <rect y="9.84" width="16" height="1.23" fill="#B22234" />
+      <rect y="12.31" width="16" height="1.23" fill="#B22234" />
+      <rect y="14.77" width="16" height="1.23" fill="#B22234" />
+      <rect width="6.4" height="6.77" fill="#3C3B6E" />
+    </g>
+    <circle
+      cx="8"
+      cy="8"
+      r="7.5"
+      fill="none"
+      stroke="#E9E9F0"
+    />
   </svg>
 );
 
 export const GeorgiaFlag = (p: Props) => (
-  <svg viewBox="0 0 24 24" fill="none" {...p}>
-    <rect width={24} height={24} rx={2} fill="#fff" />
-    <path d="M10 0h4v24h-4z" fill="#e11d48" />
-    <path d="M0 10h24v4H0z" fill="#e11d48" />
-    <path d="M5 5h1v1h1v1H6v1H5V7H4V6h1V5Zm13 0h1v1h1v1h-1v1h-1V7h-1V6h1V5Zm0 13h1v1h1v1h-1v1h-1v-1h-1v-1h1v-1ZM5 18h1v1h1v1H6v1H5v-1H4v-1h1v-1Z" fill="#e11d48" />
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    {...p}
+  >
+    <path
+      d="M7.99902 0.500244C12.1406 0.500244 15.498 3.85816 15.498 8.00024C15.498 12.1422 12.1406 15.5002 7.99902 15.5002C3.85752 15.5002 0.500094 12.1422 0.5 8.00024C0.5 3.8582 3.85746 0.500298 7.99902 0.500244Z"
+      fill="white"
+      stroke="#E9E9F0"
+    />
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M15.9304 6.95557H9.04433V0.0677221C8.35172 -0.022574 7.65032 -0.022574 6.95771 0.0677221V6.95557H0.0704627C-0.0198255 7.64825 -0.0198255 8.34971 0.0704627 9.04238H6.95771V15.9302C7.65032 16.0205 8.35172 16.0205 9.04433 15.9302V9.04238H15.9316C16.0219 8.34971 16.0219 7.64825 15.9316 6.95557H15.9304ZM4.87147 3.82564V2.78223H3.82816V3.82564H2.78484V4.86904H3.82816V5.91244H4.87147V4.86904H5.91478V3.82564H4.87147ZM12.1736 2.78223V3.82564H13.2214V4.86904H12.1781V5.91244H11.1348V4.86904H10.0915V3.82564H11.1348V2.78223H12.1736ZM4.87147 11.1324V10.089H3.82816V11.1324H2.78484V12.1758H3.82816V13.2192H4.87147V12.1758H5.91478V11.1324H4.87147ZM12.1736 10.089V11.1324H13.2214V12.1758H12.1781V13.2192H11.1348V12.1758H10.0915V11.1324H11.1348V10.089H12.1736Z"
+      fill="#FF3B30"
+    />
   </svg>
 );

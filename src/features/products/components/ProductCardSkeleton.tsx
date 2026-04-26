@@ -1,8 +1,8 @@
 export function ProductCardSkeleton() {
   return (
-    <div className="animate-pulse rounded-card border border-surface-border bg-white p-3 shadow-card md:p-4">
-      <div className="flex flex-col gap-3 md:flex-row md:gap-4">
-        <div className="aspect-[4/3] w-full rounded-lg bg-surface-muted md:h-[150px] md:w-[220px] md:aspect-auto" />
+    <div className="animate-pulse rounded-card border border-surface-border bg-white p-4 shadow-card">
+      <div className="flex flex-col gap-4 md:flex-row">
+        <div className="aspect-[4/3] w-full rounded-lg bg-surface-muted md:h-[140px] md:w-[170px] md:aspect-auto" />
         <div className="flex-1 space-y-3">
           <div className="h-4 w-2/3 rounded bg-surface-muted" />
           <div className="h-3 w-1/2 rounded bg-surface-muted" />

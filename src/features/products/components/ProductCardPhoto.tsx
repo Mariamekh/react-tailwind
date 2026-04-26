@@ -123,7 +123,7 @@ function Frame({
     <div
       {...rest}
       className={cn(
-        'relative aspect-[4/3] w-full shrink-0 cursor-pointer overflow-hidden rounded-lg bg-surface-muted md:aspect-auto md:h-[150px] md:w-[220px]',
+        'relative aspect-[4/3] w-full shrink-0 cursor-pointer overflow-hidden rounded-lg bg-surface-muted md:aspect-auto md:h-[140px] md:w-[170px]',
         className,
       )}
     >

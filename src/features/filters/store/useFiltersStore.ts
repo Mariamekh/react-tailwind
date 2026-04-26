@@ -32,6 +32,7 @@ interface Store extends FiltersState {
 
   applyDraft: () => void;
   resetDraft: () => void;
+  resetAll: () => void;
 }
 
 const emptyDraft: DraftSlice = {
@@ -140,4 +141,6 @@ export const useFiltersStore = create<Store>((set) => ({
     })),
 
   resetDraft: () => set({ draft: { ...emptyDraft } }),
+
+  resetAll: () => set({ ...initialApplied, draft: { ...emptyDraft } }),
 }));

@@ -22,7 +22,7 @@ function getPhotoVersion(product: Product): string | number {
 
 function getPicCount(product: Product): number {
   const p = product as RawProduct;
-  return p.pic_number ?? product.pics_count ?? 0;
+  return p.pic_number ?? 0;
 }
 
 export function hasPhoto(product: Product): boolean {

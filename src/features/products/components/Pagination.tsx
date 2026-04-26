@@ -2,14 +2,11 @@ import { useFiltersStore } from '@/features/filters/store/useFiltersStore';
 import { useProducts } from '../hooks/useProducts';
 import { cn } from '@/lib/cn';
 
-const PAGE_SIZE = 24;
-
 export function Pagination() {
   const page = useFiltersStore((s) => s.page);
   const setPage = useFiltersStore((s) => s.setPage);
   const { data } = useProducts();
-  const total = data?.meta.total ?? 0;
-  const pages = data?.meta.pages ?? Math.max(1, Math.ceil(total / PAGE_SIZE));
+  const pages = data?.meta.last_page ?? 1;
 
   if (pages <= 1) return null;
 
