@@ -51,12 +51,12 @@ export function MultiSelectCombobox({
     <Dropdown
       fullWidth
       triggerClassName={cn(
-        'h-10 w-full justify-between rounded-lg border-surface-border2 pl-3 pr-2 font-sailec text-[13px] font-medium leading-none text-ink-600',
+        'h-10 w-full justify-between rounded-lg border-surface-border2 pl-3 pr-2 font-[\'Helvetica_Neue_LT\'] text-[14px] font-normal leading-none text-ink-900',
         disabled && 'opacity-50 cursor-not-allowed',
       )}
       chevronClassName="h-6 w-6 text-ink-600"
       panelClassName="w-[min(320px,92vw)] p-0"
-      trigger={<span className="truncate">{triggerLabel}</span>}
+      trigger={<span>{triggerLabel}</span>}
     >
       <div className="border-b border-surface-border p-2">
         <div className="relative">

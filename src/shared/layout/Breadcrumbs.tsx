@@ -6,7 +6,7 @@ export function Breadcrumbs() {
   const dealLabel = dealType === 1 ? 'ქირავდება' : 'იყიდება';
 
   return (
-    <nav className="flex items-center gap-1 text-[12px] leading-none">
+    <nav className="flex items-center gap-1 font-['Helvetica_Neue_LT'] text-[12px] font-normal leading-none">
       <a href="#" className="text-ink-600 hover:text-ink-900">
         მთავარი
       </a>

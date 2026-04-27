@@ -1,8 +1,7 @@
-import { useProducts } from '../hooks/useProducts';
-import { SortDropdown } from '@/features/sort/components/SortDropdown';
-import { PeriodQuickSelect } from './PeriodQuickSelect';
-import { FilterIcon } from '@/shared/icons';
-import { formatNumber } from '@/lib/format';
+import { useProducts } from "../hooks/useProducts";
+import { SortDropdown } from "@/features/sort/components/SortDropdown";
+import { PeriodQuickSelect } from "./PeriodQuickSelect";
+import { FilterIcon } from "@/shared/icons";
 
 interface Props {
   onOpenFilters: () => void;
@@ -22,8 +21,8 @@ export function ResultsToolbar({ onOpenFilters }: Props) {
           <FilterIcon className="h-4 w-4" />
           ფილტრი
         </button>
-        <div className="font-sans text-[16px] font-normal leading-none text-ink-800">
-          {formatNumber(total)} განცხადება
+        <div className="font-['Helvetica_Neue_LT'] text-[16px] font-normal leading-[20px] text-ink-800">
+          {total} განცხადება
         </div>
       </div>
 

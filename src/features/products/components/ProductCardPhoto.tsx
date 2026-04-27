@@ -83,8 +83,8 @@ export function ProductCardPhoto({
         className="h-full w-full object-cover"
       />
 
-      {hovering && extraPhotos > 0 && (
-        <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center bg-ink/40 text-white">
+      {hovering && hoverIndex === slices - 1 && extraPhotos > 0 && (
+        <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white">
           <GalleryIcon className="h-8 w-8" />
           <span className="mt-2 text-[22px] font-semibold leading-none">
             +{extraPhotos} <span className="font-normal">ფოტო</span>
@@ -123,7 +123,7 @@ function Frame({
     <div
       {...rest}
       className={cn(
-        'relative aspect-[4/3] w-full shrink-0 cursor-pointer overflow-hidden rounded-lg bg-surface-muted md:aspect-auto md:h-[140px] md:w-[182px]',
+        'relative h-[256px] w-full shrink-0 cursor-pointer overflow-hidden rounded-[16px] bg-surface-muted md:h-[140px] md:w-[178px] md:rounded-lg',
         className,
       )}
     >

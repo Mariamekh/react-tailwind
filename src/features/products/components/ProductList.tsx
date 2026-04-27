@@ -9,7 +9,7 @@ export function ProductList() {
 
   if (isLoading) {
     return (
-      <div className="space-y-[10px]">
+      <div className="space-y-2 md:space-y-[10px]">
         {Array.from({ length: 8 }).map((_, i) => (
           <ProductCardSkeleton key={i} />
         ))}
@@ -43,7 +43,7 @@ export function ProductList() {
     <div
       aria-busy={isFetching}
       className={cn(
-        'space-y-[10px] transition-opacity duration-200',
+        'space-y-2 md:space-y-[10px] transition-opacity duration-200',
         isFetching && 'opacity-50',
       )}
     >

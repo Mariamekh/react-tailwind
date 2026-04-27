@@ -12,10 +12,10 @@ export function PriceFilter() {
   return (
     <div>
       <div className="flex items-center justify-between">
-        <div className="font-sans text-[13px] font-medium text-ink-800">ფასი</div>
+        <div className="font-['Helvetica_Neue_LT'] text-[13px] font-medium text-ink-800">ფასი</div>
         <CurrencyToggle value={currency} onChange={setCurrency} />
       </div>
-      <div className="mt-[18px] flex items-center gap-[3px]">
+      <div className="mt-[12px] flex items-center gap-[3px]">
         <NumberInput placeholder="დან" value={priceFrom} onChange={setPriceFrom} />
         <span
           aria-hidden

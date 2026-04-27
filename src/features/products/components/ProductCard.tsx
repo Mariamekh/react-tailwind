@@ -14,7 +14,14 @@ import {
   MileageIcon,
   DriveWheelIcon,
   CheckmarkCircleIcon,
+  CheckmarkIcon,
   ListIcon,
+  FuelIcon,
+  SparkleIcon,
+  StopwatchIcon,
+  ClockListIcon,
+  HeartFloatingIcon,
+  FlameViewsIcon,
 } from "@/shared/icons";
 import { useFiltersStore } from "@/features/filters/store/useFiltersStore";
 import { formatMileage, formatPrice, formatTimeAgo } from "@/lib/format";
@@ -60,6 +67,47 @@ export function ProductCard({ product }: Props) {
     product.dealer_title.trim().length > 0;
   const timeAgo = formatTimeAgo(product.order_date);
 
+  const heartButton = (
+    <button
+      onClick={(e) => {
+        e.stopPropagation();
+        setFavorite((v) => !v);
+      }}
+      className="md:hidden"
+      aria-label="favorite"
+    >
+      <HeartFloatingIcon
+        className={cn(
+          "h-[33px] w-[35px]",
+          favorite ? "text-accent-danger" : "text-ink-800",
+        )}
+      />
+    </button>
+  );
+
+  const customsBadge = isCustomsPassed ? (
+    <span className="inline-flex h-6 items-center gap-1 rounded-md bg-[#EEFBF1] pb-[6px] pl-2 pr-2 pt-[5px] font-sailec text-[10px] font-normal leading-none text-[#1EB676]">
+      <CheckmarkIcon className="h-4 w-4" />
+      განბაჟებული
+    </span>
+  ) : (
+    <span className="inline-flex h-6 items-center gap-1 rounded-md bg-[#FFE3E3] pb-[6px] pl-2 pr-2 pt-[5px] font-sailec text-[10px] font-normal leading-none text-[#FF3B30]">
+      <span>განბაჟება</span>
+      <span>
+        {formatPrice(customsFee)} {customsCurrencySymbol}
+      </span>
+    </span>
+  );
+
+  const priceDisplay = (
+    <div className="flex items-center gap-1 font-sans text-[20px] font-bold leading-7 text-ink-800">
+      <span>{formatPrice(priceValue)}</span>
+      <span className="inline-flex h-6 w-[26px] items-center justify-center rounded-[12px] bg-surface-tint text-ink-800">
+        <CurrencyGlyph currency={filterCurrency} />
+      </span>
+    </div>
+  );
+
   return (
     <ProductCardFrame
       highlighted={isHighlighted}
@@ -72,54 +120,133 @@ export function ProductCard({ product }: Props) {
               ? "default"
               : false
       }
-      className="cursor-pointer"
+      className={cn(
+        "cursor-pointer",
+        hasChips && isCommercialDealer
+          ? "md:min-h-[278px]"
+          : hasChips
+            ? "md:h-[217px]"
+            : isCommercialDealer
+              ? "md:h-[233px]"
+              : "md:h-[172px]",
+      )}
     >
-      <div className="flex flex-col gap-4 md:flex-row">
+      {/* Mobile layout */}
+      <div className="flex flex-col pt-[2px] md:hidden md:pt-0">
+        <div className="flex min-w-0 items-center gap-2">
+          <h3 className="min-w-0 truncate font-['Helvetica_Neue_LT'] text-[14px] font-medium leading-[17px] text-ink-800">
+            <span className="uppercase">{manName}</span>
+            {modelLabel && <span> {modelLabel}</span>}
+          </h3>
+          <span className="shrink-0 font-['Helvetica_Neue_LT'] text-[14px] font-medium leading-[17px] text-[#8996AE]">
+            {product.prod_year} წ
+          </span>
+        </div>
+
+        <div className="mt-[10px] flex items-center justify-between">
+          {priceDisplay}
+          {customsBadge}
+        </div>
+
+        <div className="mt-4">
+          <ProductCardPhoto
+            product={product}
+            title={title}
+            topRightContent={heartButton}
+          />
+        </div>
+
+        <div className="mt-[14px] grid grid-cols-2 gap-x-4 gap-y-[6px] font-sans text-[12px] font-normal leading-[15px] text-ink-700">
+          <span>{formatMileage(product.car_run_km)}</span>
+          <span>{product.category_name ?? "სედანი"}</span>
+          <span>
+            {product.engine_volume
+              ? (product.engine_volume / 1000).toFixed(1)
+              : "—"}{" "}
+            {product.fuel_type ?? "ბენზინი"}
+          </span>
+          <span>საჭე {product.drive_type ?? "მარცხნივ"}</span>
+          <span>{product.gear_type ?? "ავტომატიკა"}</span>
+          {locationLabel && (
+            <span className="inline-flex items-center gap-1">
+              {locationFlag === "georgia" && (
+                <GeorgiaFlag className="h-4 w-4 shrink-0" />
+              )}
+              {locationFlag === "usa" && (
+                <USAFlag className="h-4 w-4 shrink-0" />
+              )}
+              {locationLabel}
+            </span>
+          )}
+        </div>
+
+        {hasChips && (
+          <div className="-mx-4 mt-3 flex items-center gap-2 overflow-x-auto px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {stickerChips.map((info, i) => (
+              <span
+                key={i}
+                className="inline-flex shrink-0 items-center gap-1 rounded-[100px] bg-[#EFF6FE] pb-[6px] pl-[6px] pr-2 pt-[5px] font-sailec text-[12px] font-medium leading-[13px] text-ink-700"
+              >
+                <info.Icon className={cn("h-3.5 w-3.5", info.iconClass)} />
+                {info.label}
+              </span>
+            ))}
+          </div>
+        )}
+
+        <div className="mt-[14px] flex items-center justify-between border-t border-[#E4E7EB] pt-3">
+          <div className="flex items-center gap-2 font-['Helvetica_Neue_LT'] text-[12px] font-normal leading-4 text-ink-500">
+            <FlameViewsIcon className="h-4 w-4 text-[#8996AE]" />
+            <span>{product.views ?? 0} ნახვა</span>
+            {timeAgo && (
+              <>
+                <span>•</span>
+                <span>{timeAgo}</span>
+              </>
+            )}
+          </div>
+          <div className="flex items-center text-ink-500">
+            <IconBtn title="compare">
+              <CompareIcon className="h-4 w-4" />
+            </IconBtn>
+            <IconBtn title="edit">
+              <EditIcon className="h-4 w-4" />
+            </IconBtn>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop layout */}
+      <div className="hidden flex-col gap-4 md:flex md:flex-row">
         <ProductCardPhoto
           product={product}
           title={title}
           topLeftContent={null}
-          topRightContent={
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setFavorite((v) => !v);
-              }}
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/95 text-ink-600 shadow-sm hover:text-accent-danger md:hidden"
-              aria-label="favorite"
-            >
-              <HeartIcon
-                className={cn(
-                  "h-4 w-4",
-                  favorite && "fill-accent-danger text-accent-danger",
-                )}
-              />
-            </button>
-          }
+          topRightContent={heartButton}
         />
 
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2">
-                <h3 className="truncate font-sans text-[14px] font-medium leading-none text-ink-800">
+              <div className="flex min-w-0 items-center gap-2">
+                <h3 className="min-w-0 truncate font-['Helvetica_Neue_LT'] text-[14px] font-medium leading-[17px] text-ink-800">
                   <span className="uppercase">{manName}</span>
                   {modelLabel && <span> {modelLabel}</span>}
                 </h3>
-                <span className="shrink-0 font-sans text-[14px] font-medium leading-none text-ink-500">
+                <span className="shrink-0 font-['Helvetica_Neue_LT'] text-[14px] font-medium leading-[17px] text-ink-500">
                   {product.prod_year} წ
                 </span>
               </div>
             </div>
 
-            <div className="flex shrink-0 items-center gap-3 text-right">
+            <div className="flex shrink-0 items-center gap-4 text-right">
               {isCustomsPassed ? (
-                <span className="inline-flex items-center gap-1 font-sans text-[11px] font-medium leading-none text-success-300">
+                <span className="inline-flex items-center gap-[2px] font-sailec text-[11px] font-medium leading-[16px] text-success-300">
                   <CheckmarkCircleIcon className="h-4 w-4" />
                   განბაჟებული
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1 font-sans text-[11px] font-medium leading-none text-error-800">
+                <span className="inline-flex items-center gap-1 font-sailec text-[11px] font-medium leading-[16px] text-error-800">
                   <span>განბაჟება</span>
                   <span>
                     {formatPrice(customsFee)} {customsCurrencySymbol}
@@ -127,7 +254,7 @@ export function ProductCard({ product }: Props) {
                 </span>
               )}
               {locationLabel && (
-                <div className="inline-flex items-center gap-1 font-sans text-[12px] font-normal leading-none text-ink-600">
+                <div className="inline-flex items-center gap-1 font-sans text-[12px] font-normal leading-[16px] text-ink-600">
                   {locationFlag === "georgia" && (
                     <GeorgiaFlag className="h-4 w-4 shrink-0" />
                   )}
@@ -141,7 +268,7 @@ export function ProductCard({ product }: Props) {
           </div>
 
           <div className="mt-[24px] flex flex-col md:flex-row md:items-start md:gap-4">
-            <div className="grid grid-cols-2 gap-x-4 gap-y-4 font-sailec text-[12px] font-medium text-ink-900 md:w-[396px] md:shrink-0">
+            <div className="grid h-[50px] grid-cols-2 gap-x-4 gap-y-[14px] font-sailec text-[12px] font-medium leading-[18px] text-ink-900 md:w-[396px] md:shrink-0">
               <div className="inline-flex items-center gap-3">
                 <EngineIcon className="h-4 w-4 shrink-0 text-ink-500" />
                 <span>
@@ -206,8 +333,8 @@ export function ProductCard({ product }: Props) {
             </div>
           </div>
 
-          <div className="mt-[29px] flex items-center justify-between">
-            <div className="flex items-center gap-4 font-sans text-[12px] font-normal leading-none text-ink-600">
+          <div className="mt-[29px] flex h-[20px] items-center justify-between">
+            <div className="flex items-center gap-4 font-['Helvetica_Neue_LT'] text-[12px] font-normal leading-none text-ink-600">
               {vipLevel > 0 && <VipBadge level={vipLevel} />}
               <div className="flex items-center gap-1">
                 <span>{product.views ?? 0} ნახვა</span>
@@ -219,7 +346,7 @@ export function ProductCard({ product }: Props) {
                 )}
               </div>
             </div>
-            <div className="flex items-center text-ink-500">
+            <div className="flex w-[80px] items-center justify-between text-ink-500">
               <IconBtn title="edit">
                 <EditIcon className="h-4 w-4" />
               </IconBtn>
@@ -242,7 +369,7 @@ export function ProductCard({ product }: Props) {
       {hasChips && (
         <div
           className={cn(
-            "-mx-3 -mb-4 mt-3 flex flex-wrap items-center gap-2 rounded-b-[14px] px-3 py-[10px] md:-mx-4 md:px-4",
+            "-mx-4 -mb-4 mt-3 hidden flex-wrap items-center gap-2 rounded-b-[14px] px-4 py-[10px] md:flex",
             isHighlighted && "border-t border-success-150",
           )}
         >
@@ -250,7 +377,7 @@ export function ProductCard({ product }: Props) {
             <span
               key={i}
               className={cn(
-                "inline-flex items-center gap-1 rounded-[100px] px-2 py-[6px] font-sailec text-[12px] font-medium leading-[13px] tracking-normal text-ink-800",
+                "inline-flex items-center gap-1 rounded-[100px] pb-[6px] pl-[6px] pr-2 pt-[5px] font-sailec text-[12px] font-medium leading-[13px] tracking-normal text-ink-700",
                 isHighlighted ? "bg-white" : "bg-[#EEF2F7]",
               )}
             >
@@ -271,6 +398,39 @@ export function ProductCard({ product }: Props) {
   );
 }
 
+function CurrencyGlyph({ currency }: { currency: 1 | 2 }) {
+  if (currency === 2) {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="10"
+        height="11"
+        viewBox="0 0 10 11"
+        fill="none"
+      >
+        <path
+          d="M5.71 11V9.86c1.07-.07 1.93-.36 2.59-.86.65-.5.98-1.18.98-2.05 0-.59-.13-1.08-.4-1.47-.26-.39-.62-.7-1.07-.93-.45-.23-.95-.42-1.5-.56l-.6-.16V1.96c.36.05.66.16.91.32.25.16.43.36.55.6h2.13C9.14 1.92 8.7 1.36 8.07.96 7.45.55 6.66.31 5.71.23V0H4.4v.23C3.36.31 2.51.6 1.86 1.1c-.65.5-.97 1.16-.97 2 0 .54.13.99.39 1.36.26.36.6.66 1.04.88.43.22.91.4 1.43.54l.65.18v2.06c-.4-.06-.74-.18-1-.36-.27-.18-.45-.4-.56-.66H.65c.1.94.55 1.69 1.34 2.24.79.55 1.6.83 2.41.86V11h1.31zM4.4 4.13l-.4-.13c-.39-.13-.7-.28-.92-.46-.22-.18-.33-.4-.33-.66 0-.32.13-.58.4-.79.26-.21.69-.34 1.25-.4v2.44zm1.31 1.6.4.12c.46.13.81.29 1.05.5.24.2.36.46.36.78 0 .35-.14.63-.42.85-.28.22-.74.36-1.39.43V5.73z"
+          fill="currentColor"
+        />
+      </svg>
+    );
+  }
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="10"
+      height="11"
+      viewBox="0 0 10 11"
+      fill="none"
+    >
+      <path
+        d="M8.91433 11V9.32231H5.25111C4.6258 9.32231 4.07804 9.1699 3.60783 8.86508C3.13762 8.56026 2.7745 8.13064 2.51846 7.57621C2.26243 7.02178 2.13442 6.37974 2.13442 5.6501C2.13442 4.85806 2.24889 4.20042 2.47784 3.67719C2.70679 3.15396 3.0773 2.74834 3.58937 2.46032V5.80851H4.48301V2.19391C4.63072 2.16511 4.79074 2.15071 4.96307 2.15071C5.13048 2.15071 5.29788 2.16511 5.46529 2.19391V5.80851H6.35894V2.46032C6.88577 2.74354 7.26366 3.15396 7.49261 3.69159C7.72157 4.22922 7.83604 4.93486 7.83604 5.80851H10C10 4.97326 9.85352 4.20402 9.56056 3.50078C9.2676 2.79754 8.84663 2.20231 8.29764 1.71508C7.74865 1.22785 7.10241 0.890634 6.35894 0.703424V0H5.46529V0.545015L5.22895 0.537815C5.17479 0.533014 5.09601 0.530614 4.99261 0.530614C4.7612 0.530614 4.59133 0.535415 4.48301 0.545015V0H3.58937V0.703424C2.87051 0.890634 2.24028 1.21585 1.69867 1.67908C1.15707 2.1423 0.738552 2.69554 0.443131 3.33877C0.147711 3.98201 0 4.65885 0 5.36929C0 5.91652 0.0763171 6.44935 0.228951 6.96777C0.381585 7.4862 0.605613 7.95063 0.901034 8.36105C1.19646 8.77148 1.5485 9.09189 1.95716 9.32231V9.37991H0.546529V11H8.91433Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
 function DealerFooter({
   name,
   listingCount,
@@ -279,7 +439,7 @@ function DealerFooter({
   listingCount: number | null;
 }) {
   return (
-    <div className="-mx-3 mt-3 flex flex-col gap-1 border-t border-surface-border px-3 pt-3 md:-mx-4 md:px-4">
+    <div className="-mx-4 mt-3 hidden flex-col gap-1 border-t border-surface-border px-4 pt-3 md:flex">
       <span className="truncate text-[13px] font-medium text-ink-800">
         {name}
       </span>
@@ -329,20 +489,25 @@ const STICKER_INFO: Record<number, StickerInfo> = {
   },
   5: {
     label: "სუფთა ისტორიით",
-    Icon: HistoryIcon,
-    iconClass: "text-ink-500",
+    Icon: ClockListIcon,
+    iconClass: "text-[#11A6DA]",
   },
   7: {
     label: "ახალი ჩამოყვანილი",
     Icon: CheckmarkCircleIcon,
     iconClass: "text-success-500",
   },
+  11: {
+    label: "ეკონომიური",
+    Icon: FuelIcon,
+    iconClass: "text-success-300",
+  },
   17: {
     label: "შეუღებავი",
     Icon: CheckmarkCircleIcon,
     iconClass: "text-success-500",
   },
-  23: { label: "სასწრაფოდ", Icon: FlameIcon, iconClass: "text-brand-orange" },
+  23: { label: "სასწრაფოდ", Icon: StopwatchIcon, iconClass: "text-error-800" },
   29: {
     label: "ევროპიდან",
     Icon: CheckmarkCircleIcon,
@@ -350,8 +515,8 @@ const STICKER_INFO: Record<number, StickerInfo> = {
   },
   31: {
     label: "იდეალურ მდგომარეობაში",
-    Icon: ShieldCheckIcon,
-    iconClass: "text-success-200",
+    Icon: SparkleIcon,
+    iconClass: "text-[#1BBA6B]",
   },
   47: {
     label: "ამერიკიდან",
@@ -379,7 +544,7 @@ function IconBtn({
       type="button"
       onClick={onClick}
       title={title}
-      className="flex h-7 w-7 items-center justify-center rounded-md text-ink-500 hover:bg-surface-muted hover:text-ink-900"
+      className="flex h-4 w-4 items-center justify-center text-ink-500 hover:text-ink-900"
     >
       {children}
     </button>

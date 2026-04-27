@@ -14,14 +14,14 @@ export const ProductCardFrame = forwardRef<HTMLElement, Props>(function ProductC
     <article
       ref={ref}
       className={cn(
-        'min-h-[172px] w-full max-w-[780px] rounded-[14px] p-4 transition-colors',
+        'w-full max-w-[780px] px-4 pb-[14px] pt-4 transition-colors md:pb-4',
         highlighted
-          ? 'border border-success-150 bg-success-50'
+          ? 'overflow-hidden rounded-[16px] border border-success-200 bg-success-50 md:rounded-[14px]'
           : bordered === 'subtle'
-            ? 'border border-[#EEF2F7] bg-white'
+            ? 'md:overflow-hidden md:rounded-[14px] md:border md:border-[#EEF2F7] md:bg-white'
             : bordered === 'default'
-              ? 'border border-surface-border bg-white'
-              : 'bg-white',
+              ? 'md:overflow-hidden md:rounded-[14px] md:border md:border-surface-border md:bg-white'
+              : 'md:overflow-hidden md:rounded-[14px] md:bg-white',
         className,
       )}
       {...rest}

@@ -5,15 +5,15 @@ import {
   useEffect,
   useRef,
   useState,
-} from 'react';
-import { createPortal } from 'react-dom';
-import { cn } from '@/lib/cn';
-import { ChevronDownIcon } from '@/shared/icons';
+} from "react";
+import { createPortal } from "react-dom";
+import { cn } from "@/lib/cn";
+import { ChevronDownIcon } from "@/shared/icons";
 
 interface DropdownProps {
   trigger: ReactNode;
   children: ReactNode | ((ctx: { close: () => void }) => ReactNode);
-  align?: 'left' | 'right';
+  align?: "left" | "right";
   panelClassName?: string;
   triggerClassName?: string;
   chevronClassName?: string;
@@ -26,7 +26,7 @@ interface DropdownProps {
 export function Dropdown({
   trigger,
   children,
-  align = 'left',
+  align = "left",
   panelClassName,
   triggerClassName,
   chevronClassName,
@@ -52,11 +52,11 @@ export function Dropdown({
     updateRect();
     const onScroll = () => updateRect();
     const onResize = () => updateRect();
-    window.addEventListener('scroll', onScroll, true);
-    window.addEventListener('resize', onResize);
+    window.addEventListener("scroll", onScroll, true);
+    window.addEventListener("resize", onResize);
     return () => {
-      window.removeEventListener('scroll', onScroll, true);
-      window.removeEventListener('resize', onResize);
+      window.removeEventListener("scroll", onScroll, true);
+      window.removeEventListener("resize", onResize);
     };
   }, [open, updateRect]);
 
@@ -69,21 +69,21 @@ export function Dropdown({
       setOpen(false);
     };
     const keyHandler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false);
+      if (e.key === "Escape") setOpen(false);
     };
-    document.addEventListener('mousedown', mouseHandler);
-    document.addEventListener('keydown', keyHandler);
+    document.addEventListener("mousedown", mouseHandler);
+    document.addEventListener("keydown", keyHandler);
     return () => {
-      document.removeEventListener('mousedown', mouseHandler);
-      document.removeEventListener('keydown', keyHandler);
+      document.removeEventListener("mousedown", mouseHandler);
+      document.removeEventListener("keydown", keyHandler);
     };
   }, [open]);
 
   const panelStyle: CSSProperties = rect
     ? {
-        position: 'fixed',
+        position: "fixed",
         top: rect.bottom + 8,
-        ...(align === 'right'
+        ...(align === "right"
           ? { right: Math.max(0, window.innerWidth - rect.right) }
           : { left: rect.left }),
         ...(matchTriggerWidth ? { width: rect.width } : {}),
@@ -91,24 +91,26 @@ export function Dropdown({
     : {};
 
   return (
-    <div className={cn('relative', fullWidth ? 'block w-full' : 'inline-block')}>
+    <div
+      className={cn("relative", fullWidth ? "block w-full" : "inline-block")}
+    >
       <button
         ref={triggerRef}
         type="button"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          'inline-flex h-11 items-center gap-2 rounded-lg border border-surface-border bg-white px-3 text-[14px] text-ink-800',
-          'hover:border-ink-500 transition-colors',
-          open && 'border-ink-500',
+          "inline-flex h-11 items-center gap-2 rounded-lg border border-surface-border bg-white px-3 text-[14px] text-ink-800",
+          "hover:border-ink-500 transition-colors",
+          open && "border-ink-500",
           triggerClassName,
         )}
       >
-        <span className="truncate">{trigger}</span>
+        <span>{trigger}</span>
         {withChevron !== false && (
           <ChevronDownIcon
             className={cn(
-              'h-4 w-4 shrink-0 text-ink-800 transition-transform',
-              open && 'rotate-180',
+              "h-6 w-6 shrink-0 text-ink-800 transition-transform",
+              open && "rotate-180",
               chevronClassName,
             )}
           />
@@ -121,11 +123,11 @@ export function Dropdown({
             ref={panelRef}
             style={panelStyle}
             className={cn(
-              'z-50 rounded-xl border border-surface-border bg-white p-1 shadow-dropdown',
+              "z-50 rounded-xl border border-surface-border bg-white p-1 shadow-dropdown",
               panelClassName,
             )}
           >
-            {typeof children === 'function' ? children({ close }) : children}
+            {typeof children === "function" ? children({ close }) : children}
           </div>,
           document.body,
         )}

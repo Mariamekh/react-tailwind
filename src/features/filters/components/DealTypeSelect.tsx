@@ -17,10 +17,10 @@ export function DealTypeSelect() {
       <Dropdown
         fullWidth
         matchTriggerWidth
-        triggerClassName="h-10 w-full justify-between rounded-lg border-surface-border2 pl-3 pr-2 font-sailec text-[13px] font-medium leading-none text-ink-600"
+        triggerClassName="h-10 w-full justify-between rounded-lg border-surface-border2 pl-3 pr-2 font-['Helvetica_Neue_LT'] text-[14px] font-normal leading-none text-ink-900"
         chevronClassName="h-6 w-6 text-ink-600"
         panelClassName="p-1"
-        trigger={<span className="truncate">{current?.label ?? ''}</span>}
+        trigger={<span>{current?.label ?? ''}</span>}
       >
         {({ close }) => (
           <div className="py-0.5">
@@ -54,7 +54,7 @@ export function DealTypeSelect() {
 export function FilterBlock({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-2">
-      <div className="font-sailec text-[12px] font-medium text-ink-800">
+      <div className="font-sailec text-[12px] font-medium leading-[12px] text-ink-800">
         {label}
       </div>
       {children}

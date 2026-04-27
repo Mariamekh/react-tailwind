@@ -14,7 +14,7 @@ export function VipBadge({ level }: { level: number }) {
   return (
     <span
       className={cn(
-        'inline-flex items-center rounded-[100px] px-2 py-[3px] font-sans text-[10px] font-bold uppercase leading-none tracking-wide text-white',
+        'inline-flex items-center rounded-[100px] px-2 py-[3px] font-sans text-[10px] font-bold uppercase leading-[14px] tracking-wide text-white',
         className,
       )}
     >
