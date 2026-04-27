@@ -63,8 +63,8 @@ export function ManufacturerModelCombobox({
   return (
     <Dropdown
       fullWidth
-      triggerClassName="w-full justify-between pl-3 pr-2 font-sailec text-[13px] font-medium leading-none text-ink-soft"
-      chevronClassName="h-4 w-4 text-ink-soft"
+      triggerClassName="h-10 w-full justify-between rounded-lg border-surface-border2 pl-3 pr-2 font-sailec text-[13px] font-medium leading-none text-ink-600"
+      chevronClassName="h-6 w-6 text-ink-600"
       panelClassName="w-[min(340px,92vw)] p-0"
       trigger={<span className="truncate">{triggerLabel}</span>}
     >
@@ -89,7 +89,7 @@ export function ManufacturerModelCombobox({
 
       <div className="border-b border-surface-border p-2">
         <div className="relative">
-          <SearchIcon className="pointer-events-none absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted" />
+          <SearchIcon className="pointer-events-none absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-500" />
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
@@ -101,15 +101,15 @@ export function ManufacturerModelCombobox({
 
       <div className="scrollbar-thin max-h-64 overflow-auto py-1">
         {loading && (
-          <div className="px-3 py-2 text-[13px] text-ink-muted">იტვირთება...</div>
+          <div className="px-3 py-2 text-[13px] text-ink-500">იტვირთება...</div>
         )}
         {!loading && tab === 'models' && modelsDisabled && (
-          <div className="px-3 py-2 text-[13px] text-ink-muted">
+          <div className="px-3 py-2 text-[13px] text-ink-500">
             აირჩიეთ მწარმოებელი
           </div>
         )}
         {!loading && filtered.length === 0 && !modelsDisabled && (
-          <div className="px-3 py-2 text-[13px] text-ink-muted">არ მოიძებნა</div>
+          <div className="px-3 py-2 text-[13px] text-ink-500">არ მოიძებნა</div>
         )}
         {!loading &&
           !(tab === 'models' && modelsDisabled) &&
@@ -149,7 +149,7 @@ function TabButton({
       disabled={disabled}
       className={cn(
         'flex flex-1 items-center justify-center gap-1.5 py-2.5 text-[13px] font-medium transition-colors',
-        active ? 'border-b-2 border-brand-orange text-brand-orange' : 'text-ink-soft',
+        active ? 'border-b-2 border-brand-orange text-brand-orange' : 'text-ink-600',
         disabled && 'opacity-40',
       )}
     >

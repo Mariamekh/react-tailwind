@@ -3,7 +3,7 @@ import { cn } from '@/lib/cn';
 
 interface Props extends HTMLAttributes<HTMLElement> {
   highlighted?: boolean;
-  bordered?: boolean;
+  bordered?: 'default' | 'subtle' | false;
 }
 
 export const ProductCardFrame = forwardRef<HTMLElement, Props>(function ProductCardFrame(
@@ -14,12 +14,14 @@ export const ProductCardFrame = forwardRef<HTMLElement, Props>(function ProductC
     <article
       ref={ref}
       className={cn(
-        'w-full max-w-[780px] rounded-[14px] p-4 transition-colors',
+        'min-h-[172px] w-full max-w-[780px] rounded-[14px] p-4 transition-colors',
         highlighted
           ? 'border border-success-150 bg-success-50'
-          : bordered
-            ? 'border border-surface-border bg-white'
-            : 'bg-white',
+          : bordered === 'subtle'
+            ? 'border border-[#EEF2F7] bg-white'
+            : bordered === 'default'
+              ? 'border border-surface-border bg-white'
+              : 'bg-white',
         className,
       )}
       {...rest}

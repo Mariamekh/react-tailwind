@@ -53,7 +53,7 @@ export function MobileFilterDrawer({ open, onClose }: Props) {
         <div className="flex h-14 shrink-0 items-center justify-between border-b border-surface-border px-4">
           <span className="text-[16px] font-semibold">ფილტრი</span>
           <button onClick={onClose} aria-label="close">
-            <CloseIcon className="h-5 w-5 text-ink" />
+            <CloseIcon className="h-5 w-5 text-ink-900" />
           </button>
         </div>
         <div className="scrollbar-thin flex-1 space-y-4 overflow-auto px-4 py-4">

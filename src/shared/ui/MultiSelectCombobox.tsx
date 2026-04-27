@@ -51,16 +51,16 @@ export function MultiSelectCombobox({
     <Dropdown
       fullWidth
       triggerClassName={cn(
-        'w-full justify-between pl-3 pr-2 font-sailec text-[13px] font-medium leading-none text-ink-soft',
+        'h-10 w-full justify-between rounded-lg border-surface-border2 pl-3 pr-2 font-sailec text-[13px] font-medium leading-none text-ink-600',
         disabled && 'opacity-50 cursor-not-allowed',
       )}
-      chevronClassName="h-4 w-4 text-ink-soft"
+      chevronClassName="h-6 w-6 text-ink-600"
       panelClassName="w-[min(320px,92vw)] p-0"
       trigger={<span className="truncate">{triggerLabel}</span>}
     >
       <div className="border-b border-surface-border p-2">
         <div className="relative">
-          <SearchIcon className="pointer-events-none absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted" />
+          <SearchIcon className="pointer-events-none absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-500" />
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
@@ -71,10 +71,10 @@ export function MultiSelectCombobox({
       </div>
       <div className="scrollbar-thin max-h-64 overflow-auto py-1">
         {loading && (
-          <div className="px-3 py-2 text-[13px] text-ink-muted">იტვირთება...</div>
+          <div className="px-3 py-2 text-[13px] text-ink-500">იტვირთება...</div>
         )}
         {!loading && filtered.length === 0 && (
-          <div className="px-3 py-2 text-[13px] text-ink-muted">{emptyText}</div>
+          <div className="px-3 py-2 text-[13px] text-ink-500">{emptyText}</div>
         )}
         {!loading &&
           filtered.map((o) => {

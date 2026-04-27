@@ -9,7 +9,7 @@ export function ProductList() {
 
   if (isLoading) {
     return (
-      <div className="space-y-3">
+      <div className="space-y-[10px]">
         {Array.from({ length: 8 }).map((_, i) => (
           <ProductCardSkeleton key={i} />
         ))}
@@ -20,7 +20,7 @@ export function ProductList() {
   if (isError) {
     return (
       <div className="rounded-card border border-surface-border bg-white p-8 text-center">
-        <p className="text-ink">ვერ მოხერხდა მონაცემების ჩატვირთვა</p>
+        <p className="text-ink-900">ვერ მოხერხდა მონაცემების ჩატვირთვა</p>
         <button
           onClick={() => refetch()}
           className="mt-3 text-[14px] font-medium text-brand-orange hover:underline"
@@ -33,7 +33,7 @@ export function ProductList() {
 
   if (items.length === 0) {
     return (
-      <div className="rounded-card border border-surface-border bg-white p-10 text-center text-ink-muted">
+      <div className="rounded-card border border-surface-border bg-white p-10 text-center text-ink-500">
         მითითებული პარამეტრებით ავტომობილი ვერ მოიძებნა
       </div>
     );
@@ -43,7 +43,7 @@ export function ProductList() {
     <div
       aria-busy={isFetching}
       className={cn(
-        'space-y-3 transition-opacity duration-200',
+        'space-y-[10px] transition-opacity duration-200',
         isFetching && 'opacity-50',
       )}
     >

@@ -26,7 +26,9 @@ export function VehicleTypeTabs() {
             className={cn(
               'relative flex items-center justify-center px-[11px] py-2 transition-colors',
               i > 0 && 'border-l border-surface-border',
-              active ? 'text-brand-orange' : 'text-ink-icon hover:text-ink-soft',
+              active
+                ? 'bg-white text-brand-orange'
+                : 'bg-[#F9F9FB] text-ink-500 hover:text-ink-600',
             )}
           >
             <Icon width={62} height={32} />

@@ -63,7 +63,15 @@ export function ProductCard({ product }: Props) {
   return (
     <ProductCardFrame
       highlighted={isHighlighted}
-      bordered={isCommercialDealer}
+      bordered={
+        isHighlighted
+          ? false
+          : hasChips
+            ? "subtle"
+            : isCommercialDealer
+              ? "default"
+              : false
+      }
       className="cursor-pointer"
     >
       <div className="flex flex-col gap-4 md:flex-row">
@@ -77,7 +85,7 @@ export function ProductCard({ product }: Props) {
                 e.stopPropagation();
                 setFavorite((v) => !v);
               }}
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/95 text-ink-soft shadow-sm hover:text-accent-danger md:hidden"
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/95 text-ink-600 shadow-sm hover:text-accent-danger md:hidden"
               aria-label="favorite"
             >
               <HeartIcon
@@ -90,15 +98,15 @@ export function ProductCard({ product }: Props) {
           }
         />
 
-        <div className="flex min-w-0 flex-1 flex-col justify-between">
+        <div className="flex min-w-0 flex-1 flex-col">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2">
-                <h3 className="truncate font-sans text-[14px] font-medium leading-none text-ink-strong">
+                <h3 className="truncate font-sans text-[14px] font-medium leading-none text-ink-800">
                   <span className="uppercase">{manName}</span>
-                  {modelLabel && <span>{" "}{modelLabel}</span>}
+                  {modelLabel && <span> {modelLabel}</span>}
                 </h3>
-                <span className="shrink-0 font-sans text-[14px] font-medium leading-none text-ink-muted">
+                <span className="shrink-0 font-sans text-[14px] font-medium leading-none text-ink-500">
                   {product.prod_year} წ
                 </span>
               </div>
@@ -106,12 +114,12 @@ export function ProductCard({ product }: Props) {
 
             <div className="flex shrink-0 items-center gap-3 text-right">
               {isCustomsPassed ? (
-                <span className="inline-flex items-center gap-1 font-sans text-[11px] font-medium leading-none text-success-500">
+                <span className="inline-flex items-center gap-1 font-sans text-[11px] font-medium leading-none text-success-300">
                   <CheckmarkCircleIcon className="h-4 w-4" />
                   განბაჟებული
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1 font-sans text-[11px] font-medium leading-none text-accent-danger">
+                <span className="inline-flex items-center gap-1 font-sans text-[11px] font-medium leading-none text-error-800">
                   <span>განბაჟება</span>
                   <span>
                     {formatPrice(customsFee)} {customsCurrencySymbol}
@@ -119,11 +127,11 @@ export function ProductCard({ product }: Props) {
                 </span>
               )}
               {locationLabel && (
-                <div className="inline-flex items-center gap-1 font-sans text-[11px] font-medium leading-none text-ink-strong">
-                  {locationFlag === 'georgia' && (
+                <div className="inline-flex items-center gap-1 font-sans text-[12px] font-normal leading-none text-ink-600">
+                  {locationFlag === "georgia" && (
                     <GeorgiaFlag className="h-4 w-4 shrink-0" />
                   )}
-                  {locationFlag === 'usa' && (
+                  {locationFlag === "usa" && (
                     <USAFlag className="h-4 w-4 shrink-0" />
                   )}
                   <span>{locationLabel}</span>
@@ -132,10 +140,10 @@ export function ProductCard({ product }: Props) {
             </div>
           </div>
 
-          <div className="mt-6 flex flex-col md:flex-row md:items-center md:gap-4">
-            <div className="grid grid-cols-2 gap-x-4 gap-y-4 font-sailec text-[12px] font-medium text-ink md:w-[396px] md:shrink-0">
+          <div className="mt-[24px] flex flex-col md:flex-row md:items-start md:gap-4">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-4 font-sailec text-[12px] font-medium text-ink-900 md:w-[396px] md:shrink-0">
               <div className="inline-flex items-center gap-3">
-                <EngineIcon className="h-4 w-4 shrink-0 text-ink-icon" />
+                <EngineIcon className="h-4 w-4 shrink-0 text-ink-500" />
                 <span>
                   {product.engine_volume
                     ? (product.engine_volume / 1000).toFixed(1)
@@ -144,27 +152,27 @@ export function ProductCard({ product }: Props) {
                 </span>
               </div>
               <div className="inline-flex items-center gap-3">
-                <MileageIcon className="h-4 w-4 shrink-0 text-ink-icon" />
+                <MileageIcon className="h-4 w-4 shrink-0 text-ink-500" />
                 <span>{formatMileage(product.car_run_km)}</span>
               </div>
               <div className="inline-flex items-center gap-3">
-                <TransmissionIcon className="h-4 w-4 shrink-0 text-ink-icon" />
+                <TransmissionIcon className="h-4 w-4 shrink-0 text-ink-500" />
                 <span>{product.gear_type ?? "ავტომატიკა"}</span>
               </div>
               <div className="inline-flex items-center gap-3">
-                <DriveWheelIcon className="h-4 w-4 shrink-0 text-ink-icon" />
+                <DriveWheelIcon className="h-4 w-4 shrink-0 text-ink-500" />
                 <span>{product.drive_type ?? "მარცხენა"}</span>
               </div>
             </div>
 
-            <div className="mt-3 flex items-center justify-between md:ml-auto md:mt-0 md:flex-col md:items-end md:justify-center md:text-right">
-              <div className="text-[12px] text-ink-muted md:hidden">
+            <div className="mt-3 flex items-center justify-between md:ml-auto md:mt-0 md:flex-col md:items-end md:text-right">
+              <div className="text-[12px] text-ink-500 md:hidden">
                 {product.views ?? 0} ნახვა{timeAgo && ` • ${timeAgo}`}
               </div>
               <div className="flex flex-col items-end">
-                <div className="flex items-center gap-1 font-sailec text-[20px] font-medium leading-none text-ink-strong">
+                <div className="flex items-center gap-1 font-sailec text-[20px] font-medium leading-none text-ink-800">
                   <span>{formatPrice(priceValue)}</span>
-                  <span className="inline-flex h-6 w-[26px] items-center justify-center rounded-[12px] bg-surface-tint text-ink-strong">
+                  <span className="inline-flex h-6 w-[26px] items-center justify-center rounded-[12px] bg-surface-tint text-ink-800">
                     {filterCurrency === 2 ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -198,8 +206,8 @@ export function ProductCard({ product }: Props) {
             </div>
           </div>
 
-          <div className="mt-3 flex items-center justify-between">
-            <div className="flex items-center gap-4 font-sans text-[12px] font-normal leading-none text-ink-medium">
+          <div className="mt-[29px] flex items-center justify-between">
+            <div className="flex items-center gap-4 font-sans text-[12px] font-normal leading-none text-ink-600">
               {vipLevel > 0 && <VipBadge level={vipLevel} />}
               <div className="flex items-center gap-1">
                 <span>{product.views ?? 0} ნახვა</span>
@@ -211,7 +219,7 @@ export function ProductCard({ product }: Props) {
                 )}
               </div>
             </div>
-            <div className="flex items-center gap-1 text-ink-muted">
+            <div className="flex items-center text-ink-500">
               <IconBtn title="edit">
                 <EditIcon className="h-4 w-4" />
               </IconBtn>
@@ -232,9 +240,20 @@ export function ProductCard({ product }: Props) {
       </div>
 
       {hasChips && (
-        <div className="-mx-3 mt-3 flex flex-wrap items-center gap-3 border-t border-success-150 px-3 pt-3 text-[12px] text-ink-soft md:-mx-4 md:px-4">
+        <div
+          className={cn(
+            "-mx-3 -mb-4 mt-3 flex flex-wrap items-center gap-2 rounded-b-[14px] px-3 py-[10px] md:-mx-4 md:px-4",
+            isHighlighted && "border-t border-success-150",
+          )}
+        >
           {stickerChips.map((info, i) => (
-            <span key={i} className="inline-flex items-center gap-1">
+            <span
+              key={i}
+              className={cn(
+                "inline-flex items-center gap-1 rounded-[100px] px-2 py-[6px] font-sailec text-[12px] font-medium leading-[13px] tracking-normal text-ink-800",
+                isHighlighted ? "bg-white" : "bg-[#EEF2F7]",
+              )}
+            >
               <info.Icon className={cn("h-3.5 w-3.5", info.iconClass)} />
               {info.label}
             </span>
@@ -261,10 +280,10 @@ function DealerFooter({
 }) {
   return (
     <div className="-mx-3 mt-3 flex flex-col gap-1 border-t border-surface-border px-3 pt-3 md:-mx-4 md:px-4">
-      <span className="truncate text-[13px] font-medium text-ink-strong">
+      <span className="truncate text-[13px] font-medium text-ink-800">
         {name}
       </span>
-      <span className="inline-flex items-center gap-1 text-[11px] text-ink-muted">
+      <span className="inline-flex items-center gap-1 text-[11px] text-ink-500">
         <ListIcon className="h-3.5 w-3.5" />
         ყველა განცხადება
         {typeof listingCount === "number" ? ` (${listingCount})` : ""}
@@ -303,15 +322,47 @@ type StickerIcon = typeof FlameIcon;
 type StickerInfo = { label: string; Icon: StickerIcon; iconClass: string };
 
 const STICKER_INFO: Record<number, StickerInfo> = {
-  3: { label: "დაურტყმელი", Icon: ShieldCheckIcon, iconClass: "text-success-200" },
-  5: { label: "სუფთა ისტორიით", Icon: HistoryIcon, iconClass: "text-ink-muted" },
-  7: { label: "ახალი ჩამოყვანილი", Icon: CheckmarkCircleIcon, iconClass: "text-success-500" },
-  17: { label: "შეუღებავი", Icon: CheckmarkCircleIcon, iconClass: "text-success-500" },
+  3: {
+    label: "დაურტყმელი",
+    Icon: ShieldCheckIcon,
+    iconClass: "text-success-200",
+  },
+  5: {
+    label: "სუფთა ისტორიით",
+    Icon: HistoryIcon,
+    iconClass: "text-ink-500",
+  },
+  7: {
+    label: "ახალი ჩამოყვანილი",
+    Icon: CheckmarkCircleIcon,
+    iconClass: "text-success-500",
+  },
+  17: {
+    label: "შეუღებავი",
+    Icon: CheckmarkCircleIcon,
+    iconClass: "text-success-500",
+  },
   23: { label: "სასწრაფოდ", Icon: FlameIcon, iconClass: "text-brand-orange" },
-  29: { label: "ევროპიდან", Icon: CheckmarkCircleIcon, iconClass: "text-success-500" },
-  31: { label: "იდეალურ მდგომარეობაში", Icon: ShieldCheckIcon, iconClass: "text-success-200" },
-  47: { label: "ამერიკიდან", Icon: CheckmarkCircleIcon, iconClass: "text-success-500" },
-  71: { label: "ცენტრის გარანტიით", Icon: ShieldCheckIcon, iconClass: "text-success-200" },
+  29: {
+    label: "ევროპიდან",
+    Icon: CheckmarkCircleIcon,
+    iconClass: "text-success-500",
+  },
+  31: {
+    label: "იდეალურ მდგომარეობაში",
+    Icon: ShieldCheckIcon,
+    iconClass: "text-success-200",
+  },
+  47: {
+    label: "ამერიკიდან",
+    Icon: CheckmarkCircleIcon,
+    iconClass: "text-success-500",
+  },
+  71: {
+    label: "ცენტრის გარანტიით",
+    Icon: ShieldCheckIcon,
+    iconClass: "text-success-200",
+  },
 };
 
 function IconBtn({
@@ -328,7 +379,7 @@ function IconBtn({
       type="button"
       onClick={onClick}
       title={title}
-      className="flex h-7 w-7 items-center justify-center rounded-md text-ink-muted hover:bg-surface-muted hover:text-ink"
+      className="flex h-7 w-7 items-center justify-center rounded-md text-ink-500 hover:bg-surface-muted hover:text-ink-900"
     >
       {children}
     </button>
@@ -340,10 +391,10 @@ const IN_TRANSIT_LOC_ID = 23;
 
 function resolveLocationLabel(
   product: Product,
-  flag: 'georgia' | 'usa' | null,
+  flag: "georgia" | "usa" | null,
 ): string {
-  if (product.location_id === USA_LOC_ID) return 'ა.შ.შ.';
-  if (product.location_id === IN_TRANSIT_LOC_ID) return 'გზაში';
-  if (flag === 'georgia') return 'საქართველო';
-  return product.location_name ?? '';
+  if (product.location_id === USA_LOC_ID) return "ა.შ.შ.";
+  if (product.location_id === IN_TRANSIT_LOC_ID) return "გზაში";
+  if (flag === "georgia") return "საქართველო";
+  return product.location_name ?? "";
 }

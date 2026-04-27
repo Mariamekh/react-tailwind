@@ -13,7 +13,7 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(function Checkbox(
   return (
     <label
       className={cn(
-        'group inline-flex cursor-pointer select-none items-center gap-2.5 text-[14px] text-ink',
+        'group inline-flex cursor-pointer select-none items-center gap-2.5 text-[14px] text-ink-900',
         className,
       )}
     >
@@ -29,7 +29,7 @@ export const Checkbox = forwardRef<HTMLInputElement, Props>(function Checkbox(
           className={cn(
             'h-[18px] w-[18px] rounded-[5px] border border-surface-border bg-white transition-colors',
             'peer-checked:border-brand-orange peer-checked:bg-brand-orange',
-            'group-hover:border-ink-muted peer-checked:group-hover:border-brand-orange',
+            'group-hover:border-ink-500 peer-checked:group-hover:border-brand-orange',
           )}
         />
         <CheckIcon

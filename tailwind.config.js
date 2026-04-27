@@ -18,12 +18,11 @@ export default {
           tint: '#F7F8FA',
         },
         ink: {
-          DEFAULT: '#13151a',
-          strong: '#2D3139',
-          medium: '#4E525E',
-          soft: '#6F7383',
-          muted: '#8a92a1',
-          icon: '#8C929B',
+          500: '#8C929B',
+          600: '#6F7383',
+          700: '#454857',
+          800: '#272A37',
+          900: '#1B1D25',
         },
         accent: {
           vip: '#5b6cff',
@@ -31,12 +30,16 @@ export default {
           'super-vip': '#ff4800',
           new: '#3b82f6',
           success: '#16a34a',
-          danger: '#e11d48',
+          danger: '#FF3B30',
+        },
+        error: {
+          800: '#FF3B30',
         },
         success: {
-          50: '#EEF8F0',
-          150: '#BEDDC1',
-          200: '#A1D0A6',
+          50: '#F0F9F7',
+          150: '#CEE8E5',
+          200: '#59D8C9',
+          300: '#26B753',
           500: '#1EB676',
         },
       },
@@ -61,7 +64,7 @@ export default {
       boxShadow: {
         card: '0 1px 2px rgba(17, 24, 39, 0.04), 0 1px 3px rgba(17, 24, 39, 0.06)',
         'card-hover': '0 4px 12px rgba(17, 24, 39, 0.08)',
-        dropdown: '0 8px 24px rgba(17, 24, 39, 0.12)',
+        dropdown: '0px 4px 20px 0px #A4AEC166',
       },
       borderRadius: {
         card: '12px',

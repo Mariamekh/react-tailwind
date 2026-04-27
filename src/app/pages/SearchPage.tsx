@@ -11,9 +11,11 @@ export function SearchPage() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="mx-auto max-w-[1098px] px-4 py-4 md:px-6 md:py-5">
-      <Breadcrumbs />
-      <div className="mt-4 flex gap-5 md:mt-5">
+    <div className="mx-auto max-w-[1098px] px-4 md:px-6">
+      <div className="pt-[32px]">
+        <Breadcrumbs />
+      </div>
+      <div className="mt-[20px] flex gap-5">
         <div className="hidden md:block">
           <FilterSidebar />
         </div>

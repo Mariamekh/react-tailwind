@@ -97,9 +97,9 @@ export function Dropdown({
         type="button"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          'inline-flex h-11 items-center gap-2 rounded-lg border border-surface-border bg-white px-3 text-[14px] text-ink-strong',
-          'hover:border-ink-muted transition-colors',
-          open && 'border-ink-muted',
+          'inline-flex h-11 items-center gap-2 rounded-lg border border-surface-border bg-white px-3 text-[14px] text-ink-800',
+          'hover:border-ink-500 transition-colors',
+          open && 'border-ink-500',
           triggerClassName,
         )}
       >
@@ -107,7 +107,7 @@ export function Dropdown({
         {withChevron !== false && (
           <ChevronDownIcon
             className={cn(
-              'h-4 w-4 shrink-0 text-ink-strong transition-transform',
+              'h-4 w-4 shrink-0 text-ink-800 transition-transform',
               open && 'rotate-180',
               chevronClassName,
             )}

@@ -11,8 +11,8 @@ export const TextInput = forwardRef<HTMLInputElement, Props>(function TextInput(
     <input
       ref={ref}
       className={cn(
-        'h-11 w-full rounded-lg border border-surface-border bg-white px-3 text-[15px] text-ink',
-        'placeholder:text-ink-muted focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20',
+        'h-11 w-full rounded-lg border border-surface-border bg-white px-3 text-[15px] text-ink-900',
+        'placeholder:text-ink-500 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20',
         'transition-colors',
         className,
       )}

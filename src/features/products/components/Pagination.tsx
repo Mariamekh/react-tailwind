@@ -23,7 +23,7 @@ export function Pagination() {
       </PageButton>
       {items.map((it, i) =>
         it === 'gap' ? (
-          <span key={`gap-${i}`} className="px-2 text-ink-muted">
+          <span key={`gap-${i}`} className="px-2 text-ink-500">
             …
           </span>
         ) : (
@@ -67,7 +67,7 @@ function PageButton({
         'h-9 min-w-9 rounded-md px-3 text-[14px] transition-colors',
         active
           ? 'bg-brand-orange text-white'
-          : 'bg-white text-ink hover:bg-surface-muted disabled:opacity-40 disabled:hover:bg-white',
+          : 'bg-white text-ink-900 hover:bg-surface-muted disabled:opacity-40 disabled:hover:bg-white',
       )}
       {...rest}
     >

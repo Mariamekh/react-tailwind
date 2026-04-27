@@ -46,7 +46,7 @@ export function ProductCardPhoto({
   if (!hasPhotoForProduct(product)) {
     return (
       <Frame className={className}>
-        <div className="flex h-full w-full items-center justify-center text-xs text-ink-muted">
+        <div className="flex h-full w-full items-center justify-center text-xs text-ink-500">
           no photo
         </div>
         {topLeftContent && <div className="absolute left-2 top-2">{topLeftContent}</div>}
@@ -123,7 +123,7 @@ function Frame({
     <div
       {...rest}
       className={cn(
-        'relative aspect-[4/3] w-full shrink-0 cursor-pointer overflow-hidden rounded-lg bg-surface-muted md:aspect-auto md:h-[140px] md:w-[170px]',
+        'relative aspect-[4/3] w-full shrink-0 cursor-pointer overflow-hidden rounded-lg bg-surface-muted md:aspect-auto md:h-[140px] md:w-[182px]',
         className,
       )}
     >

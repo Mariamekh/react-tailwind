@@ -17,8 +17,8 @@ export function DealTypeSelect() {
       <Dropdown
         fullWidth
         matchTriggerWidth
-        triggerClassName="w-full justify-between pl-3 pr-2 font-sailec text-[13px] font-medium leading-none text-ink-soft"
-        chevronClassName="h-4 w-4 text-ink-soft"
+        triggerClassName="h-10 w-full justify-between rounded-lg border-surface-border2 pl-3 pr-2 font-sailec text-[13px] font-medium leading-none text-ink-600"
+        chevronClassName="h-6 w-6 text-ink-600"
         panelClassName="p-1"
         trigger={<span className="truncate">{current?.label ?? ''}</span>}
       >
@@ -37,7 +37,7 @@ export function DealTypeSelect() {
                     'block w-full rounded-md px-3 py-2 text-left text-[14px] transition-colors',
                     active
                       ? 'bg-brand-orange/10 font-semibold text-brand-orange'
-                      : 'text-ink-strong hover:bg-surface-muted',
+                      : 'text-ink-800 hover:bg-surface-muted',
                   )}
                 >
                   {o.label}
@@ -53,8 +53,8 @@ export function DealTypeSelect() {
 
 export function FilterBlock({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="space-y-2">
-      <div className="font-sailec text-[12px] font-medium text-ink-strong">
+    <div className="flex flex-col gap-2">
+      <div className="font-sailec text-[12px] font-medium text-ink-800">
         {label}
       </div>
       {children}

@@ -7,11 +7,11 @@ export function Breadcrumbs() {
 
   return (
     <nav className="flex items-center gap-1 text-[12px] leading-none">
-      <a href="#" className="text-ink-soft hover:text-ink">
+      <a href="#" className="text-ink-600 hover:text-ink-900">
         მთავარი
       </a>
       <Chevron />
-      <a href="#" className="text-ink-soft hover:text-ink">
+      <a href="#" className="text-ink-600 hover:text-ink-900">
         ძიება
       </a>
       <Chevron />
@@ -24,7 +24,7 @@ function Chevron() {
   return (
     <BreadcrumbChevronIcon
       aria-hidden
-      className="h-4 w-[11px] shrink-0 text-ink-soft"
+      className="h-4 w-[11px] shrink-0 text-ink-600"
     />
   );
 }

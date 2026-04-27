@@ -7,7 +7,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-surface-border bg-white">
-      <div className="mx-auto flex h-16 max-w-[1098px] items-center px-4 md:px-6">
+      <div className="mx-auto flex max-w-[1098px] items-center px-4 py-[17px] md:px-6">
         <Link
           to="/"
           aria-label="myauto.ge"

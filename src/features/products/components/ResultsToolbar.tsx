@@ -17,12 +17,12 @@ export function ResultsToolbar({ onOpenFilters }: Props) {
       <div className="flex items-center gap-2">
         <button
           onClick={onOpenFilters}
-          className="inline-flex h-10 items-center gap-2 rounded-lg border border-surface-border bg-white px-3 text-[14px] text-ink-strong hover:border-ink-muted md:hidden"
+          className="inline-flex h-10 items-center gap-2 rounded-lg border border-surface-border bg-white px-3 text-[14px] text-ink-800 hover:border-ink-500 md:hidden"
         >
           <FilterIcon className="h-4 w-4" />
           ფილტრი
         </button>
-        <div className="font-sans text-[16px] font-normal leading-none text-ink-strong">
+        <div className="font-sans text-[16px] font-normal leading-none text-ink-800">
           {formatNumber(total)} განცხადება
         </div>
       </div>
