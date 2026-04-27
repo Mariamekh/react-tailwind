@@ -23,12 +23,5 @@ export async function getCategories(): Promise<Category[]> {
     }
   }
 
-  if (import.meta.env.DEV) {
-    // eslint-disable-next-line no-console
-    console.log('[categories] raw response:', body, '→ parsed count:', list.length);
-  }
-
-  return list.filter(
-    (c): c is Category => !!c && typeof c === 'object' && 'category_id' in c,
-  );
+  return list.filter((c): c is Category => !!c && typeof c === 'object' && 'category_id' in c);
 }

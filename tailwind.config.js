@@ -18,6 +18,7 @@ export default {
           tint: "#F7F8FA",
         },
         ink: {
+          400: "#8996AE",
           500: "#8C929B",
           600: "#6F7383",
           700: "#454857",
@@ -33,14 +34,27 @@ export default {
           danger: "#FF3B30",
         },
         error: {
+          100: "#FFE3E3",
           800: "#FF3B30",
         },
         success: {
+          25: "#EEFBF1",
           50: "#F0F9F7",
           150: "#CEE8E5",
           200: "#59D8C9",
           300: "#26B753",
           500: "#1EB676",
+          600: "#1BBA6B",
+        },
+        chip: {
+          blue: "#EFF6FE",
+          gray: "#EEF2F7",
+        },
+        sticker: {
+          blue: "#11A6DA",
+        },
+        divider: {
+          DEFAULT: "#E4E7EB",
         },
       },
       fontFamily: {

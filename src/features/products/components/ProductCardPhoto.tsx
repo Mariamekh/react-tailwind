@@ -1,11 +1,7 @@
 import { useMemo, useState, type MouseEvent } from 'react';
 import { cn } from '@/lib/cn';
 import { GalleryIcon } from '@/shared/icons';
-import {
-  getPhotoCount,
-  getProductPhoto,
-  hasPhoto as hasPhotoForProduct,
-} from '../lib/photoUrl';
+import { getPhotoCount, getProductPhoto, hasPhoto as hasPhotoForProduct } from '../lib/photoUrl';
 import type { Product } from '../types';
 
 const MAX_SLICES = 4;
@@ -77,9 +73,7 @@ export function ProductCardPhoto({
         src={photoUrl}
         alt={title}
         loading="lazy"
-        onError={() =>
-          setErroredIndices((m) => ({ ...m, [resolvedIndex]: true }))
-        }
+        onError={() => setErroredIndices((m) => ({ ...m, [resolvedIndex]: true }))}
         className="h-full w-full object-cover"
       />
 
@@ -114,11 +108,7 @@ export function ProductCardPhoto({
   );
 }
 
-function Frame({
-  children,
-  className,
-  ...rest
-}: React.HTMLAttributes<HTMLDivElement>) {
+function Frame({ children, className, ...rest }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
       {...rest}

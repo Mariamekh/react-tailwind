@@ -13,8 +13,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const variantClass: Record<Variant, string> = {
   primary:
     'bg-brand-orange text-white hover:bg-brand-orange-soft active:bg-[#e14200] disabled:opacity-60',
-  ghost:
-    'bg-transparent text-ink-900 hover:bg-surface-muted disabled:opacity-60',
+  ghost: 'bg-transparent text-ink-900 hover:bg-surface-muted disabled:opacity-60',
   subtle:
     'bg-white text-ink-900 border border-surface-border hover:border-ink-500 disabled:opacity-60',
 };

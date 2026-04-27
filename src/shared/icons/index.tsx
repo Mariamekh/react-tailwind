@@ -1,4 +1,4 @@
-import type { SVGProps } from "react";
+import type { SVGProps } from 'react';
 
 type Props = SVGProps<SVGSVGElement>;
 
@@ -36,29 +36,13 @@ export const BreadcrumbChevronIcon = (p: Props) => (
 );
 
 export const CheckIcon = (p: Props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={3}
-    {...p}
-  >
-    <path
-      d="M5 12.5 10 17.5 19 7.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} {...p}>
+    <path d="M5 12.5 10 17.5 19 7.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 export const SearchIcon = (p: Props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
-    {...p}
-  >
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} {...p}>
     <circle cx={11} cy={11} r={7} />
     <path d="m20 20-3.5-3.5" strokeLinecap="round" />
   </svg>
@@ -155,50 +139,10 @@ export const MotoIcon = (p: Props) => (
   </svg>
 );
 
-export const GearIcon = (p: Props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.7}
-    {...p}
-  >
-    <path d="M6 5v14M6 12h6m0 0V7m0 5v5m0-5h6" strokeLinecap="round" />
-    <circle cx={6} cy={5} r={1.5} />
-    <circle cx={6} cy={19} r={1.5} />
-    <circle cx={12} cy={7} r={1.5} />
-    <circle cx={12} cy={17} r={1.5} />
-    <circle cx={18} cy={12} r={1.5} />
-  </svg>
-);
-
-export const SpeedIcon = (p: Props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.7}
-    {...p}
-  >
-    <path d="M4 14a8 8 0 0 1 16 0" strokeLinecap="round" />
-    <path d="m12 14 4-4" strokeLinecap="round" />
-    <circle cx={12} cy={14} r={1.5} fill="currentColor" stroke="none" />
-  </svg>
-);
-
 export const FuelIcon = (p: Props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.7}
-    {...p}
-  >
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} {...p}>
     <path d="M5 20V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v15" />
-    <path
-      d="M5 20h10M15 10h2a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2v0"
-      strokeLinecap="round"
-    />
+    <path d="M5 20h10M15 10h2a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2v0" strokeLinecap="round" />
   </svg>
 );
 
@@ -229,20 +173,8 @@ export const TransmissionIcon = (p: Props) => (
     stroke="currentColor"
     {...p}
   >
-    <rect
-      x={2.6}
-      y={7.6}
-      width={10.8}
-      height={7.8}
-      rx={1.2}
-      strokeWidth={1.2}
-    />
-    <path
-      d="M8 5V10"
-      strokeWidth={1.2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <rect x={2.6} y={7.6} width={10.8} height={7.8} rx={1.2} strokeWidth={1.2} />
+    <path d="M8 5V10" strokeWidth={1.2} strokeLinecap="round" strokeLinejoin="round" />
     <path d="M8 12V13.5" strokeLinecap="round" strokeLinejoin="round" />
     <circle cx={8} cy={2.5} r={1.8} strokeWidth={1.4} />
     <path d="M5 10V13" strokeLinecap="round" strokeLinejoin="round" />
@@ -263,10 +195,7 @@ export const MileageIcon = (p: Props) => (
   >
     <circle cx={8} cy={8} r={6.3} />
     <circle cx={8} cy={8} r={1.3} />
-    <path
-      d="M12 8C12 5.79086 10.2091 4 8 4C5.79086 4 4 5.79086 4 8"
-      strokeLinecap="round"
-    />
+    <path d="M12 8C12 5.79086 10.2091 4 8 4C5.79086 4 4 5.79086 4 8" strokeLinecap="round" />
     <path d="M9 7L10.5 5.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
@@ -285,11 +214,7 @@ export const DriveWheelIcon = (p: Props) => (
     <circle cx={8} cy={8} r={6.3} />
     <circle cx={8} cy={8} r={1.3} />
     <path d="M9.5 8L13.5 6.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path
-      d="M6.21387 7.99979L1.99977 7.29883"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M6.21387 7.99979L1.99977 7.29883" strokeLinecap="round" strokeLinejoin="round" />
     <path d="M8 9.5V14" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
@@ -301,17 +226,8 @@ export const FlameIcon = (p: Props) => (
 );
 
 export const ShieldCheckIcon = (p: Props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.7}
-    {...p}
-  >
-    <path
-      d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"
-      strokeLinejoin="round"
-    />
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} {...p}>
+    <path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z" strokeLinejoin="round" />
     <path d="m9 12 2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
@@ -330,13 +246,7 @@ export const CheckmarkCircleIcon = (p: Props) => (
 );
 
 export const HistoryIcon = (p: Props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.7}
-    {...p}
-  >
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} {...p}>
     <path d="M3 12a9 9 0 1 0 3-6.7" strokeLinecap="round" />
     <path d="M3 4v5h5" strokeLinecap="round" strokeLinejoin="round" />
     <path d="M12 8v5l3 2" strokeLinecap="round" />
@@ -344,76 +254,40 @@ export const HistoryIcon = (p: Props) => (
 );
 
 export const CloseIcon = (p: Props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
-    {...p}
-  >
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} {...p}>
     <path d="M6 6 18 18M18 6 6 18" strokeLinecap="round" />
   </svg>
 );
 
 export const FilterIcon = (p: Props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.7}
-    {...p}
-  >
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} {...p}>
     <path d="M4 6h16M7 12h10M10 18h4" strokeLinecap="round" />
   </svg>
 );
 
-export const MenuIcon = (p: Props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={2}
-    {...p}
-  >
-    <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
-  </svg>
-);
-
 export const GalleryIcon = (p: Props) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={1.7}
-    {...p}
-  >
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} {...p}>
     <rect x={3} y={5} width={18} height={14} rx={2} />
     <circle cx={8.5} cy={10} r={1.5} fill="currentColor" stroke="none" />
-    <path
-      d="m4 17 5-5 4 4 3-3 4 4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="m4 17 5-5 4 4 3-3 4 4" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 export const ListIcon = (p: Props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
     fill="none"
-    stroke="currentColor"
-    strokeWidth={1.4}
-    strokeLinecap="round"
-    strokeLinejoin="round"
     {...p}
   >
-    <circle cx={3} cy={4} r={0.8} fill="currentColor" stroke="none" />
-    <circle cx={3} cy={8} r={0.8} fill="currentColor" stroke="none" />
-    <circle cx={3} cy={12} r={0.8} fill="currentColor" stroke="none" />
-    <path d="M6 4h8M6 8h8M6 12h8" />
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M1 4C1 3.44772 1.44772 3 2 3C2.55228 3 3 3.44772 3 4C3 4.55228 2.55228 5 2 5C1.44772 5 1 4.55228 1 4ZM4 4C4 3.44772 4.44772 3 5 3H10C10.5523 3 11 3.44772 11 4C11 4.55228 10.5523 5 10 5H5C4.44772 5 4 4.55228 4 4ZM1 8C1 7.44772 1.44772 7 2 7C2.55228 7 3 7.44772 3 8C3 8.55228 2.55228 9 2 9C1.44772 9 1 8.55228 1 8ZM4 8C4 7.44772 4.44772 7 5 7H10C10.5523 7 11 7.44772 11 8C11 8.55228 10.5523 9 10 9H5C4.44772 9 4 8.55228 4 8Z"
+      fill="currentColor"
+    />
   </svg>
 );
 

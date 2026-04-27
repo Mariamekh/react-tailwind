@@ -15,7 +15,6 @@ interface DraftSlice {
 interface Store extends FiltersState {
   draft: DraftSlice;
 
-  // Immediate — only the top-bar controls + pagination
   setPeriod: (p: Period) => void;
   setSortOrder: (s: FiltersState['sortOrder']) => void;
   setPage: (p: number) => void;
@@ -63,7 +62,6 @@ export const useFiltersStore = create<Store>((set) => ({
   ...initialApplied,
   draft: { ...emptyDraft },
 
-  // Immediate ------------------------------------------------------------
   setPeriod: (period) => set({ period, page: 1 }),
   setSortOrder: (sortOrder) => set({ sortOrder, page: 1 }),
   setPage: (page) => set({ page }),
@@ -81,15 +79,12 @@ export const useFiltersStore = create<Store>((set) => ({
       },
     })),
 
-  setDraftDealType: (dealType) =>
-    set((s) => ({ draft: { ...s.draft, dealType } })),
+  setDraftDealType: (dealType) => set((s) => ({ draft: { ...s.draft, dealType } })),
 
   toggleDraftMan: (id) =>
     set((s) => {
       const has = s.draft.manIds.includes(id);
-      const manIds = has
-        ? s.draft.manIds.filter((x) => x !== id)
-        : [...s.draft.manIds, id];
+      const manIds = has ? s.draft.manIds.filter((x) => x !== id) : [...s.draft.manIds, id];
       const modelsByMan = { ...s.draft.modelsByMan };
       if (has) delete modelsByMan[id];
       return { draft: { ...s.draft, manIds, modelsByMan } };
@@ -99,9 +94,7 @@ export const useFiltersStore = create<Store>((set) => ({
     set((s) => {
       const existing = s.draft.modelsByMan[manId] ?? [];
       const has = existing.includes(modelId);
-      const next = has
-        ? existing.filter((x) => x !== modelId)
-        : [...existing, modelId];
+      const next = has ? existing.filter((x) => x !== modelId) : [...existing, modelId];
       const modelsByMan = { ...s.draft.modelsByMan };
       if (next.length === 0) {
         delete modelsByMan[manId];
@@ -121,12 +114,9 @@ export const useFiltersStore = create<Store>((set) => ({
       },
     })),
 
-  setDraftPriceFrom: (priceFrom) =>
-    set((s) => ({ draft: { ...s.draft, priceFrom } })),
-  setDraftPriceTo: (priceTo) =>
-    set((s) => ({ draft: { ...s.draft, priceTo } })),
-  setDraftCurrency: (currency) =>
-    set((s) => ({ draft: { ...s.draft, currency } })),
+  setDraftPriceFrom: (priceFrom) => set((s) => ({ draft: { ...s.draft, priceFrom } })),
+  setDraftPriceTo: (priceTo) => set((s) => ({ draft: { ...s.draft, priceTo } })),
+  setDraftCurrency: (currency) => set((s) => ({ draft: { ...s.draft, currency } })),
 
   applyDraft: () =>
     set((s) => ({

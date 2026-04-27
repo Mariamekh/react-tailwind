@@ -21,10 +21,5 @@ export function Breadcrumbs() {
 }
 
 function Chevron() {
-  return (
-    <BreadcrumbChevronIcon
-      aria-hidden
-      className="h-4 w-[11px] shrink-0 text-ink-600"
-    />
-  );
+  return <BreadcrumbChevronIcon aria-hidden className="h-4 w-[11px] shrink-0 text-ink-600" />;
 }

@@ -39,7 +39,7 @@ export function MobileFilterDrawer({ open, onClose }: Props) {
     >
       <div
         className={cn(
-          'absolute inset-0 bg-ink/40 transition-opacity',
+          'bg-ink/40 absolute inset-0 transition-opacity',
           open ? 'opacity-100' : 'opacity-0',
         )}
         onClick={onClose}

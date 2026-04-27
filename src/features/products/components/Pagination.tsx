@@ -14,11 +14,7 @@ export function Pagination() {
 
   return (
     <nav className="flex flex-wrap items-center justify-center gap-1">
-      <PageButton
-        disabled={page <= 1}
-        onClick={() => setPage(page - 1)}
-        aria-label="previous"
-      >
+      <PageButton disabled={page <= 1} onClick={() => setPage(page - 1)} aria-label="previous">
         ‹
       </PageButton>
       {items.map((it, i) =>
@@ -27,20 +23,12 @@ export function Pagination() {
             …
           </span>
         ) : (
-          <PageButton
-            key={it}
-            active={it === page}
-            onClick={() => setPage(it)}
-          >
+          <PageButton key={it} active={it === page} onClick={() => setPage(it)}>
             {it}
           </PageButton>
         ),
       )}
-      <PageButton
-        disabled={page >= pages}
-        onClick={() => setPage(page + 1)}
-        aria-label="next"
-      >
+      <PageButton disabled={page >= pages} onClick={() => setPage(page + 1)} aria-label="next">
         ›
       </PageButton>
     </nav>

@@ -1,7 +1,7 @@
-import { useProducts } from "../hooks/useProducts";
-import { SortDropdown } from "@/features/sort/components/SortDropdown";
-import { PeriodQuickSelect } from "./PeriodQuickSelect";
-import { FilterIcon } from "@/shared/icons";
+import { useProducts } from '../hooks/useProducts';
+import { SortDropdown } from '@/features/sort/components/SortDropdown';
+import { PeriodQuickSelect } from './PeriodQuickSelect';
+import { FilterIcon } from '@/shared/icons';
 
 interface Props {
   onOpenFilters: () => void;

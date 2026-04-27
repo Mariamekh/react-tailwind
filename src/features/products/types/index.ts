@@ -30,6 +30,7 @@ export interface Product {
   for_rent: boolean;
   order_date: string;
   customs_passed: boolean;
+  right_wheel?: boolean;
   location_id: number;
   location_name?: string;
 
@@ -42,7 +43,7 @@ export interface Product {
   // Product of prime sticker IDs assigned to the listing
   stickers: number | null;
 
-  // Condition / inspection — drive the chip row
+  // Condition / inspection drive the chip row
   tech_inspection: boolean;
   inspected_in_greenway: boolean;
   checked: boolean;

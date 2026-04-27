@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { FilterSidebar } from "@/features/filters/components/FilterSidebar";
-import { ProductList } from "@/features/products/components/ProductList";
-import { ResultsToolbar } from "@/features/products/components/ResultsToolbar";
-import { Pagination } from "@/features/products/components/Pagination";
-import { Breadcrumbs } from "@/shared/layout/Breadcrumbs";
-import { MobileFilterDrawer } from "@/features/filters/components/MobileFilterDrawer";
-import { MobileFilterChips } from "@/features/filters/components/MobileFilterChips";
+import { useState } from 'react';
+import { FilterSidebar } from '@/features/filters/components/FilterSidebar';
+import { ProductList } from '@/features/products/components/ProductList';
+import { ResultsToolbar } from '@/features/products/components/ResultsToolbar';
+import { Pagination } from '@/features/products/components/Pagination';
+import { Breadcrumbs } from '@/shared/layout/Breadcrumbs';
+import { MobileFilterDrawer } from '@/features/filters/components/MobileFilterDrawer';
+import { MobileFilterChips } from '@/features/filters/components/MobileFilterChips';
 
 export function SearchPage() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -46,10 +46,7 @@ export function SearchPage() {
         </div>
       </div>
 
-      <MobileFilterDrawer
-        open={mobileOpen}
-        onClose={() => setMobileOpen(false)}
-      />
+      <MobileFilterDrawer open={mobileOpen} onClose={() => setMobileOpen(false)} />
     </div>
   );
 }

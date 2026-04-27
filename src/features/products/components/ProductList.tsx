@@ -1,11 +1,20 @@
+import { useMemo } from 'react';
 import { useProducts } from '../hooks/useProducts';
 import { ProductCard } from './ProductCard';
 import { ProductCardSkeleton } from './ProductCardSkeleton';
+import { useManufacturers } from '@/features/filters/hooks/useManufacturers';
 import { cn } from '@/lib/cn';
 
 export function ProductList() {
   const { data, isLoading, isFetching, isError, refetch } = useProducts();
+  const { data: manufacturers } = useManufacturers();
   const items = data?.items ?? [];
+
+  const manNameById = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const m of manufacturers ?? []) map.set(String(m.man_id), m.man_name);
+    return map;
+  }, [manufacturers]);
 
   if (isLoading) {
     return (
@@ -43,12 +52,12 @@ export function ProductList() {
     <div
       aria-busy={isFetching}
       className={cn(
-        'space-y-2 md:space-y-[10px] transition-opacity duration-200',
+        'space-y-2 transition-opacity duration-200 md:space-y-[10px]',
         isFetching && 'opacity-50',
       )}
     >
       {items.map((p) => (
-        <ProductCard key={p.car_id} product={p} />
+        <ProductCard key={p.car_id} product={p} manName={manNameById.get(String(p.man_id)) ?? ''} />
       ))}
     </div>
   );

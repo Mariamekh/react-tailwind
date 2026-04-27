@@ -1,12 +1,12 @@
-import { Button } from "@/shared/ui/Button";
-import { VehicleTypeTabs } from "./VehicleTypeTabs";
-import { DealTypeSelect } from "./DealTypeSelect";
-import { ManufacturerFilter } from "./ManufacturerFilter";
-import { CategoryFilter } from "./CategoryFilter";
-import { PriceFilter } from "./PriceFilter";
-import { useFiltersStore } from "../store/useFiltersStore";
-import { useProducts } from "@/features/products/hooks/useProducts";
-import { formatNumber } from "@/lib/format";
+import { Button } from '@/shared/ui/Button';
+import { VehicleTypeTabs } from './VehicleTypeTabs';
+import { DealTypeSelect } from './DealTypeSelect';
+import { ManufacturerFilter } from './ManufacturerFilter';
+import { CategoryFilter } from './CategoryFilter';
+import { PriceFilter } from './PriceFilter';
+import { useFiltersStore } from '../store/useFiltersStore';
+import { useProducts } from '@/features/products/hooks/useProducts';
+import { formatNumber } from '@/lib/format';
 
 export function FilterSidebar() {
   const applyDraft = useFiltersStore((s) => s.applyDraft);

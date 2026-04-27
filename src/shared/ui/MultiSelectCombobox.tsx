@@ -51,7 +51,7 @@ export function MultiSelectCombobox({
     <Dropdown
       fullWidth
       triggerClassName={cn(
-        'h-10 w-full justify-between rounded-lg border-surface-border2 pl-3 pr-2 font-[\'Helvetica_Neue_LT\'] text-[14px] font-normal leading-none text-ink-900',
+        "h-10 w-full justify-between rounded-lg border-surface-border2 pl-3 pr-2 font-['Helvetica_Neue_LT'] text-[14px] font-normal leading-none text-ink-600",
         disabled && 'opacity-50 cursor-not-allowed',
       )}
       chevronClassName="h-6 w-6 text-ink-600"
@@ -70,9 +70,7 @@ export function MultiSelectCombobox({
         </div>
       </div>
       <div className="scrollbar-thin max-h-64 overflow-auto py-1">
-        {loading && (
-          <div className="px-3 py-2 text-[13px] text-ink-500">იტვირთება...</div>
-        )}
+        {loading && <div className="px-3 py-2 text-[13px] text-ink-500">იტვირთება...</div>}
         {!loading && filtered.length === 0 && (
           <div className="px-3 py-2 text-[13px] text-ink-500">{emptyText}</div>
         )}

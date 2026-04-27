@@ -63,7 +63,7 @@ export function ManufacturerModelCombobox({
   return (
     <Dropdown
       fullWidth
-      triggerClassName="h-10 w-full justify-between rounded-lg border-surface-border2 pl-3 pr-2 font-['Helvetica_Neue_LT'] text-[14px] font-normal leading-none text-ink-900"
+      triggerClassName="h-10 w-full justify-between rounded-lg border-surface-border2 pl-3 pr-2 font-['Helvetica_Neue_LT'] text-[14px] font-normal leading-none text-ink-600"
       chevronClassName="h-6 w-6 text-ink-600"
       panelClassName="w-[min(340px,92vw)] p-0"
       trigger={<span>{triggerLabel}</span>}
@@ -71,9 +71,7 @@ export function ManufacturerModelCombobox({
       <div className="flex border-b border-surface-border">
         <TabButton active={tab === 'mans'} onClick={() => setTab('mans')}>
           მწარმოებელი
-          {selectedManIds.length > 0 && (
-            <Count>{selectedManIds.length}</Count>
-          )}
+          {selectedManIds.length > 0 && <Count>{selectedManIds.length}</Count>}
         </TabButton>
         <TabButton
           active={tab === 'models'}
@@ -81,9 +79,7 @@ export function ManufacturerModelCombobox({
           disabled={modelsDisabled}
         >
           მოდელი
-          {selectedModelIds.length > 0 && (
-            <Count>{selectedModelIds.length}</Count>
-          )}
+          {selectedModelIds.length > 0 && <Count>{selectedModelIds.length}</Count>}
         </TabButton>
       </div>
 
@@ -100,13 +96,9 @@ export function ManufacturerModelCombobox({
       </div>
 
       <div className="scrollbar-thin max-h-64 overflow-auto py-1">
-        {loading && (
-          <div className="px-3 py-2 text-[13px] text-ink-500">იტვირთება...</div>
-        )}
+        {loading && <div className="px-3 py-2 text-[13px] text-ink-500">იტვირთება...</div>}
         {!loading && tab === 'models' && modelsDisabled && (
-          <div className="px-3 py-2 text-[13px] text-ink-500">
-            აირჩიეთ მწარმოებელი
-          </div>
+          <div className="px-3 py-2 text-[13px] text-ink-500">აირჩიეთ მწარმოებელი</div>
         )}
         {!loading && filtered.length === 0 && !modelsDisabled && (
           <div className="px-3 py-2 text-[13px] text-ink-500">არ მოიძებნა</div>

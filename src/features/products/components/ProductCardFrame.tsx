@@ -18,7 +18,7 @@ export const ProductCardFrame = forwardRef<HTMLElement, Props>(function ProductC
         highlighted
           ? 'overflow-hidden rounded-[16px] border border-success-200 bg-success-50 md:rounded-[14px]'
           : bordered === 'subtle'
-            ? 'md:overflow-hidden md:rounded-[14px] md:border md:border-[#EEF2F7] md:bg-white'
+            ? 'md:overflow-hidden md:rounded-[14px] md:border md:border-chip-gray md:bg-white'
             : bordered === 'default'
               ? 'md:overflow-hidden md:rounded-[14px] md:border md:border-surface-border md:bg-white'
               : 'md:overflow-hidden md:rounded-[14px] md:bg-white',

@@ -1,8 +1,5 @@
 import { useMemo } from 'react';
-import {
-  ManufacturerModelCombobox,
-  type OptionItem,
-} from '@/shared/ui/ManufacturerModelCombobox';
+import { ManufacturerModelCombobox, type OptionItem } from '@/shared/ui/ManufacturerModelCombobox';
 import { useManufacturers } from '../hooks/useManufacturers';
 import { useModelsForMans } from '../hooks/useModels';
 import { useFiltersStore } from '../store/useFiltersStore';
@@ -42,10 +39,7 @@ export function ManufacturerFilter() {
     return map;
   }, [modelsData]);
 
-  const selectedModelIds = useMemo(
-    () => Object.values(modelsByMan).flat(),
-    [modelsByMan],
-  );
+  const selectedModelIds = useMemo(() => Object.values(modelsByMan).flat(), [modelsByMan]);
 
   const handleToggleModel = (modelId: string) => {
     const manId = modelIdToManId.get(modelId);

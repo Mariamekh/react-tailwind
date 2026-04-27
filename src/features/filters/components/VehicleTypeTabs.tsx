@@ -32,9 +32,7 @@ export function VehicleTypeTabs() {
             )}
           >
             <Icon width={62} height={32} />
-            {active && (
-              <span className="absolute -bottom-px left-0 right-0 h-px bg-brand-orange" />
-            )}
+            {active && <span className="absolute -bottom-px left-0 right-0 h-px bg-brand-orange" />}
           </button>
         );
       })}
