@@ -13,9 +13,7 @@ export function PriceFilter() {
   return (
     <div>
       <div className="flex items-center justify-between">
-        <div className="font-['Helvetica_Neue_LT'] text-[13px] font-medium text-ink-800">
-          {t.filters.price}
-        </div>
+        <div className="font-helvetica text-[13px] font-medium text-ink-800">{t.filters.price}</div>
         <CurrencyToggle value={currency} onChange={setCurrency} />
       </div>
       <div className="mt-[12px] flex items-center gap-[3px]">

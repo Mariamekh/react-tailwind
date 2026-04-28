@@ -22,7 +22,7 @@ export function ResultsToolbar({ onOpenFilters }: Props) {
           <FilterIcon className="h-4 w-4" />
           {t.filters.title}
         </button>
-        <div className="font-['Helvetica_Neue_LT'] text-[16px] font-normal leading-[20px] text-ink-800">
+        <div className="font-helvetica text-[16px] font-normal leading-[20px] text-ink-800">
           {total} {t.common.listings}
         </div>
       </div>

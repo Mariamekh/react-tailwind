@@ -8,7 +8,7 @@ import { CustomsBadge } from './CustomsBadge';
 import { LocationLabel } from './LocationLabel';
 import { StickerChips } from './StickerChips';
 import { IconBtn } from './IconBtn';
-import { formatEngineLiters } from './helpers';
+import { engineLitersDisplay, gearLabel, fuelLabel } from './helpers';
 import type { CardViewModel } from './cardViewModel';
 
 interface Props {
@@ -46,12 +46,12 @@ export function ProductCardMobile({ vm, heartButton }: Props) {
         <span>{formatMileage(product.car_run_km)}</span>
         <span>{product.category_name ?? t.specs.category}</span>
         <span>
-          {formatEngineLiters(product.engine_volume)} {product.fuel_type ?? t.specs.fuel}
+          {engineLitersDisplay(product)} {fuelLabel(product)}
         </span>
         <span>
           {t.card.steeringPrefix} {product.drive_type ?? t.specs.driveSide}
         </span>
-        <span>{product.gear_type ?? t.specs.gear}</span>
+        <span>{gearLabel(product)}</span>
         <LocationLabel
           label={locationLabel}
           flag={locationFlag}
@@ -62,7 +62,7 @@ export function ProductCardMobile({ vm, heartButton }: Props) {
       <StickerChips chips={vm.stickerChips} variant="mobile" />
 
       <div className="mt-[14px] flex items-center justify-between border-t border-divider pt-3">
-        <div className="flex items-center gap-2 font-['Helvetica_Neue_LT'] text-[12px] font-normal leading-4 text-ink-500">
+        <div className="flex items-center gap-2 font-helvetica text-[12px] font-normal leading-4 text-ink-500">
           <FlameViewsIcon className="h-4 w-4 text-ink-400" />
           <span>
             {product.views ?? 0} {t.card.views}

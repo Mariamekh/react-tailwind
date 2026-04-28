@@ -1,5 +1,6 @@
 import { cn } from '@/lib/cn';
 import { formatPrice } from '@/lib/format';
+import { t } from '@/lib/i18n';
 import { CurrencyGlyph } from './CurrencyGlyph';
 
 interface Props {
@@ -9,6 +10,14 @@ interface Props {
 }
 
 export function PriceDisplay({ value, currency, variant = 'mobile' }: Props) {
+  if (!value) {
+    return (
+      <div className="font-sailec text-[14px] font-medium leading-none text-ink-700">
+        {t.card.priceNegotiable}
+      </div>
+    );
+  }
+
   return (
     <div
       className={cn(

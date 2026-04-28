@@ -29,3 +29,18 @@ export function isCommercialDealer(product: Product): boolean {
 export function formatEngineLiters(volume: number | null | undefined): string {
   return volume ? (volume / 1000).toFixed(1) : '—';
 }
+
+const ELECTRIC_FUEL_ID = 7;
+
+export function engineLitersDisplay(product: Product): string {
+  if (product.fuel_type_id === ELECTRIC_FUEL_ID) return '0.0';
+  return formatEngineLiters(product.engine_volume);
+}
+
+export function gearLabel(product: Product): string {
+  return product.gear_type ?? t.specs.gearById[product.gear_type_id] ?? t.specs.gear;
+}
+
+export function fuelLabel(product: Product): string {
+  return product.fuel_type ?? t.specs.fuelById[product.fuel_type_id] ?? t.specs.fuel;
+}

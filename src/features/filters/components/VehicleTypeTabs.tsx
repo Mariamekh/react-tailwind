@@ -28,7 +28,7 @@ export function VehicleTypeTabs() {
               i > 0 && 'border-l border-surface-border',
               active
                 ? 'bg-white text-brand-orange'
-                : 'bg-[#F9F9FB] text-ink-500 hover:text-ink-600',
+                : 'bg-tab-inactive text-ink-500 hover:text-ink-600',
             )}
           >
             <Icon width={62} height={32} />

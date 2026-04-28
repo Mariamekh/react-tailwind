@@ -52,7 +52,7 @@ export function MultiSelectCombobox({
     <Dropdown
       fullWidth
       triggerClassName={cn(
-        "h-10 w-full justify-between rounded-lg border-surface-border2 pl-3 pr-2 font-['Helvetica_Neue_LT'] text-[14px] font-normal leading-none text-ink-600",
+        'h-10 w-full justify-between rounded-lg border-surface-border2 pl-3 pr-2 font-helvetica text-[14px] font-normal leading-none text-ink-600',
         disabled && 'opacity-50 cursor-not-allowed',
       )}
       chevronClassName="h-6 w-6 text-ink-600"

@@ -41,13 +41,12 @@ export const t = {
   },
 
   period: {
-    any: 'ნებისმიერი',
-    last1h: 'ბოლო 1 საათი',
-    last3h: 'ბოლო 3 საათი',
-    last1d: 'ბოლო 1 დღე',
-    last3d: 'ბოლო 3 დღე',
-    last1w: 'ბოლო 1 კვირა',
-    last2w: 'ბოლო 2 კვირა',
+    label: 'პერიოდი',
+    hours1: '1 საათი',
+    hours3: '3 საათი',
+    hours6: '6 საათი',
+    hours12: '12 საათი',
+    hours24: '24 საათი',
   },
 
   card: {
@@ -55,13 +54,13 @@ export const t = {
     customsPassed: 'განბაჟებული',
     customsDue: 'განბაჟება',
     steeringPrefix: 'საჭე',
-    engineCapacityUnit: 'დატ.',
     georgia: 'საქართველო',
     usa: 'ა.შ.შ.',
     inTransit: 'გზაში',
     allListings: 'ყველა განცხადება',
     yearSuffix: 'წ',
     photo: 'ფოტო',
+    priceNegotiable: 'ფასი შეთანხმებით',
   },
 
   list: {
@@ -101,5 +100,18 @@ export const t = {
     driveSide: 'მარცხნივ',
     driveSideDesktop: 'მარცხენა',
     gear: 'ავტომატიკა',
+    gearById: {
+      1: 'მექანიკა',
+      2: 'ავტომატიკა',
+      3: 'ტიპტრონიკი',
+      4: 'ვარიატორი',
+    } as Record<number, string>,
+    fuelById: {
+      2: 'ბენზინი',
+      3: 'დიზელი',
+      6: 'ჰიბრიდი',
+      7: 'ელექტრო',
+      9: 'თხევადი გაზი',
+    } as Record<number, string>,
   },
 } as const;

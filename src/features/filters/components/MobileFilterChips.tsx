@@ -89,7 +89,7 @@ export function MobileFilterChips({ onOpenFilters }: Props) {
     <div className="flex gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       <button
         onClick={onOpenFilters}
-        className="inline-flex h-8 shrink-0 items-center gap-[10px] rounded-full border border-surface-border bg-white pb-[10px] pl-3 pr-2 pt-2 font-sans text-[12px] font-normal leading-none text-[#454857]"
+        className="inline-flex h-8 shrink-0 items-center gap-[10px] rounded-full border border-surface-border bg-white pb-[10px] pl-3 pr-2 pt-2 font-sans text-[12px] font-normal leading-none text-ink-700"
       >
         <FilterIcon className="h-4 w-4" />
         {t.filters.title}
@@ -99,10 +99,10 @@ export function MobileFilterChips({ onOpenFilters }: Props) {
         <button
           key={c.key}
           onClick={c.onRemove}
-          className="inline-flex h-8 shrink-0 items-center gap-[10px] rounded-full bg-white pb-[10px] pl-3 pr-2 pt-2 font-sans text-[12px] font-normal leading-none text-[#454857]"
+          className="inline-flex h-8 shrink-0 items-center gap-[10px] rounded-full bg-white pb-[10px] pl-3 pr-2 pt-2 font-sans text-[12px] font-normal leading-none text-ink-700"
         >
           {c.label}
-          <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#F2F2F6]">
+          <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-chip-close">
             <CloseIcon className="h-2 w-2 text-ink-500" />
           </span>
         </button>

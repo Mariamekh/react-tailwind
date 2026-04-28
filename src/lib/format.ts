@@ -11,7 +11,8 @@ export const formatPrice = (n: number | string | undefined | null) => formatNumb
 
 export const formatMileage = (km: number | undefined | null) => {
   if (km === undefined || km === null) return '—';
-  return `${formatNumber(km)} ${t.units.km}`;
+  const formatted = km >= 100_000 ? formatNumber(km).replace(/,/g, ' ') : String(km);
+  return `${formatted} ${t.units.km}`;
 };
 
 export function formatTimeAgo(dateStr: string | undefined | null): string {

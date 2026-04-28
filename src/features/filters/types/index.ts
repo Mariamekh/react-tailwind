@@ -43,7 +43,19 @@ export type VehicleType = 'car' | 'tractor' | 'moto';
 
 export type DealType = 0 | 1;
 
-export type Period = '' | '1h' | '2h' | '3h' | '1d' | '2d' | '3d' | '1w' | '2w' | '3w';
+export type Period =
+  | ''
+  | '1h'
+  | '2h'
+  | '3h'
+  | '6h'
+  | '12h'
+  | '1d'
+  | '2d'
+  | '3d'
+  | '1w'
+  | '2w'
+  | '3w';
 
 export interface FiltersState {
   vehicle: VehicleType;

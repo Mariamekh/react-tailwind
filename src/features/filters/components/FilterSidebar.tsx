@@ -1,19 +1,11 @@
-import { Button } from '@/shared/ui/Button';
 import { VehicleTypeTabs } from './VehicleTypeTabs';
 import { DealTypeSelect } from './DealTypeSelect';
 import { ManufacturerFilter } from './ManufacturerFilter';
 import { CategoryFilter } from './CategoryFilter';
 import { PriceFilter } from './PriceFilter';
-import { useFiltersStore } from '../store/useFiltersStore';
-import { useProducts } from '@/features/products/hooks/useProducts';
-import { formatNumber } from '@/lib/format';
-import { t } from '@/lib/i18n';
+import { SearchButton } from './SearchButton';
 
 export function FilterSidebar() {
-  const applyDraft = useFiltersStore((s) => s.applyDraft);
-  const { data, isFetching } = useProducts();
-  const total = data?.meta.total ?? 0;
-
   return (
     <aside className="sticky top-6 flex h-[520px] w-[250px] shrink-0 flex-col overflow-hidden rounded-t-[12px] border border-surface-border bg-white">
       <VehicleTypeTabs />
@@ -29,14 +21,7 @@ export function FilterSidebar() {
       </div>
 
       <div className="mt-auto px-[23px] pb-5 pt-4 shadow-[0_2px_16px_0_#272A3721]">
-        <Button
-          fullWidth
-          onClick={applyDraft}
-          disabled={isFetching}
-          className="h-auto rounded-lg py-[9px] font-sailec text-[14px] font-bold leading-none"
-        >
-          {t.common.searchAction} {formatNumber(total)}
-        </Button>
+        <SearchButton className="h-auto rounded-lg py-[9px] font-sailec text-[14px] font-bold leading-none" />
       </div>
     </aside>
   );

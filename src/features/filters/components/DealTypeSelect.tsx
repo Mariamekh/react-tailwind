@@ -18,7 +18,7 @@ export function DealTypeSelect() {
       <Dropdown
         fullWidth
         matchTriggerWidth
-        triggerClassName="h-10 w-full justify-between rounded-lg border-surface-border2 pl-3 pr-2 font-['Helvetica_Neue_LT'] text-[14px] font-normal leading-none text-ink-900"
+        triggerClassName="h-10 w-full justify-between rounded-lg border-surface-border2 pl-3 pr-2 font-helvetica text-[14px] font-normal leading-none text-ink-900"
         chevronClassName="h-6 w-6 text-ink-600"
         panelClassName="p-1"
         trigger={<span>{current?.label ?? ''}</span>}

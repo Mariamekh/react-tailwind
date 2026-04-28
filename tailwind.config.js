@@ -49,6 +49,10 @@ export default {
         chip: {
           blue: "#EFF6FE",
           gray: "#EEF2F7",
+          close: "#F2F2F6",
+        },
+        tab: {
+          inactive: "#F9F9FB",
         },
         sticker: {
           blue: "#11A6DA",
@@ -64,6 +68,13 @@ export default {
           "FiraGO",
           '"BPG Arial"',
           '"BPG Nino Mtavruli"',
+          "system-ui",
+          "sans-serif",
+        ],
+        helvetica: [
+          '"Helvetica Neue LT"',
+          '"Helvetica Neue LT GEO"',
+          '"Helvetica Neue"',
           "system-ui",
           "sans-serif",
         ],
