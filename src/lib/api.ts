@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const USE_DIRECT = import.meta.env.DEV && import.meta.env.VITE_API_DIRECT === '1';
+const USE_DIRECT = import.meta.env.VITE_API_DIRECT === '1';
+const useProxy = import.meta.env.DEV && !USE_DIRECT;
 
-export const API_BASE = USE_DIRECT ? 'https://api2.myauto.ge/ka' : '/api2/ka';
-export const STATIC_BASE = USE_DIRECT ? 'https://static.my.ge/myauto' : '/static-my/myauto';
+export const API_BASE = useProxy ? '/api2/ka' : 'https://api2.myauto.ge/ka';
+export const STATIC_BASE = useProxy ? '/static-my/myauto' : 'https://static.my.ge/myauto';
 
 export const api = axios.create({
   baseURL: API_BASE,
