@@ -4,6 +4,7 @@ import { ProductCard } from './ProductCard';
 import { ProductCardSkeleton } from './ProductCardSkeleton';
 import { useManufacturers } from '@/features/filters/hooks/useManufacturers';
 import { cn } from '@/lib/cn';
+import { t } from '@/lib/i18n';
 
 export function ProductList() {
   const { data, isLoading, isFetching, isError, refetch } = useProducts();
@@ -29,12 +30,12 @@ export function ProductList() {
   if (isError) {
     return (
       <div className="rounded-card border border-surface-border bg-white p-8 text-center">
-        <p className="text-ink-900">ვერ მოხერხდა მონაცემების ჩატვირთვა</p>
+        <p className="text-ink-900">{t.list.loadFailed}</p>
         <button
           onClick={() => refetch()}
           className="mt-3 text-[14px] font-medium text-brand-orange hover:underline"
         >
-          ხელახლა ცდა
+          {t.common.retry}
         </button>
       </div>
     );
@@ -43,7 +44,7 @@ export function ProductList() {
   if (items.length === 0) {
     return (
       <div className="rounded-card border border-surface-border bg-white p-10 text-center text-ink-500">
-        მითითებული პარამეტრებით ავტომობილი ვერ მოიძებნა
+        {t.list.noResults}
       </div>
     );
   }

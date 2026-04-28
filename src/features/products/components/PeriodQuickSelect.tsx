@@ -2,15 +2,16 @@ import { cn } from '@/lib/cn';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { useFiltersStore } from '@/features/filters/store/useFiltersStore';
 import type { Period } from '@/features/filters/types';
+import { t } from '@/lib/i18n';
 
 const options: Array<{ value: Period; label: string }> = [
-  { value: '', label: 'ნებისმიერი' },
-  { value: '1h', label: 'ბოლო 1 საათი' },
-  { value: '3h', label: 'ბოლო 3 საათი' },
-  { value: '1d', label: 'ბოლო 1 დღე' },
-  { value: '3d', label: 'ბოლო 3 დღე' },
-  { value: '1w', label: 'ბოლო 1 კვირა' },
-  { value: '2w', label: 'ბოლო 2 კვირა' },
+  { value: '', label: t.period.any },
+  { value: '1h', label: t.period.last1h },
+  { value: '3h', label: t.period.last3h },
+  { value: '1d', label: t.period.last1d },
+  { value: '3d', label: t.period.last3d },
+  { value: '1w', label: t.period.last1w },
+  { value: '2w', label: t.period.last2w },
 ];
 
 export function PeriodQuickSelect() {

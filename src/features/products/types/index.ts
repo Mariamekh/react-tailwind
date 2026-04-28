@@ -71,6 +71,7 @@ export type SortOrder = 1 | 2 | 3 | 4 | 5 | 6;
 export type DealType = 0 | 1;
 
 export interface ProductsQueryParams {
+  TypeID?: 0 | 1 | 2;
   ForRent?: DealType;
   Mans?: string;
   Cats?: string;

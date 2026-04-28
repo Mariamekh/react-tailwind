@@ -1,6 +1,7 @@
 import type { Product } from '../../types';
 import type { LocationFlag } from '@/features/filters/hooks/useLocations';
-import { USA_LOC_ID, IN_TRANSIT_LOC_ID, VIP_THRESHOLD, COPY } from './constants';
+import { t } from '@/lib/i18n';
+import { USA_LOC_ID, IN_TRANSIT_LOC_ID, VIP_THRESHOLD } from './constants';
 
 export type VipLevel = 0 | 1 | 2 | 3;
 
@@ -13,9 +14,9 @@ export function toVipLevel(orderNumber: number | undefined): VipLevel {
 }
 
 export function resolveLocationLabel(product: Product, flag: LocationFlag): string {
-  if (product.location_id === USA_LOC_ID) return COPY.usa;
-  if (product.location_id === IN_TRANSIT_LOC_ID) return COPY.inTransit;
-  if (flag === 'georgia') return COPY.georgia;
+  if (product.location_id === USA_LOC_ID) return t.card.usa;
+  if (product.location_id === IN_TRANSIT_LOC_ID) return t.card.inTransit;
+  if (flag === 'georgia') return t.card.georgia;
   return product.location_name ?? '';
 }
 

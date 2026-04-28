@@ -1,4 +1,5 @@
 import { Component, type ReactNode } from 'react';
+import { t } from '@/lib/i18n';
 
 interface Props {
   children: ReactNode;
@@ -9,13 +10,6 @@ interface State {
   error: Error | null;
 }
 
-/**
- * React error boundary. Catches render-time errors in descendant components and
- * shows a fallback UI instead of unmounting the whole tree.
- *
- * Note: error boundaries do NOT catch errors in event handlers or async code —
- * those should be handled with try/catch + state, or via React Query's onError.
- */
 export class ErrorBoundary extends Component<Props, State> {
   state: State = { error: null };
 
@@ -40,14 +34,14 @@ export class ErrorBoundary extends Component<Props, State> {
           role="alert"
           className="m-4 rounded-card border border-error-800 bg-error-100 p-6 text-center"
         >
-          <p className="text-[14px] font-medium text-error-800">დაფიქსირდა შეცდომა</p>
+          <p className="text-[14px] font-medium text-error-800">{t.common.error}</p>
           <p className="mt-1 text-[12px] text-ink-700">{this.state.error.message}</p>
           <button
             type="button"
             onClick={this.reset}
             className="mt-3 text-[14px] font-medium text-brand-orange hover:underline"
           >
-            ხელახლა ცდა
+            {t.common.retry}
           </button>
         </div>
       );

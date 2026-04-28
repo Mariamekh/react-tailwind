@@ -1,7 +1,6 @@
 import { cn } from '@/lib/cn';
 import { CompareIcon, EditIcon, HeartIcon } from '@/shared/icons';
-import type { Product } from '../../types';
-import type { LocationFlag } from '@/features/filters/hooks/useLocations';
+import { t } from '@/lib/i18n';
 import { ProductCardPhoto } from '../ProductCardPhoto';
 import { VipBadge } from '../VipBadge';
 import { CardTitle } from './CardTitle';
@@ -10,44 +9,18 @@ import { CustomsBadge } from './CustomsBadge';
 import { LocationLabel } from './LocationLabel';
 import { SpecsGrid } from './SpecsGrid';
 import { IconBtn } from './IconBtn';
-import { COPY } from './constants';
-import type { VipLevel } from './helpers';
+import type { CardViewModel } from './cardViewModel';
 
 interface Props {
-  product: Product;
-  manName: string;
-  modelLabel: string;
-  title: string;
-  locationLabel: string;
-  locationFlag: LocationFlag;
-  currency: 1 | 2;
-  priceValue: number;
-  customsPassed: boolean;
-  customsFeeGel: number;
-  vipLevel: VipLevel;
-  timeAgo: string | null;
+  vm: CardViewModel;
   favorite: boolean;
   onToggleFavorite: () => void;
   heartButton: React.ReactNode;
 }
 
-export function ProductCardDesktop({
-  product,
-  manName,
-  modelLabel,
-  title,
-  locationLabel,
-  locationFlag,
-  currency,
-  priceValue,
-  customsPassed,
-  customsFeeGel,
-  vipLevel,
-  timeAgo,
-  favorite,
-  onToggleFavorite,
-  heartButton,
-}: Props) {
+export function ProductCardDesktop({ vm, favorite, onToggleFavorite, heartButton }: Props) {
+  const { product, manName, modelLabel, title, locationLabel, locationFlag } = vm;
+
   return (
     <div className="hidden flex-col gap-4 md:flex md:flex-row">
       <ProductCardPhoto product={product} title={title} topRightContent={heartButton} />
@@ -65,9 +38,9 @@ export function ProductCardDesktop({
 
           <div className="flex shrink-0 items-center gap-4 text-right">
             <CustomsBadge
-              passed={customsPassed}
-              currency={currency}
-              feeGel={customsFeeGel}
+              passed={vm.customsPassed}
+              currency={vm.currency}
+              fee={vm.customsFeeDisplay}
               variant="desktop"
             />
             <LocationLabel
@@ -82,22 +55,25 @@ export function ProductCardDesktop({
           <SpecsGrid product={product} />
           <div className="mt-3 flex items-center justify-between md:ml-auto md:mt-0 md:flex-col md:items-end md:text-right">
             <div className="flex flex-col items-end">
-              <PriceDisplay value={priceValue} currency={currency} variant="desktop" />
+              <PriceDisplay value={vm.priceDisplay} currency={vm.currency} variant="desktop" />
             </div>
           </div>
         </div>
 
         <div className="mt-[29px] flex h-[20px] items-center justify-between">
           <div className="flex items-center gap-4 font-['Helvetica_Neue_LT'] text-[12px] font-normal leading-none text-ink-600">
-            {vipLevel > 0 && <VipBadge level={vipLevel} />}
+            {vm.vipLevel > 0 && <VipBadge level={vm.vipLevel} />}
             <div className="flex items-center gap-1">
               <span>
-                {product.views ?? 0} {COPY.views}
+                {product.views ?? 0} {t.card.views}
               </span>
-              {timeAgo && (
+              {vm.timeAgo && (
                 <>
-                  <span aria-hidden className="inline-block h-[3px] w-[3px] rounded-full bg-ink-500" />
-                  <span>{timeAgo}</span>
+                  <span
+                    aria-hidden
+                    className="inline-block h-[3px] w-[3px] rounded-full bg-ink-500"
+                  />
+                  <span>{vm.timeAgo}</span>
                 </>
               )}
             </div>

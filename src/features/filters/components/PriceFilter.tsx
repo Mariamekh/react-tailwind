@@ -1,5 +1,6 @@
 import { useFiltersStore } from '../store/useFiltersStore';
 import { cn } from '@/lib/cn';
+import { t } from '@/lib/i18n';
 
 export function PriceFilter() {
   const priceFrom = useFiltersStore((s) => s.draft.priceFrom);
@@ -12,13 +13,15 @@ export function PriceFilter() {
   return (
     <div>
       <div className="flex items-center justify-between">
-        <div className="font-['Helvetica_Neue_LT'] text-[13px] font-medium text-ink-800">ფასი</div>
+        <div className="font-['Helvetica_Neue_LT'] text-[13px] font-medium text-ink-800">
+          {t.filters.price}
+        </div>
         <CurrencyToggle value={currency} onChange={setCurrency} />
       </div>
       <div className="mt-[12px] flex items-center gap-[3px]">
-        <NumberInput placeholder="დან" value={priceFrom} onChange={setPriceFrom} />
+        <NumberInput placeholder={t.filters.priceFrom} value={priceFrom} onChange={setPriceFrom} />
         <span aria-hidden className="h-[2px] w-[6px] shrink-0 rounded-full bg-ink-500" />
-        <NumberInput placeholder="მდე" value={priceTo} onChange={setPriceTo} />
+        <NumberInput placeholder={t.filters.priceTo} value={priceTo} onChange={setPriceTo} />
       </div>
     </div>
   );
@@ -53,7 +56,7 @@ function CurrencyToggle({ value, onChange }: { value: 1 | 2; onChange: (v: 1 | 2
     <button
       type="button"
       onClick={toggle}
-      aria-label={value === 1 ? 'ლარი' : 'დოლარი'}
+      aria-label={value === 1 ? t.filters.gel : t.filters.usd}
       className="relative h-6 w-[46px] rounded-full border border-surface-border bg-white"
     >
       <span

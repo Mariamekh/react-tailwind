@@ -1,10 +1,11 @@
 import { cn } from '@/lib/cn';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { useFiltersStore } from '../store/useFiltersStore';
+import { t } from '@/lib/i18n';
 
 const options: Array<{ value: 0 | 1; label: string }> = [
-  { value: 0, label: 'იყიდება' },
-  { value: 1, label: 'ქირავდება' },
+  { value: 0, label: t.filters.forSale },
+  { value: 1, label: t.filters.forRent },
 ];
 
 export function DealTypeSelect() {
@@ -13,7 +14,7 @@ export function DealTypeSelect() {
   const current = options.find((o) => o.value === dealType);
 
   return (
-    <FilterBlock label="გარიგების ტიპი">
+    <FilterBlock label={t.filters.dealType}>
       <Dropdown
         fullWidth
         matchTriggerWidth

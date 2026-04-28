@@ -1,6 +1,7 @@
 import { useMemo, useState, type MouseEvent } from 'react';
 import { cn } from '@/lib/cn';
 import { GalleryIcon } from '@/shared/icons';
+import { t } from '@/lib/i18n';
 import { getPhotoCount, getProductPhoto, hasPhoto as hasPhotoForProduct } from '../lib/photoUrl';
 import type { Product } from '../types';
 
@@ -81,7 +82,7 @@ export function ProductCardPhoto({
         <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center bg-black/60 text-white">
           <GalleryIcon className="h-8 w-8" />
           <span className="mt-2 text-[22px] font-semibold leading-none">
-            +{extraPhotos} <span className="font-normal">ფოტო</span>
+            +{extraPhotos} <span className="font-normal">{t.card.photo}</span>
           </span>
         </div>
       )}

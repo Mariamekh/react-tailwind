@@ -7,6 +7,7 @@ import {
   ClockListIcon,
 } from '@/shared/icons';
 import type { ComponentType, SVGProps } from 'react';
+import { t } from '@/lib/i18n';
 
 type StickerIcon = ComponentType<SVGProps<SVGSVGElement>>;
 
@@ -33,16 +34,16 @@ export function decodeStickers(value: number | null | undefined): number[] {
 }
 
 export const STICKER_INFO: Record<number, StickerInfo> = {
-  3: { label: 'დაურტყმელი', Icon: ShieldCheckIcon, iconClass: 'text-success-200' },
-  5: { label: 'სუფთა ისტორიით', Icon: ClockListIcon, iconClass: 'text-sticker-blue' },
-  7: { label: 'ახალი ჩამოყვანილი', Icon: CheckmarkCircleIcon, iconClass: 'text-success-500' },
-  11: { label: 'ეკონომიური', Icon: FuelIcon, iconClass: 'text-success-300' },
-  17: { label: 'შეუღებავი', Icon: CheckmarkCircleIcon, iconClass: 'text-success-500' },
-  23: { label: 'სასწრაფოდ', Icon: StopwatchIcon, iconClass: 'text-error-800' },
-  29: { label: 'ევროპიდან', Icon: CheckmarkCircleIcon, iconClass: 'text-success-500' },
-  31: { label: 'იდეალურ მდგომარეობაში', Icon: SparkleIcon, iconClass: 'text-success-600' },
-  47: { label: 'ამერიკიდან', Icon: CheckmarkCircleIcon, iconClass: 'text-success-500' },
-  71: { label: 'ცენტრის გარანტიით', Icon: ShieldCheckIcon, iconClass: 'text-success-200' },
+  3: { label: t.stickers.intact, Icon: ShieldCheckIcon, iconClass: 'text-success-200' },
+  5: { label: t.stickers.cleanHistory, Icon: ClockListIcon, iconClass: 'text-sticker-blue' },
+  7: { label: t.stickers.newImport, Icon: CheckmarkCircleIcon, iconClass: 'text-success-500' },
+  11: { label: t.stickers.economic, Icon: FuelIcon, iconClass: 'text-success-300' },
+  17: { label: t.stickers.unpainted, Icon: CheckmarkCircleIcon, iconClass: 'text-success-500' },
+  23: { label: t.stickers.urgent, Icon: StopwatchIcon, iconClass: 'text-error-800' },
+  29: { label: t.stickers.fromEurope, Icon: CheckmarkCircleIcon, iconClass: 'text-success-500' },
+  31: { label: t.stickers.pristine, Icon: SparkleIcon, iconClass: 'text-success-600' },
+  47: { label: t.stickers.fromAmerica, Icon: CheckmarkCircleIcon, iconClass: 'text-success-500' },
+  71: { label: t.stickers.centerWarranty, Icon: ShieldCheckIcon, iconClass: 'text-success-200' },
 };
 
 export function getStickerChips(stickers: number | null | undefined): StickerInfo[] {

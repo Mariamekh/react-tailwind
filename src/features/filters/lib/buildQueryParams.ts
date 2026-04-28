@@ -1,5 +1,11 @@
-import type { FiltersState } from '../types';
+import type { FiltersState, VehicleType } from '../types';
 import type { ProductsQueryParams } from '@/features/products/types';
+
+const VEHICLE_TYPE_ID: Record<VehicleType, 0 | 1 | 2> = {
+  car: 0,
+  tractor: 1,
+  moto: 2,
+};
 
 export function buildMansParam(
   manIds: string[],
@@ -21,6 +27,7 @@ export function buildCatsParam(categoryIds: number[]): string | undefined {
 
 export function filtersToQueryParams(s: FiltersState): ProductsQueryParams {
   return {
+    TypeID: VEHICLE_TYPE_ID[s.vehicle],
     ForRent: s.dealType,
     Mans: buildMansParam(s.manIds, s.modelsByMan),
     Cats: buildCatsParam(s.categoryIds),

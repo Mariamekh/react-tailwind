@@ -1,4 +1,5 @@
 import { cn } from '@/lib/cn';
+import { t } from '@/lib/i18n';
 
 interface Props {
   manName: string;
@@ -20,7 +21,7 @@ export function CardTitle({ manName, modelLabel, year, yearClassName }: Props) {
           yearClassName,
         )}
       >
-        {year} წ
+        {year} {t.card.yearSuffix}
       </span>
     </div>
   );

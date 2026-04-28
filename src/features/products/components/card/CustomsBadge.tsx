@@ -1,27 +1,27 @@
 import { cn } from '@/lib/cn';
 import { CheckmarkIcon, CheckmarkCircleIcon } from '@/shared/icons';
 import { formatPrice } from '@/lib/format';
-import { COPY } from './constants';
+import { t } from '@/lib/i18n';
 
 interface Props {
   passed: boolean;
   currency: 1 | 2;
-  feeGel: number;
+  fee: number;
   variant: 'mobile' | 'desktop';
 }
 
-export function CustomsBadge({ passed, currency, feeGel, variant }: Props) {
+export function CustomsBadge({ passed, currency, fee, variant }: Props) {
   if (variant === 'desktop') {
     return passed ? (
       <span className="inline-flex items-center gap-[2px] font-sailec text-[11px] font-medium leading-[16px] text-success-300">
         <CheckmarkCircleIcon className="h-4 w-4" />
-        {COPY.customsPassed}
+        {t.card.customsPassed}
       </span>
     ) : (
       <span className="inline-flex items-center gap-1 font-sailec text-[11px] font-medium leading-[16px] text-error-800">
-        <span>{COPY.customsDue}</span>
+        <span>{t.card.customsDue}</span>
         <span>
-          {formatPrice(feeGel)} {currency === 2 ? '$' : '₾'}
+          {formatPrice(fee)} {currency === 2 ? '$' : '₾'}
         </span>
       </span>
     );
@@ -37,13 +37,13 @@ export function CustomsBadge({ passed, currency, feeGel, variant }: Props) {
       {passed ? (
         <>
           <CheckmarkIcon className="h-4 w-4" />
-          {COPY.customsPassed}
+          {t.card.customsPassed}
         </>
       ) : (
         <>
-          <span>{COPY.customsDue}</span>
+          <span>{t.card.customsDue}</span>
           <span>
-            {formatPrice(feeGel)} {currency === 2 ? '$' : '₾'}
+            {formatPrice(fee)} {currency === 2 ? '$' : '₾'}
           </span>
         </>
       )}

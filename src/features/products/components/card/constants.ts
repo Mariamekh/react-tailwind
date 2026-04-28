@@ -7,23 +7,3 @@ export const VIP_THRESHOLD = {
   VIP_PLUS: 15,
   VIP: 10,
 } as const;
-
-export const SPEC_FALLBACK = {
-  category: 'სედანი',
-  fuel: 'ბენზინი',
-  driveSide: 'მარცხნივ',
-  driveSideDesktop: 'მარცხენა',
-  gear: 'ავტომატიკა',
-} as const;
-
-export const COPY = {
-  views: 'ნახვა',
-  customsPassed: 'განბაჟებული',
-  customsDue: 'განბაჟება',
-  steeringPrefix: 'საჭე',
-  engineCapacityUnit: 'დატ.',
-  georgia: 'საქართველო',
-  usa: 'ა.შ.შ.',
-  inTransit: 'გზაში',
-  allListings: 'ყველა განცხადება',
-} as const;

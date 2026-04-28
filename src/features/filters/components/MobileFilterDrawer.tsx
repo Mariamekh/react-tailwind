@@ -10,6 +10,7 @@ import { Button } from '@/shared/ui/Button';
 import { useFiltersStore } from '../store/useFiltersStore';
 import { useProducts } from '@/features/products/hooks/useProducts';
 import { formatNumber } from '@/lib/format';
+import { t } from '@/lib/i18n';
 
 interface Props {
   open: boolean;
@@ -51,7 +52,7 @@ export function MobileFilterDrawer({ open, onClose }: Props) {
         )}
       >
         <div className="flex h-14 shrink-0 items-center justify-between border-b border-surface-border px-4">
-          <span className="text-[16px] font-semibold">ფილტრი</span>
+          <span className="text-[16px] font-semibold">{t.filters.title}</span>
           <button onClick={onClose} aria-label="close">
             <CloseIcon className="h-5 w-5 text-ink-900" />
           </button>
@@ -73,7 +74,7 @@ export function MobileFilterDrawer({ open, onClose }: Props) {
             }}
             disabled={isFetching}
           >
-            ძებნა {formatNumber(total)}
+            {t.common.searchAction} {formatNumber(total)}
           </Button>
         </div>
       </div>

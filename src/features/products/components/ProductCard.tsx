@@ -4,6 +4,7 @@ import { HeartFloatingIcon } from '@/shared/icons';
 import { useFiltersStore } from '@/features/filters/store/useFiltersStore';
 import { formatTimeAgo } from '@/lib/format';
 import { useLocationName } from '@/features/filters/hooks/useLocations';
+import { useGelPerUsd, gelToUsd } from '@/lib/useCurrencyRate';
 import type { Product } from '../types';
 import { ProductCardFrame } from './ProductCardFrame';
 import { ProductCardMobile } from './card/ProductCardMobile';
@@ -13,37 +14,48 @@ import { DealerFooter } from './card/DealerFooter';
 import { getStickerChips } from './card/stickers';
 import { toVipLevel, resolveLocationLabel, isCommercialDealer } from './card/helpers';
 import { calculateClearanceFeeForProduct } from './card/customsFee';
-import { useGelPerUsd, gelToUsd } from '@/lib/useCurrencyRate';
+import { getFrameClassName, type CardViewModel } from './card/cardViewModel';
 
 interface Props {
   product: Product;
   manName: string;
 }
 
-function ProductCardImpl({ product, manName }: Props) {
-  const [favorite, setFavorite] = useState(false);
+function useCardViewModel(product: Product, manName: string): CardViewModel {
+  const filterCurrency = useFiltersStore((s) => s.currency);
+  const gelPerUsd = useGelPerUsd();
+  const { flag: locationFlag } = useLocationName(product.location_id);
 
   const modelLabel = product.car_model ?? '';
-  const title = `${manName} ${modelLabel}`.trim();
-
-  const { flag: locationFlag } = useLocationName(product.location_id);
-  const locationLabel = resolveLocationLabel(product, locationFlag);
-
-  const filterCurrency = useFiltersStore((s) => s.currency);
   const priceGel = product.price_value || product.price;
-
-  const gelPerUsd = useGelPerUsd();
-  const priceDisplay = filterCurrency === 2 ? gelToUsd(priceGel, gelPerUsd) : priceGel;
-  const isCustomsPassed = product.customs_passed === true;
-  const customsFeeGel = isCustomsPassed ? 0 : calculateClearanceFeeForProduct(product);
-  const customsFeeDisplay =
-    filterCurrency === 2 ? gelToUsd(customsFeeGel, gelPerUsd) : customsFeeGel;
-  const vipLevel = toVipLevel(product.order_number);
+  const customsPassed = product.customs_passed === true;
+  const customsFeeGel = customsPassed ? 0 : calculateClearanceFeeForProduct(product);
+  const isUsd = filterCurrency === 2;
   const stickerChips = getStickerChips(product.stickers);
-  const hasChips = stickerChips.length > 0;
-  const isHighlighted = product.prom_color > 0;
-  const hasDealer = isCommercialDealer(product);
-  const timeAgo = formatTimeAgo(product.order_date);
+
+  return {
+    product,
+    manName,
+    modelLabel,
+    title: `${manName} ${modelLabel}`.trim(),
+    locationLabel: resolveLocationLabel(product, locationFlag),
+    locationFlag,
+    currency: filterCurrency,
+    priceDisplay: isUsd ? gelToUsd(priceGel, gelPerUsd) : priceGel,
+    customsPassed,
+    customsFeeDisplay: isUsd ? gelToUsd(customsFeeGel, gelPerUsd) : customsFeeGel,
+    vipLevel: toVipLevel(product.order_number),
+    stickerChips,
+    hasChips: stickerChips.length > 0,
+    hasDealer: isCommercialDealer(product),
+    isHighlighted: product.prom_color > 0,
+    timeAgo: formatTimeAgo(product.order_date),
+  };
+}
+
+function ProductCardImpl({ product, manName }: Props) {
+  const [favorite, setFavorite] = useState(false);
+  const vm = useCardViewModel(product, manName);
 
   const toggleFavorite = (e?: React.MouseEvent) => {
     e?.stopPropagation();
@@ -59,58 +71,34 @@ function ProductCardImpl({ product, manName }: Props) {
     </button>
   );
 
+  const bordered = vm.isHighlighted
+    ? false
+    : vm.hasChips
+      ? 'subtle'
+      : vm.hasDealer
+        ? 'default'
+        : false;
+
   return (
     <ProductCardFrame
-      highlighted={isHighlighted}
-      bordered={isHighlighted ? false : hasChips ? 'subtle' : hasDealer ? 'default' : false}
-      className={cn(
-        'cursor-pointer',
-        hasChips && hasDealer
-          ? 'md:min-h-[278px]'
-          : hasChips
-            ? 'md:h-[217px]'
-            : hasDealer
-              ? 'md:h-[233px]'
-              : 'md:h-[172px]',
-      )}
+      highlighted={vm.isHighlighted}
+      bordered={bordered}
+      className={cn('cursor-pointer', getFrameClassName(vm.hasChips, vm.hasDealer))}
     >
-      <ProductCardMobile
-        product={product}
-        manName={manName}
-        modelLabel={modelLabel}
-        title={title}
-        locationLabel={locationLabel}
-        locationFlag={locationFlag}
-        currency={filterCurrency}
-        priceValue={priceDisplay}
-        customsPassed={isCustomsPassed}
-        customsFeeGel={customsFeeDisplay}
-        stickerChips={stickerChips}
-        timeAgo={timeAgo}
-        heartButton={heartButton}
-      />
+      <ProductCardMobile vm={vm} heartButton={heartButton} />
 
       <ProductCardDesktop
-        product={product}
-        manName={manName}
-        modelLabel={modelLabel}
-        title={title}
-        locationLabel={locationLabel}
-        locationFlag={locationFlag}
-        currency={filterCurrency}
-        priceValue={priceDisplay}
-        customsPassed={isCustomsPassed}
-        customsFeeGel={customsFeeDisplay}
-        vipLevel={vipLevel}
-        timeAgo={timeAgo}
+        vm={vm}
         favorite={favorite}
         onToggleFavorite={() => toggleFavorite()}
         heartButton={heartButton}
       />
 
-      <StickerChips chips={stickerChips} variant="desktop" highlighted={isHighlighted} />
+      <StickerChips chips={vm.stickerChips} variant="desktop" highlighted={vm.isHighlighted} />
 
-      {hasDealer && <DealerFooter name={product.dealer_title} listingCount={product.active_ads} />}
+      {vm.hasDealer && (
+        <DealerFooter name={vm.product.dealer_title} listingCount={vm.product.active_ads} />
+      )}
     </ProductCardFrame>
   );
 }

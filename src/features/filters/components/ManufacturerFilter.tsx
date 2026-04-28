@@ -4,6 +4,7 @@ import { useManufacturers } from '../hooks/useManufacturers';
 import { useModelsForMans } from '../hooks/useModels';
 import { useFiltersStore } from '../store/useFiltersStore';
 import { FilterBlock } from './DealTypeSelect';
+import { t } from '@/lib/i18n';
 
 export function ManufacturerFilter() {
   const { data: mans = [], isLoading: mansLoading } = useManufacturers();
@@ -48,9 +49,9 @@ export function ManufacturerFilter() {
   };
 
   return (
-    <FilterBlock label="მწარმოებელი">
+    <FilterBlock label={t.filters.manufacturer}>
       <ManufacturerModelCombobox
-        placeholder="ყველა მწარმოებელი"
+        placeholder={t.filters.allManufacturers}
         manufacturers={manufacturers}
         models={models}
         selectedManIds={manIds}

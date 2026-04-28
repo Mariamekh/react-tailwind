@@ -1,5 +1,5 @@
 import { ListIcon } from '@/shared/icons';
-import { COPY } from './constants';
+import { t } from '@/lib/i18n';
 
 interface Props {
   name: string;
@@ -14,7 +14,7 @@ export function DealerFooter({ name, listingCount }: Props) {
       </span>
       <span className="inline-flex items-center gap-2 font-['Helvetica_Neue_LT'] text-[11px] font-normal leading-[13px] text-ink-600">
         <ListIcon className="h-3 w-3 text-ink-500" />
-        {COPY.allListings}
+        {t.card.allListings}
         {typeof listingCount === 'number' ? ` (${listingCount})` : ''}
       </span>
     </div>

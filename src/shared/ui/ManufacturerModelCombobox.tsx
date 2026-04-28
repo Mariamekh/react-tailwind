@@ -3,6 +3,7 @@ import { cn } from '@/lib/cn';
 import { Checkbox } from './Checkbox';
 import { Dropdown } from './Dropdown';
 import { SearchIcon } from '@/shared/icons';
+import { t } from '@/lib/i18n';
 
 export interface OptionItem {
   value: string;
@@ -70,7 +71,7 @@ export function ManufacturerModelCombobox({
     >
       <div className="flex border-b border-surface-border">
         <TabButton active={tab === 'mans'} onClick={() => setTab('mans')}>
-          მწარმოებელი
+          {t.filters.manufacturer}
           {selectedManIds.length > 0 && <Count>{selectedManIds.length}</Count>}
         </TabButton>
         <TabButton
@@ -78,7 +79,7 @@ export function ManufacturerModelCombobox({
           onClick={() => !modelsDisabled && setTab('models')}
           disabled={modelsDisabled}
         >
-          მოდელი
+          {t.filters.model}
           {selectedModelIds.length > 0 && <Count>{selectedModelIds.length}</Count>}
         </TabButton>
       </div>
@@ -89,19 +90,19 @@ export function ManufacturerModelCombobox({
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="ძიება..."
+            placeholder={t.common.searchPlaceholder}
             className="h-9 w-full rounded-md border border-surface-border bg-white pl-8 pr-2 text-[14px] outline-none focus:border-brand-orange"
           />
         </div>
       </div>
 
       <div className="scrollbar-thin max-h-64 overflow-auto py-1">
-        {loading && <div className="px-3 py-2 text-[13px] text-ink-500">იტვირთება...</div>}
+        {loading && <div className="px-3 py-2 text-[13px] text-ink-500">{t.common.loading}</div>}
         {!loading && tab === 'models' && modelsDisabled && (
-          <div className="px-3 py-2 text-[13px] text-ink-500">აირჩიეთ მწარმოებელი</div>
+          <div className="px-3 py-2 text-[13px] text-ink-500">{t.filters.selectManufacturer}</div>
         )}
         {!loading && filtered.length === 0 && !modelsDisabled && (
-          <div className="px-3 py-2 text-[13px] text-ink-500">არ მოიძებნა</div>
+          <div className="px-3 py-2 text-[13px] text-ink-500">{t.common.notFound}</div>
         )}
         {!loading &&
           !(tab === 'models' && modelsDisabled) &&

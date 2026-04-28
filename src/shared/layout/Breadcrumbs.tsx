@@ -1,18 +1,19 @@
 import { useFiltersStore } from '@/features/filters/store/useFiltersStore';
 import { BreadcrumbChevronIcon } from '@/shared/icons';
+import { t } from '@/lib/i18n';
 
 export function Breadcrumbs() {
   const dealType = useFiltersStore((s) => s.dealType);
-  const dealLabel = dealType === 1 ? 'ქირავდება' : 'იყიდება';
+  const dealLabel = dealType === 1 ? t.filters.forRent : t.filters.forSale;
 
   return (
     <nav className="flex items-center gap-1 font-['Helvetica_Neue_LT'] text-[12px] font-normal leading-none">
       <a href="#" className="text-ink-600 hover:text-ink-900">
-        მთავარი
+        {t.common.home}
       </a>
       <Chevron />
       <a href="#" className="text-ink-600 hover:text-ink-900">
-        ძიება
+        {t.common.search}
       </a>
       <Chevron />
       <span className="text-brand-orange">{dealLabel}</span>

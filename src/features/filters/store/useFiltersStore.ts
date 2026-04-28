@@ -18,6 +18,7 @@ interface Store extends FiltersState {
   setPeriod: (p: Period) => void;
   setSortOrder: (s: FiltersState['sortOrder']) => void;
   setPage: (p: number) => void;
+  setVehicle: (v: VehicleType) => void;
 
   // Draft setters (sidebar — committed on applyDraft())
   setDraftVehicle: (v: VehicleType) => void;
@@ -46,6 +47,7 @@ const emptyDraft: DraftSlice = {
 };
 
 const initialApplied: FiltersState = {
+  vehicle: 'car',
   dealType: 0,
   manIds: [],
   modelsByMan: {},
@@ -65,6 +67,23 @@ export const useFiltersStore = create<Store>((set) => ({
   setPeriod: (period) => set({ period, page: 1 }),
   setSortOrder: (sortOrder) => set({ sortOrder, page: 1 }),
   setPage: (page) => set({ page }),
+
+  // Vehicle is page-level navigation — apply immediately and clear brand/model/category
+  setVehicle: (vehicle) =>
+    set((s) => ({
+      vehicle,
+      manIds: [],
+      modelsByMan: {},
+      categoryIds: [],
+      page: 1,
+      draft: {
+        ...s.draft,
+        vehicle,
+        manIds: [],
+        modelsByMan: {},
+        categoryIds: [],
+      },
+    })),
 
   // Draft ----------------------------------------------------------------
   setDraftVehicle: (vehicle) =>
@@ -120,6 +139,7 @@ export const useFiltersStore = create<Store>((set) => ({
 
   applyDraft: () =>
     set((s) => ({
+      vehicle: s.draft.vehicle,
       dealType: s.draft.dealType,
       manIds: [...s.draft.manIds],
       modelsByMan: { ...s.draft.modelsByMan },

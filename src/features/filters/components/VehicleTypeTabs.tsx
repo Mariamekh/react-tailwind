@@ -10,8 +10,8 @@ const tabs: Array<{ value: VehicleType; Icon: typeof CarIcon }> = [
 ];
 
 export function VehicleTypeTabs() {
-  const vehicle = useFiltersStore((s) => s.draft.vehicle);
-  const setVehicle = useFiltersStore((s) => s.setDraftVehicle);
+  const vehicle = useFiltersStore((s) => s.vehicle);
+  const setVehicle = useFiltersStore((s) => s.setVehicle);
 
   return (
     <div className="grid grid-cols-3 border-b border-surface-border">

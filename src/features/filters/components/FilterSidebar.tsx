@@ -7,6 +7,7 @@ import { PriceFilter } from './PriceFilter';
 import { useFiltersStore } from '../store/useFiltersStore';
 import { useProducts } from '@/features/products/hooks/useProducts';
 import { formatNumber } from '@/lib/format';
+import { t } from '@/lib/i18n';
 
 export function FilterSidebar() {
   const applyDraft = useFiltersStore((s) => s.applyDraft);
@@ -34,7 +35,7 @@ export function FilterSidebar() {
           disabled={isFetching}
           className="h-auto rounded-lg py-[9px] font-sailec text-[14px] font-bold leading-none"
         >
-          ძებნა {formatNumber(total)}
+          {t.common.searchAction} {formatNumber(total)}
         </Button>
       </div>
     </aside>

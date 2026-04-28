@@ -65,24 +65,19 @@ function PageButton({
 }
 
 function buildPageRange(current: number, total: number): Array<number | 'gap'> {
-  const delta = 1;
-  const range: Array<number | 'gap'> = [];
-  const rangeWithGaps: Array<number | 'gap'> = [];
+  const DELTA = 1;
+  const result: Array<number | 'gap'> = [];
+  let prev = 0;
 
-  for (let i = 1; i <= total; i++) {
-    if (i === 1 || i === total || (i >= current - delta && i <= current + delta)) {
-      range.push(i);
-    }
+  for (let page = 1; page <= total; page++) {
+    const isEdge = page === 1 || page === total;
+    const nearCurrent = page >= current - DELTA && page <= current + DELTA;
+    if (!isEdge && !nearCurrent) continue;
+
+    if (prev && page - prev > 1) result.push('gap');
+    result.push(page);
+    prev = page;
   }
 
-  let prev: number | 'gap' | undefined;
-  for (const i of range) {
-    if (typeof prev === 'number' && typeof i === 'number' && i - prev > 1) {
-      rangeWithGaps.push('gap');
-    }
-    rangeWithGaps.push(i);
-    prev = i;
-  }
-
-  return rangeWithGaps;
+  return result;
 }

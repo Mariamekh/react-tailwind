@@ -3,6 +3,7 @@ import { CloseIcon, FilterIcon } from '@/shared/icons';
 import { useFiltersStore } from '../store/useFiltersStore';
 import { useManufacturers } from '../hooks/useManufacturers';
 import { useCategories } from '../hooks/useCategories';
+import { t } from '@/lib/i18n';
 
 interface Props {
   onOpenFilters: () => void;
@@ -30,7 +31,7 @@ export function MobileFilterChips({ onOpenFilters }: Props) {
 
     out.push({
       key: 'deal',
-      label: dealType === 0 ? 'იყიდება' : 'ქირავდება',
+      label: dealType === 0 ? t.filters.forSale : t.filters.forRent,
       onRemove: () => {
         const store = useFiltersStore.getState();
         store.setDraftDealType(dealType === 0 ? 1 : 0);
@@ -91,7 +92,7 @@ export function MobileFilterChips({ onOpenFilters }: Props) {
         className="inline-flex h-8 shrink-0 items-center gap-[10px] rounded-full border border-surface-border bg-white pb-[10px] pl-3 pr-2 pt-2 font-sans text-[12px] font-normal leading-none text-[#454857]"
       >
         <FilterIcon className="h-4 w-4" />
-        ფილტრი
+        {t.filters.title}
       </button>
 
       {chips.map((c) => (

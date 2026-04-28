@@ -4,6 +4,7 @@ import { useCategories } from '../hooks/useCategories';
 import { useFiltersStore } from '../store/useFiltersStore';
 import { FilterBlock } from './DealTypeSelect';
 import type { Category } from '../types';
+import { t } from '@/lib/i18n';
 
 function getLabel(category: Category): string {
   const raw = category as Category & {
@@ -37,9 +38,9 @@ export function CategoryFilter() {
   );
 
   return (
-    <FilterBlock label="კატეგორია">
+    <FilterBlock label={t.filters.category}>
       <MultiSelectCombobox
-        placeholder="ყველა კატეგორია"
+        placeholder={t.filters.allCategories}
         options={options}
         selected={categoryIds.map(String)}
         onToggle={(v) => toggleCategory(Number(v))}
