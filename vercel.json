@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/api2/:path*", "destination": "https://api2.myauto.ge/:path*" },
+    { "source": "/static-my/:path*", "destination": "https://static.my.ge/myauto/:path*" },
+    { "source": "/((?!api2|static-my|assets).*)", "destination": "/index.html" }
+  ]
+}
