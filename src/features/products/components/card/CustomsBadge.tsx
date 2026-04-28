@@ -5,9 +5,7 @@ import { COPY } from './constants';
 
 interface Props {
   passed: boolean;
-  /** 1 = GEL (₾), 2 = USD ($) — affects the displayed currency symbol only. */
   currency: 1 | 2;
-  /** Total clearance fee in GEL when not yet customs-passed. */
   feeGel: number;
   variant: 'mobile' | 'desktop';
 }

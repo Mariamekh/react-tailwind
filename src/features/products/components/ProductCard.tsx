@@ -30,9 +30,10 @@ function ProductCardImpl({ product, manName }: Props) {
   const locationLabel = resolveLocationLabel(product, locationFlag);
 
   const filterCurrency = useFiltersStore((s) => s.currency);
-  const priceValue = product.price_value || product.price;
+  const priceGel = product.price_value || product.price;
 
   const gelPerUsd = useGelPerUsd();
+  const priceDisplay = filterCurrency === 2 ? gelToUsd(priceGel, gelPerUsd) : priceGel;
   const isCustomsPassed = product.customs_passed === true;
   const customsFeeGel = isCustomsPassed ? 0 : calculateClearanceFeeForProduct(product);
   const customsFeeDisplay =
@@ -81,7 +82,7 @@ function ProductCardImpl({ product, manName }: Props) {
         locationLabel={locationLabel}
         locationFlag={locationFlag}
         currency={filterCurrency}
-        priceValue={priceValue}
+        priceValue={priceDisplay}
         customsPassed={isCustomsPassed}
         customsFeeGel={customsFeeDisplay}
         stickerChips={stickerChips}
@@ -97,7 +98,7 @@ function ProductCardImpl({ product, manName }: Props) {
         locationLabel={locationLabel}
         locationFlag={locationFlag}
         currency={filterCurrency}
-        priceValue={priceValue}
+        priceValue={priceDisplay}
         customsPassed={isCustomsPassed}
         customsFeeGel={customsFeeDisplay}
         vipLevel={vipLevel}

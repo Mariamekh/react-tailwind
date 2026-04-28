@@ -11,7 +11,7 @@ export function SearchPage() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="mx-auto max-w-[1098px] pb-12 md:pb-16">
+    <div className="mx-auto max-w-[1098px] md:pb-16">
       <div className="hidden px-4 md:block md:px-6">
         <div className="mx-auto max-w-[780px] pt-[32px] min-[1099px]:max-w-none">
           <Breadcrumbs />
@@ -24,7 +24,7 @@ export function SearchPage() {
         </div>
       </div>
 
-      <div className="bg-white px-4 md:bg-transparent md:px-6">
+      <div className="bg-white px-4 pb-12 md:bg-transparent md:px-6 md:pb-0">
         <div className="flex justify-center gap-5 md:mt-[20px]">
           <div className="hidden min-[1099px]:block">
             <FilterSidebar />

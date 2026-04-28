@@ -4,7 +4,6 @@ import { CurrencyGlyph } from './CurrencyGlyph';
 
 interface Props {
   value: number;
-  /** 1 = GEL (₾), 2 = USD ($) */
   currency: 1 | 2;
   variant?: 'mobile' | 'desktop';
 }
