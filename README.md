@@ -5,8 +5,8 @@ React + TypeScript + Tailwind
 - **React 18** + **TypeScript** (Vite)
 - **Tailwind CSS** for styling
 - **TanStack Query** for server state (caching, fetching, retries)
-- **Zustand** for filter state
 - **React Router** for routing
+- **nuqs** for URL-driven filter state (draft state via context)
 - **axios** for HTTP
 
 ## Run
@@ -22,7 +22,7 @@ npm run dev
 src/
 ├── app/                       # routes, page composition
 ├── features/
-│   ├── filters/               # filter sidebar, mobile drawer, store
+│   ├── filters/               # filter sidebar, mobile drawer, url+draft state
 │   ├── products/              # listing card, grid, pagination
 │   └── sort/                  # sort dropdown
 ├── shared/
