@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { MultiSelectCombobox, type OptionItem } from '@/shared/ui/MultiSelectCombobox';
 import { useCategories } from '../hooks/useCategories';
 import { useFiltersDraft } from '../state/draftContext';
-import { FilterBlock } from './DealTypeSelect';
+import { FilterBlock } from './FilterBlock';
 import type { Category } from '../types';
 import { t } from '@/lib/i18n';
 

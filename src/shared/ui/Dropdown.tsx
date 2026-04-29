@@ -1,14 +1,10 @@
-import {
-  type CSSProperties,
-  type ReactNode,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { type CSSProperties, type ReactNode, useCallback, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { cn } from '@/lib/cn';
 import { ChevronDownIcon } from '@/shared/icons';
+import { useAnchorRect } from '@/shared/hooks/useAnchorRect';
+import { useClickOutside } from '@/shared/hooks/useClickOutside';
+import { useEscapeKey } from '@/shared/hooks/useEscapeKey';
 
 interface DropdownProps {
   trigger: ReactNode;
@@ -35,49 +31,13 @@ export function Dropdown({
   matchTriggerWidth,
 }: DropdownProps) {
   const [open, setOpen] = useState(false);
-  const [rect, setRect] = useState<DOMRect | null>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
   const close = useCallback(() => setOpen(false), []);
-
-  const updateRect = useCallback(() => {
-    if (triggerRef.current) {
-      setRect(triggerRef.current.getBoundingClientRect());
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!open) return;
-    updateRect();
-    const onScroll = () => updateRect();
-    const onResize = () => updateRect();
-    window.addEventListener('scroll', onScroll, true);
-    window.addEventListener('resize', onResize);
-    return () => {
-      window.removeEventListener('scroll', onScroll, true);
-      window.removeEventListener('resize', onResize);
-    };
-  }, [open, updateRect]);
-
-  useEffect(() => {
-    if (!open) return;
-    const mouseHandler = (e: MouseEvent) => {
-      const target = e.target as Node;
-      if (triggerRef.current?.contains(target)) return;
-      if (panelRef.current?.contains(target)) return;
-      setOpen(false);
-    };
-    const keyHandler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false);
-    };
-    document.addEventListener('mousedown', mouseHandler);
-    document.addEventListener('keydown', keyHandler);
-    return () => {
-      document.removeEventListener('mousedown', mouseHandler);
-      document.removeEventListener('keydown', keyHandler);
-    };
-  }, [open]);
+  const rect = useAnchorRect(triggerRef, open);
+  useClickOutside([triggerRef, panelRef], close, open);
+  useEscapeKey(close, open);
 
   const panelStyle: CSSProperties = rect
     ? {

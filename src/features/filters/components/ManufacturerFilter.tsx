@@ -3,7 +3,7 @@ import { ManufacturerModelCombobox, type OptionItem } from '@/shared/ui/Manufact
 import { useManufacturers } from '../hooks/useManufacturers';
 import { useModelsForMans } from '../hooks/useModels';
 import { useFiltersDraft } from '../state/draftContext';
-import { FilterBlock } from './DealTypeSelect';
+import { FilterBlock } from './FilterBlock';
 import { t } from '@/lib/i18n';
 
 export function ManufacturerFilter() {

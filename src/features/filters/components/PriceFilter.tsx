@@ -2,13 +2,14 @@ import { useFiltersDraft } from '../state/draftContext';
 import { cn } from '@/lib/cn';
 import { t } from '@/lib/i18n';
 import { GelGlyphIcon, DollarGlyphIcon } from '@/shared/icons';
+import { NumberInput } from '@/shared/ui/NumberInput';
 
 export function PriceFilter() {
   const { draft, setPriceFrom, setPriceTo, setCurrency } = useFiltersDraft();
   const { priceFrom, priceTo, currency } = draft;
 
   return (
-    <div className="w-[202px]">
+    <div className="w-full min-[1099px]:w-[202px]">
       <div className="flex items-center justify-between">
         <div className="font-sans text-[13px] font-medium text-ink-800">{t.filters.price}</div>
         <CurrencyToggle value={currency} onChange={setCurrency} />
@@ -19,28 +20,6 @@ export function PriceFilter() {
         <NumberInput placeholder={t.filters.priceTo} value={priceTo} onChange={setPriceTo} />
       </div>
     </div>
-  );
-}
-
-function NumberInput({
-  value,
-  onChange,
-  placeholder,
-}: {
-  value: string;
-  onChange: (v: string) => void;
-  placeholder: string;
-}) {
-  return (
-    <input
-      type="text"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      value={value}
-      placeholder={placeholder}
-      onChange={(e) => onChange(e.target.value.replace(/\D/g, ''))}
-      className="h-10 w-[94px] rounded-lg border border-surface-border bg-white pb-[11px] pl-[10px] pr-2 pt-[13px] text-[14px] leading-[16px] text-ink-800 placeholder:text-ink-500 focus:border-brand-orange"
-    />
   );
 }
 

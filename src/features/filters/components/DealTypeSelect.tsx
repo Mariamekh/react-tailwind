@@ -1,6 +1,7 @@
 import { cn } from '@/lib/cn';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { useFiltersDraft } from '../state/draftContext';
+import { FilterBlock } from './FilterBlock';
 import { t } from '@/lib/i18n';
 
 const options: Array<{ value: 0 | 1; label: string }> = [
@@ -49,14 +50,5 @@ export function DealTypeSelect() {
         )}
       </Dropdown>
     </FilterBlock>
-  );
-}
-
-export function FilterBlock({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="flex flex-col gap-2">
-      <div className="font-sailec text-[12px] font-medium leading-[12px] text-ink-800">{label}</div>
-      {children}
-    </div>
   );
 }

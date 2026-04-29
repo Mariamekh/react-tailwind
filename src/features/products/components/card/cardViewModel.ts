@@ -10,6 +10,7 @@ export interface CardViewModel {
   title: string;
   locationLabel: string;
   locationFlag: LocationFlag;
+  categoryName: string;
   currency: 1 | 2;
   priceDisplay: number;
   customsPassed: boolean;
