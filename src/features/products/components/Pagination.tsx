@@ -1,10 +1,11 @@
-import { useFiltersStore } from '@/features/filters/store/useFiltersStore';
+import { useFiltersUrl } from '@/features/filters/state/useFiltersUrl';
 import { useProducts } from '../hooks/useProducts';
 import { cn } from '@/lib/cn';
 
 export function Pagination() {
-  const page = useFiltersStore((s) => s.page);
-  const setPage = useFiltersStore((s) => s.setPage);
+  const [filters, setFilters] = useFiltersUrl();
+  const page = filters.page;
+  const setPage = (next: number) => setFilters({ page: next });
   const { data } = useProducts();
   const pages = data?.meta.last_page ?? 1;
 

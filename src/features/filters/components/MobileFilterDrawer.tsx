@@ -7,6 +7,7 @@ import { ManufacturerFilter } from './ManufacturerFilter';
 import { CategoryFilter } from './CategoryFilter';
 import { PriceFilter } from './PriceFilter';
 import { SearchButton } from './SearchButton';
+import { FiltersDraftProvider } from '../state/draftContext';
 import { t } from '@/lib/i18n';
 
 interface Props {
@@ -25,6 +26,7 @@ export function MobileFilterDrawer({ open, onClose }: Props) {
   }, [open]);
 
   return (
+    <FiltersDraftProvider>
     <div
       className={cn(
         'fixed inset-0 z-50 min-[1099px]:hidden',
@@ -62,5 +64,6 @@ export function MobileFilterDrawer({ open, onClose }: Props) {
         </div>
       </div>
     </div>
+    </FiltersDraftProvider>
   );
 }

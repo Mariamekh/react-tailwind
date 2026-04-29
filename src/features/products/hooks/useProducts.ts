@@ -1,11 +1,11 @@
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { getProducts } from '../api/getProducts';
-import { useFiltersStore } from '@/features/filters/store/useFiltersStore';
+import { useAppliedFilters } from '@/features/filters/state/useFiltersUrl';
 import { filtersToQueryParams } from '@/features/filters/lib/buildQueryParams';
 
 export function useProducts() {
-  const state = useFiltersStore();
-  const params = filtersToQueryParams(state);
+  const filters = useAppliedFilters();
+  const params = filtersToQueryParams(filters);
 
   return useQuery({
     queryKey: ['products', params],

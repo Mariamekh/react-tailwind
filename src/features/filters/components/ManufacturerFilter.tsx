@@ -2,17 +2,14 @@ import { useMemo } from 'react';
 import { ManufacturerModelCombobox, type OptionItem } from '@/shared/ui/ManufacturerModelCombobox';
 import { useManufacturers } from '../hooks/useManufacturers';
 import { useModelsForMans } from '../hooks/useModels';
-import { useFiltersStore } from '../store/useFiltersStore';
+import { useFiltersDraft } from '../state/draftContext';
 import { FilterBlock } from './DealTypeSelect';
 import { t } from '@/lib/i18n';
 
 export function ManufacturerFilter() {
   const { data: mans = [], isLoading: mansLoading } = useManufacturers();
-  const vehicle = useFiltersStore((s) => s.draft.vehicle);
-  const manIds = useFiltersStore((s) => s.draft.manIds);
-  const modelsByMan = useFiltersStore((s) => s.draft.modelsByMan);
-  const toggleMan = useFiltersStore((s) => s.toggleDraftMan);
-  const toggleModel = useFiltersStore((s) => s.toggleDraftModel);
+  const { draft, toggleMan, toggleModel } = useFiltersDraft();
+  const { vehicle, manIds, modelsByMan } = draft;
 
   const { data: modelsData, isLoading: modelsLoading } = useModelsForMans(manIds);
 

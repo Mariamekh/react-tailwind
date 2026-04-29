@@ -1,15 +1,11 @@
-import { useFiltersStore } from '../store/useFiltersStore';
+import { useFiltersDraft } from '../state/draftContext';
 import { cn } from '@/lib/cn';
 import { t } from '@/lib/i18n';
 import { GelGlyphIcon, DollarGlyphIcon } from '@/shared/icons';
 
 export function PriceFilter() {
-  const priceFrom = useFiltersStore((s) => s.draft.priceFrom);
-  const priceTo = useFiltersStore((s) => s.draft.priceTo);
-  const currency = useFiltersStore((s) => s.draft.currency);
-  const setPriceFrom = useFiltersStore((s) => s.setDraftPriceFrom);
-  const setPriceTo = useFiltersStore((s) => s.setDraftPriceTo);
-  const setCurrency = useFiltersStore((s) => s.setDraftCurrency);
+  const { draft, setPriceFrom, setPriceTo, setCurrency } = useFiltersDraft();
+  const { priceFrom, priceTo, currency } = draft;
 
   return (
     <div className="w-[202px]">

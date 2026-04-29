@@ -1,6 +1,13 @@
 import { useMemo } from 'react';
 import { CloseIcon, FilterIcon } from '@/shared/icons';
-import { useFiltersStore } from '../store/useFiltersStore';
+import {
+  useDealType,
+  useMans,
+  useCategoryIds,
+  usePriceFrom,
+  usePriceTo,
+  useCurrency,
+} from '../state/useFiltersUrl';
 import { useManufacturers } from '../hooks/useManufacturers';
 import { useCategories } from '../hooks/useCategories';
 import { t } from '@/lib/i18n';
@@ -16,14 +23,14 @@ interface Chip {
 }
 
 export function MobileFilterChips({ onOpenFilters }: Props) {
-  const dealType = useFiltersStore((s) => s.dealType);
-  const manIds = useFiltersStore((s) => s.manIds);
-  const categoryIds = useFiltersStore((s) => s.categoryIds);
-  const priceFrom = useFiltersStore((s) => s.priceFrom);
-  const priceTo = useFiltersStore((s) => s.priceTo);
-  const currency = useFiltersStore((s) => s.currency);
+  const [dealType, setDealType] = useDealType();
+  const [mans, setMans] = useMans();
+  const [categoryIds, setCategoryIds] = useCategoryIds();
+  const [priceFrom, setPriceFrom] = usePriceFrom();
+  const [priceTo, setPriceTo] = usePriceTo();
+  const [currency] = useCurrency();
 
-  const { data: mans } = useManufacturers();
+  const { data: manList } = useManufacturers();
   const { data: cats } = useCategories();
 
   const chips = useMemo<Chip[]>(() => {
@@ -32,23 +39,20 @@ export function MobileFilterChips({ onOpenFilters }: Props) {
     out.push({
       key: 'deal',
       label: dealType === 0 ? t.filters.forSale : t.filters.forRent,
-      onRemove: () => {
-        const store = useFiltersStore.getState();
-        store.setDraftDealType(dealType === 0 ? 1 : 0);
-        store.applyDraft();
-      },
+      onRemove: () => setDealType(dealType === 0 ? 1 : 0),
     });
 
-    for (const id of manIds) {
-      const m = mans?.find((x) => String(x.man_id) === String(id));
+    for (const id of mans.manIds) {
+      const m = manList?.find((x) => String(x.man_id) === String(id));
       if (!m) continue;
       out.push({
         key: `man-${id}`,
         label: m.man_name,
         onRemove: () => {
-          const store = useFiltersStore.getState();
-          store.toggleDraftMan(id);
-          store.applyDraft();
+          const nextManIds = mans.manIds.filter((x) => x !== id);
+          const nextModelsByMan = { ...mans.modelsByMan };
+          delete nextModelsByMan[id];
+          setMans({ manIds: nextManIds, modelsByMan: nextModelsByMan });
         },
       });
     }
@@ -59,11 +63,7 @@ export function MobileFilterChips({ onOpenFilters }: Props) {
       out.push({
         key: `cat-${id}`,
         label: c.title,
-        onRemove: () => {
-          const store = useFiltersStore.getState();
-          store.toggleDraftCategory(id);
-          store.applyDraft();
-        },
+        onRemove: () => setCategoryIds(categoryIds.filter((x) => x !== id)),
       });
     }
 
@@ -74,16 +74,28 @@ export function MobileFilterChips({ onOpenFilters }: Props) {
         key: 'price',
         label,
         onRemove: () => {
-          const store = useFiltersStore.getState();
-          store.setDraftPriceFrom('');
-          store.setDraftPriceTo('');
-          store.applyDraft();
+          setPriceFrom('');
+          setPriceTo('');
         },
       });
     }
 
     return out;
-  }, [dealType, manIds, categoryIds, priceFrom, priceTo, currency, mans, cats]);
+  }, [
+    dealType,
+    setDealType,
+    mans,
+    setMans,
+    categoryIds,
+    setCategoryIds,
+    priceFrom,
+    priceTo,
+    currency,
+    setPriceFrom,
+    setPriceTo,
+    manList,
+    cats,
+  ]);
 
   return (
     <div className="flex gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">

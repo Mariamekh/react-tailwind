@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { MultiSelectCombobox, type OptionItem } from '@/shared/ui/MultiSelectCombobox';
 import { useCategories } from '../hooks/useCategories';
-import { useFiltersStore } from '../store/useFiltersStore';
+import { useFiltersDraft } from '../state/draftContext';
 import { FilterBlock } from './DealTypeSelect';
 import type { Category } from '../types';
 import { t } from '@/lib/i18n';
@@ -25,8 +25,8 @@ function getLabel(category: Category): string {
 
 export function CategoryFilter() {
   const { data = [], isLoading } = useCategories();
-  const categoryIds = useFiltersStore((s) => s.draft.categoryIds);
-  const toggleCategory = useFiltersStore((s) => s.toggleDraftCategory);
+  const { draft, toggleCategory } = useFiltersDraft();
+  const categoryIds = draft.categoryIds;
 
   const options = useMemo<OptionItem[]>(
     () =>

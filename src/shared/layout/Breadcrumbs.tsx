@@ -1,9 +1,9 @@
-import { useFiltersStore } from '@/features/filters/store/useFiltersStore';
+import { useDealType } from '@/features/filters/state/useFiltersUrl';
 import { BreadcrumbChevronIcon } from '@/shared/icons';
 import { t } from '@/lib/i18n';
 
 export function Breadcrumbs() {
-  const dealType = useFiltersStore((s) => s.dealType);
+  const [dealType] = useDealType();
   const dealLabel = dealType === 1 ? t.filters.forRent : t.filters.forSale;
 
   return (

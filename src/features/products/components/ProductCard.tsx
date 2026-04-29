@@ -1,7 +1,7 @@
 import { memo, useState } from 'react';
 import { cn } from '@/lib/cn';
 import { HeartFloatingIcon } from '@/shared/icons';
-import { useFiltersStore } from '@/features/filters/store/useFiltersStore';
+import { useCurrency } from '@/features/filters/state/useFiltersUrl';
 import { formatTimeAgo } from '@/lib/format';
 import { useLocationName } from '@/features/filters/hooks/useLocations';
 import { useGelPerUsd, gelToUsd } from '@/lib/useCurrencyRate';
@@ -22,7 +22,7 @@ interface Props {
 }
 
 function useCardViewModel(product: Product, manName: string): CardViewModel {
-  const filterCurrency = useFiltersStore((s) => s.currency);
+  const [filterCurrency] = useCurrency();
   const gelPerUsd = useGelPerUsd();
   const { flag: locationFlag } = useLocationName(product.location_id);
 
@@ -62,7 +62,6 @@ function ProductCardImpl({ product, manName }: Props) {
     setFavorite((v) => !v);
   };
 
-  // Heart button rendered as overlay on the photo (mobile only).
   const heartButton = (
     <button onClick={toggleFavorite} className="md:hidden" aria-label="favorite">
       <HeartFloatingIcon

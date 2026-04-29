@@ -1,6 +1,6 @@
 import { cn } from '@/lib/cn';
 import { Dropdown } from '@/shared/ui/Dropdown';
-import { useFiltersStore } from '../store/useFiltersStore';
+import { useFiltersDraft } from '../state/draftContext';
 import { t } from '@/lib/i18n';
 
 const options: Array<{ value: 0 | 1; label: string }> = [
@@ -9,8 +9,8 @@ const options: Array<{ value: 0 | 1; label: string }> = [
 ];
 
 export function DealTypeSelect() {
-  const dealType = useFiltersStore((s) => s.draft.dealType);
-  const setDealType = useFiltersStore((s) => s.setDraftDealType);
+  const { draft, setDealType } = useFiltersDraft();
+  const dealType = draft.dealType;
   const current = options.find((o) => o.value === dealType);
 
   return (

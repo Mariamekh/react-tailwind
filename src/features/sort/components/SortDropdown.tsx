@@ -1,5 +1,5 @@
 import { SelectDropdown, type SelectOption } from '@/shared/ui/SelectDropdown';
-import { useFiltersStore } from '@/features/filters/store/useFiltersStore';
+import { useFiltersUrl } from '@/features/filters/state/useFiltersUrl';
 import { t } from '@/lib/i18n';
 import type { SortOrder } from '@/features/products/types';
 
@@ -13,14 +13,13 @@ const options: SelectOption<SortOrder>[] = [
 ];
 
 export function SortDropdown() {
-  const sortOrder = useFiltersStore((s) => s.sortOrder);
-  const setSortOrder = useFiltersStore((s) => s.setSortOrder);
+  const [filters, setFilters] = useFiltersUrl();
 
   return (
     <SelectDropdown
-      value={sortOrder}
+      value={filters.sortOrder as SortOrder}
       options={options}
-      onChange={setSortOrder}
+      onChange={(sortOrder) => setFilters({ sortOrder, page: 1 })}
       fallbackLabel={t.sort.label}
     />
   );

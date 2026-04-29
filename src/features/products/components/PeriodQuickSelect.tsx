@@ -1,5 +1,5 @@
 import { SelectDropdown, type SelectOption } from '@/shared/ui/SelectDropdown';
-import { useFiltersStore } from '@/features/filters/store/useFiltersStore';
+import { useFiltersUrl } from '@/features/filters/state/useFiltersUrl';
 import type { Period } from '@/features/filters/types';
 import { t } from '@/lib/i18n';
 
@@ -16,14 +16,13 @@ const options: SelectOption<Period>[] = [
 ];
 
 export function PeriodQuickSelect() {
-  const period = useFiltersStore((s) => s.period);
-  const setPeriod = useFiltersStore((s) => s.setPeriod);
+  const [filters, setFilters] = useFiltersUrl();
 
   return (
     <SelectDropdown
-      value={period}
+      value={filters.period}
       options={options}
-      onChange={setPeriod}
+      onChange={(period) => setFilters({ period, page: 1 })}
       triggerWidthClass="w-[140px]"
       fallbackLabel={t.period.label}
     />

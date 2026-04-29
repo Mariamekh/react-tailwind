@@ -1,6 +1,6 @@
 import { cn } from '@/lib/cn';
 import { CarIcon, MotoIcon, TractorIcon } from '@/shared/icons';
-import { useFiltersStore } from '../store/useFiltersStore';
+import { useFiltersUrl } from '../state/useFiltersUrl';
 import type { VehicleType } from '../types';
 
 const tabs: Array<{ value: VehicleType; Icon: typeof CarIcon }> = [
@@ -10,8 +10,15 @@ const tabs: Array<{ value: VehicleType; Icon: typeof CarIcon }> = [
 ];
 
 export function VehicleTypeTabs() {
-  const vehicle = useFiltersStore((s) => s.vehicle);
-  const setVehicle = useFiltersStore((s) => s.setVehicle);
+  const [filters, setFilters] = useFiltersUrl();
+  const vehicle = filters.vehicle;
+  const setVehicle = (v: VehicleType) =>
+    setFilters({
+      vehicle: v,
+      mans: { manIds: [], modelsByMan: {} },
+      cats: [],
+      page: 1,
+    });
 
   return (
     <div className="grid grid-cols-3 border-b border-surface-border">
