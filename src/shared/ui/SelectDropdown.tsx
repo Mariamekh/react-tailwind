@@ -34,7 +34,7 @@ export function SelectDropdown<T extends string | number>({
         'h-10 gap-0 justify-between rounded-lg border border-surface-border py-2 pl-3 pr-2 font-sailec text-[12px] font-medium leading-[12px] text-ink-700',
         triggerWidthClass,
       )}
-      chevronClassName="h-6 w-6 text-ink-600"
+      chevronClassName="-mr-[3px] h-6 w-6 text-ink-600"
       panelClassName={cn(
         'overflow-auto rounded-lg border-surface-border2 px-0 py-2',
         panelWidthClass,

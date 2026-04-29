@@ -7,6 +7,11 @@ const VEHICLE_TYPE_ID: Record<VehicleType, 0 | 1 | 2> = {
   moto: 2,
 };
 
+const CURRENCY_API_ID: Record<1 | 2, 1 | 3> = {
+  1: 3,
+  2: 1,
+};
+
 export function buildMansParam(
   manIds: string[],
   modelsByMan: Record<string, string[]>,
@@ -36,6 +41,6 @@ export function filtersToQueryParams(s: FiltersState): ProductsQueryParams {
     Period: s.period || undefined,
     SortOrder: s.sortOrder,
     Page: s.page,
-    CurrencyID: s.currency,
+    CurrencyID: CURRENCY_API_ID[s.currency],
   };
 }

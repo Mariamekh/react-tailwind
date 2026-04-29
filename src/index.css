@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'Helvetica Neue LT';
+  font-family: 'Helvetica Neue LT GEO';
   src: url('./assets/fonts/helveticaneuelt_roman.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Helvetica Neue LT';
+  font-family: 'Helvetica Neue LT GEO';
   src: url('./assets/fonts/Helvetica Neue LT Std 65 Medium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;

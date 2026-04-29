@@ -61,7 +61,7 @@ export function ProductCardDesktop({ vm, favorite, onToggleFavorite, heartButton
         </div>
 
         <div className="mt-[29px] flex h-[20px] items-center justify-between">
-          <div className="flex items-center gap-4 font-helvetica text-[12px] font-normal leading-none text-ink-600">
+          <div className="flex items-center gap-4 font-sans text-[12px] font-normal leading-none text-ink-600">
             {vm.vipLevel > 0 && <VipBadge level={vm.vipLevel} />}
             <div className="flex items-center gap-1">
               <span>

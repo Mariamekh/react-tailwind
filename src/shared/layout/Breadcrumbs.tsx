@@ -7,7 +7,7 @@ export function Breadcrumbs() {
   const dealLabel = dealType === 1 ? t.filters.forRent : t.filters.forSale;
 
   return (
-    <nav className="flex items-center gap-1 font-helvetica text-[12px] font-normal leading-none">
+    <nav className="font-sans flex h-[16px] items-center gap-1 text-[12px] font-normal leading-[14px]">
       <a href="#" className="text-ink-600 hover:text-ink-900">
         {t.common.home}
       </a>

@@ -80,7 +80,7 @@ export interface ProductsQueryParams {
   Period?: string;
   SortOrder?: SortOrder;
   Page?: number;
-  CurrencyID?: 1 | 2;
+  CurrencyID?: 1 | 3;
 }
 
 export interface ProductsMeta {

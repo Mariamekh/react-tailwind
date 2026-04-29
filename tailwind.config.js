@@ -62,19 +62,15 @@ export default {
         },
       },
       fontFamily: {
+        // 'Helvetica Neue LT GEO' is the family registered via @font-face in
+        // index.css (Roman 400 + Medium 500). It's the Georgian-extended
+        // variant of Helvetica Neue LT.
         sans: [
           '"Helvetica Neue LT GEO"',
           '"Helvetica Neue"',
           "FiraGO",
           '"BPG Arial"',
           '"BPG Nino Mtavruli"',
-          "system-ui",
-          "sans-serif",
-        ],
-        helvetica: [
-          '"Helvetica Neue LT"',
-          '"Helvetica Neue LT GEO"',
-          '"Helvetica Neue"',
           "system-ui",
           "sans-serif",
         ],
