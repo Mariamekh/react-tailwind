@@ -14,7 +14,7 @@ export const ProductCardFrame = forwardRef<HTMLElement, Props>(function ProductC
     <article
       ref={ref}
       className={cn(
-        'w-full max-w-[780px] px-4 pb-[14px] pt-4 transition-colors md:pb-4',
+        'w-full max-w-[780px] px-4 pb-[14px] pt-[18px] transition-colors md:pb-4 md:pt-4',
         highlighted
           ? 'overflow-hidden rounded-[16px] border border-success-200 bg-success-50 md:rounded-[14px]'
           : bordered === 'subtle'

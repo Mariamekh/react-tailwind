@@ -23,8 +23,10 @@ export interface CardViewModel {
 }
 
 export function getFrameClassName(hasChips: boolean, hasDealer: boolean): string {
-  if (hasChips && hasDealer) return 'md:min-h-[278px]';
-  if (hasChips) return 'md:h-[217px]';
-  if (hasDealer) return 'md:h-[233px]';
-  return 'md:h-[172px]';
+  const mobile = hasChips ? 'h-[492px]' : 'h-[451px]';
+  let desktop = 'md:h-[172px]';
+  if (hasChips && hasDealer) desktop = 'md:min-h-[278px]';
+  else if (hasChips) desktop = 'md:h-[217px]';
+  else if (hasDealer) desktop = 'md:h-[233px]';
+  return `${mobile} md:h-auto ${desktop}`;
 }

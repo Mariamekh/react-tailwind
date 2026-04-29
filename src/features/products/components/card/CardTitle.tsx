@@ -10,7 +10,7 @@ interface Props {
 
 export function CardTitle({ manName, modelLabel, year, yearClassName }: Props) {
   return (
-    <div className="flex min-w-0 items-center gap-2">
+    <div className="flex min-w-0 flex-1 items-center gap-2">
       <h3 className="min-w-0 truncate font-sans text-[14px] font-medium leading-[17px] text-ink-800">
         <span className="uppercase">{manName}</span>
         {modelLabel && <span> {modelLabel}</span>}

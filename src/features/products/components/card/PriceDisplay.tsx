@@ -21,10 +21,10 @@ export function PriceDisplay({ value, currency, variant = 'mobile' }: Props) {
   return (
     <div
       className={cn(
-        'flex items-center gap-1 leading-none text-ink-800',
+        'flex items-center gap-1 text-ink-800',
         variant === 'mobile'
-          ? 'font-sans text-[20px] font-bold'
-          : 'font-sailec text-[20px] font-medium',
+          ? 'h-7 font-sans text-[20px] font-bold leading-[28px]'
+          : 'h-6 font-sailec text-[20px] font-medium leading-[24px]',
       )}
     >
       <span>{formatPrice(value)}</span>

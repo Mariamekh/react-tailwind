@@ -114,7 +114,7 @@ function Frame({ children, className, ...rest }: React.HTMLAttributes<HTMLDivEle
     <div
       {...rest}
       className={cn(
-        'relative h-[256px] w-full shrink-0 cursor-pointer overflow-hidden rounded-[16px] bg-surface-muted md:h-[140px] md:w-[178px] md:rounded-lg',
+        'relative h-[238px] w-full shrink-0 cursor-pointer overflow-hidden rounded-[16px] bg-surface-muted md:h-[140px] md:w-[178px] md:rounded-lg',
         className,
       )}
     >

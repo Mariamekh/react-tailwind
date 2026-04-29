@@ -8,13 +8,21 @@ const variant: Record<VipLevel, { label: string; className: string }> = {
   3: { label: 'S-VIP', className: 'bg-accent-super-vip' },
 };
 
-export function VipBadge({ level }: { level: number }) {
+interface Props {
+  level: number;
+  variant?: 'mobile' | 'desktop';
+}
+
+export function VipBadge({ level, variant: cardVariant = 'desktop' }: Props) {
   if (!level || level < 1 || level > 3) return null;
   const { label, className } = variant[level as VipLevel];
   return (
     <span
       className={cn(
-        'inline-flex items-center rounded-[100px] px-2 py-[3px] font-sans text-[10px] font-bold uppercase leading-[14px] tracking-wide text-white',
+        'inline-flex shrink-0 items-center whitespace-nowrap font-sans font-bold uppercase tracking-normal text-white',
+        cardVariant === 'mobile'
+          ? 'h-[18px] rounded-[6px] px-[6px] pb-[2px] pt-[4px] text-[9px] leading-[9px]'
+          : 'h-[20px] rounded-[100px] px-2 pb-[2px] pt-[4px] text-[10px] leading-[10px]',
         className,
       )}
     >
